@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}400 - Bad Request | StegoDetector{% endblock %}
+{% block content %}
+<div class="container py-5 text-center">
+    <div class="cyber-card p-5 col-md-8 mx-auto">
+        <i class="bi bi-exclamation-diamond text-warning display-1 mb-3"></i>
+        <h2 class="text-light fw-bold mb-2">400 - Bad Request</h2>
+        <p class="text-muted mb-4">{{ error.description if error and error.description else 'The request could not be processed due to invalid syntax or parameters.' }}</p>
+        <a href="{{ url_for('main.index') }}" class="btn btn-cyber">Return to Homepage</a>
+    </div>
+</div>
+{% endblock %}

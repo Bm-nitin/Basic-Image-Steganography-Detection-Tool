@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Image Upload & Analysis | StegoDetector{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Hero Header -->
+    <div class="text-center mb-4">
+        <h1 class="display-6 fw-bold text-light mb-2">
+            Basic Image Steganography Detection Tool
+        </h1>
+        <p class="text-secondary col-lg-8 mx-auto lead fs-6">
+            Multi-layered digital image steganalysis tool designed to detect spatial LSB substitution,
+            structural anomalies, and appended payloads through mathematical and visual verification.
+        </p>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-8">
+            <div class="cyber-card p-4">
+                <form id="upload-form" action="{{ url_for('main.analyze') }}" method="POST" enctype="multipart/form-data">
+                    <input type="file" id="image-input" name="image" accept=".png,.jpg,.jpeg,.bmp,.webp" class="d-none">
+
+                    <!-- Dropzone -->
+                    <div id="dropzone" class="dropzone-box mb-3">
+                        <div class="dropzone-icon">
+                            <i class="bi bi-cloud-arrow-up-fill"></i>
+                        </div>
+                        <h5 class="text-light fw-bold mb-1">Drag &amp; Drop Carrier Image Here</h5>
+                        <p class="text-muted small mb-2">or click anywhere in this zone to browse your computer</p>
+                        <span class="badge bg-dark border border-secondary text-info font-monospace py-1 px-2">
+                            PNG, JPG, BMP, WEBP (Max 10 MB)
+                        </span>
+                    </div>
+
+                    <!-- Selected File Info -->
+                    <div id="file-details" class="alert alert-dark border-secondary p-3 mb-3" style="display: none;">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center overflow-hidden">
+                                <i class="bi bi-file-earmark-image fs-3 text-cyan me-3" style="color: var(--accent-cyan);"></i>
+                                <div class="text-truncate">
+                                    <div id="file-name" class="fw-bold text-light text-truncate">image.png</div>
+                                    <small id="file-size" class="text-muted font-monospace">0 KB</small>
+                                </div>
+                            </div>
+                            <span class="badge bg-info text-dark font-monospace">Ready to Inspect</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="d-grid">
+                        <button type="submit" id="submit-btn" class="btn btn-cyber py-2 fs-5" disabled>
+                            <i class="bi bi-cpu-fill me-2"></i> Run Forensic Steganalysis
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detection Layers Feature Grid -->
+    <div class="row g-4 mb-4">
+        <div class="col-12 text-center mb-1">
+            <h5 class="text-uppercase text-muted font-monospace tracking-wide small">Multi-Tier Forensic Inspection Pipeline</h5>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cyber-card p-3 h-100">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="badge bg-secondary p-2 me-2">
+                        <i class="bi bi-file-binary text-cyan fs-5" style="color: var(--accent-cyan);"></i>
+                    </div>
+                    <h6 class="text-light fw-bold mb-0">1. Structural &amp; EOF Analysis</h6>
+                </div>
+                <p class="text-secondary small mb-0">
+                    Verifies cryptographic magic bytes, reads EXIF metadata headers, and scans for appended payloads hidden beyond legitimate file termination markers (e.g., JPEG <code>FF D9</code> or PNG <code>IEND</code>).
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cyber-card p-3 h-100">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="badge bg-secondary p-2 me-2">
+                        <i class="bi bi-layers-fill text-cyan fs-5" style="color: var(--accent-cyan);"></i>
+                    </div>
+                    <h6 class="text-light fw-bold mb-0">2. Visual Bit-Plane Slicing</h6>
+                </div>
+                <p class="text-secondary small mb-0">
+                    Extracts Least Significant Bits (Bit 0) and Most Significant Bits (Bit 7) across Red, Green, Blue, and Grayscale channels to reveal high-entropy spatial noise patterns.
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cyber-card p-3 h-100">
+                <div class="d-flex align-items-center mb-2">
+                    <div class="badge bg-secondary p-2 me-2">
+                        <i class="bi bi-calculator-fill text-cyan fs-5" style="color: var(--accent-cyan);"></i>
+                    </div>
+                    <h6 class="text-light fw-bold mb-0">3. Statistical Steganalysis</h6>
+                </div>
+                <p class="text-secondary small mb-0">
+                    Runs Westfeld's Chi-Square attack on Pairs of Values (PoVs), measures local Shannon Entropy, and applies Sample Pair Analysis (SPA) to estimate spatial message embedding capacity.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
