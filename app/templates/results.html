@@ -3,33 +3,33 @@
 {% block title %}Forensic Report - {{ results.filename }} | StegoDetector{% endblock %}
 
 {% block content %}
-<div class="container py-4">
+<div class="container py-3 py-md-4">
     <!-- Top Action Bar -->
-    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-2 border-bottom border-secondary gap-3">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 pb-3 border-bottom border-secondary gap-3">
         <div>
-            <span class="badge bg-dark border border-secondary text-cyan font-monospace mb-1" style="color: var(--accent-cyan);">
+            <span class="badge badge-cyber-id font-monospace mb-1">
                 INSPECTION ID: {{ results.analysis_id[:8] }}
             </span>
             <h2 class="h4 text-light fw-bold mb-0 text-break">
                 <i class="bi bi-file-earmark-check me-2 text-info"></i>{{ results.filename }}
             </h2>
         </div>
-        <div class="d-flex gap-2 flex-wrap">
-            <a href="{{ url_for('main.download_report', analysis_id=results.analysis_id) }}" class="btn btn-cyber">
+        <div class="d-flex gap-2 flex-column flex-sm-row">
+            <a href="{{ url_for('main.download_report', analysis_id=results.analysis_id) }}" class="btn btn-cyber text-center">
                 <i class="bi bi-file-earmark-pdf-fill me-1"></i> Download Forensic PDF
             </a>
-            <a href="{{ url_for('main.index') }}" class="btn btn-cyber-outline">
+            <a href="{{ url_for('main.index') }}" class="btn btn-cyber-outline text-center">
                 <i class="bi bi-arrow-left me-1"></i> New Analysis
             </a>
         </div>
     </div>
 
     <!-- Executive Overview Cards -->
-    <div class="row g-4 mb-4">
+    <div class="row g-3 g-md-4 mb-4">
         <!-- Suspicion Gauge Card -->
         <div class="col-lg-4">
             <div class="cyber-card p-4 text-center h-100 d-flex flex-column justify-content-center">
-                <h6 class="text-uppercase text-muted font-monospace small mb-3">Steganography Suspicion Index</h6>
+                <h6 class="text-uppercase section-label font-monospace small mb-3">Steganography Suspicion Index</h6>
                 
                 {% set score = results.scoring.suspicion_score %}
                 {% set risk = results.scoring.risk_level %}
@@ -49,33 +49,33 @@
 
         <!-- File Identity & Hashes Card -->
         <div class="col-lg-8">
-            <div class="cyber-card h-100">
-                <div class="cyber-card-header d-flex justify-content-between align-items-center">
+            <div class="cyber-card h-100 d-flex flex-column">
+                <div class="cyber-card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                     <h6 class="text-light fw-bold mb-0">
                         <i class="bi bi-fingerprint text-info me-2"></i>File Integrity &amp; Cryptographic Signatures
                     </h6>
                     <span class="badge bg-success font-monospace">{{ results.metadata.detected_format }}</span>
                 </div>
-                <div class="p-3">
-                    <div class="row g-2 mb-3">
-                        <div class="col-sm-6">
-                            <small class="text-muted d-block">Dimensions</small>
+                <div class="p-3 p-sm-4 flex-grow-1">
+                    <div class="row g-3 mb-3">
+                        <div class="col-6 col-sm-6">
+                            <small class="text-muted d-block font-monospace">Dimensions</small>
                             <span class="fw-bold text-light font-monospace">
                                 {{ results.metadata.metadata.dimensions[0] }} &times; {{ results.metadata.metadata.dimensions[1] }} px
                             </span>
                         </div>
-                        <div class="col-sm-6">
-                            <small class="text-muted d-block">File Size</small>
+                        <div class="col-6 col-sm-6">
+                            <small class="text-muted d-block font-monospace">File Size</small>
                             <span class="fw-bold text-light font-monospace">
-                                {{ (results.metadata.file_size_bytes / 1024) | round(2) }} KB ({{ results.metadata.file_size_bytes }} bytes)
+                                {{ (results.metadata.file_size_bytes / 1024) | round(2) }} KB
                             </span>
                         </div>
-                        <div class="col-sm-6">
-                            <small class="text-muted d-block">Format Signature</small>
-                            <span class="text-light small">{{ results.metadata.signature_verification }}</span>
+                        <div class="col-12 col-sm-6">
+                            <small class="text-muted d-block font-monospace">Format Signature</small>
+                            <span class="text-secondary small">{{ results.metadata.signature_verification }}</span>
                         </div>
-                        <div class="col-sm-6">
-                            <small class="text-muted d-block">EOF / Trailing Structure</small>
+                        <div class="col-12 col-sm-6">
+                            <small class="text-muted d-block font-monospace">EOF / Trailing Structure</small>
                             {% if results.metadata.trailing_data.has_trailing_data %}
                                 <span class="badge bg-danger">{{ results.metadata.trailing_data.trailing_bytes_count }} trailing bytes detected</span>
                             {% else %}
@@ -85,11 +85,11 @@
                     </div>
 
                     <div class="mb-2">
-                        <small class="text-muted d-block mb-1">MD5 Hash</small>
+                        <small class="text-muted d-block mb-1 font-monospace">MD5 Hash</small>
                         <div class="hash-code">{{ results.metadata.hashes.md5 }}</div>
                     </div>
                     <div>
-                        <small class="text-muted d-block mb-1">SHA-256 Hash</small>
+                        <small class="text-muted d-block mb-1 font-monospace">SHA-256 Hash</small>
                         <div class="hash-code">{{ results.metadata.hashes.sha256 }}</div>
                     </div>
                 </div>
@@ -98,39 +98,39 @@
     </div>
 
     <!-- Forensic Metric Summary Strips -->
-    <div class="row g-3 mb-4">
+    <div class="row g-2 g-sm-3 mb-4">
         <div class="col-6 col-md-3">
-            <div class="cyber-card p-3 text-center">
-                <small class="text-muted text-uppercase d-block mb-1" style="font-size: 0.7rem;">Global Entropy</small>
+            <div class="cyber-card p-2 p-sm-3 text-center h-100 d-flex flex-column justify-content-center">
+                <small class="metric-label text-muted text-uppercase d-block mb-1">Global Entropy</small>
                 <div class="fs-5 fw-bold text-info font-monospace">{{ results.statistical.entropy.global_entropy }}</div>
-                <small class="text-secondary" style="font-size: 0.75rem;">Scale: 0 - 8 bits</small>
+                <small class="metric-sub text-secondary">Scale: 0 - 8 bits</small>
             </div>
         </div>
         <div class="col-6 col-md-3">
-            <div class="cyber-card p-3 text-center">
-                <small class="text-muted text-uppercase d-block mb-1" style="font-size: 0.7rem;">Max LSB Entropy</small>
+            <div class="cyber-card p-2 p-sm-3 text-center h-100 d-flex flex-column justify-content-center">
+                <small class="metric-label text-muted text-uppercase d-block mb-1">Max LSB Entropy</small>
                 <div class="fs-5 fw-bold {% if results.statistical.entropy.lsb_entropy.max >= 0.995 %}text-danger{% else %}text-success{% endif %} font-monospace">
                     {{ results.statistical.entropy.lsb_entropy.max }}
                 </div>
-                <small class="text-secondary" style="font-size: 0.75rem;">Normal &lt; 0.990</small>
+                <small class="metric-sub text-secondary">Normal &lt; 0.990</small>
             </div>
         </div>
         <div class="col-6 col-md-3">
-            <div class="cyber-card p-3 text-center">
-                <small class="text-muted text-uppercase d-block mb-1" style="font-size: 0.7rem;">Chi-Square Stego Prob.</small>
+            <div class="cyber-card p-2 p-sm-3 text-center h-100 d-flex flex-column justify-content-center">
+                <small class="metric-label text-muted text-uppercase d-block mb-1">Chi-Square Stego Prob.</small>
                 <div class="fs-5 fw-bold {% if results.statistical.chi_square.max_probability > 0.75 %}text-danger{% else %}text-success{% endif %} font-monospace">
                     {{ (results.statistical.chi_square.max_probability * 100) | round(1) }}%
                 </div>
-                <small class="text-secondary" style="font-size: 0.75rem;">PoVs Equalization</small>
+                <small class="metric-sub text-secondary">PoVs Equalization</small>
             </div>
         </div>
         <div class="col-6 col-md-3">
-            <div class="cyber-card p-3 text-center">
-                <small class="text-muted text-uppercase d-block mb-1" style="font-size: 0.7rem;">SPA Estimated Rate</small>
+            <div class="cyber-card p-2 p-sm-3 text-center h-100 d-flex flex-column justify-content-center">
+                <small class="metric-label text-muted text-uppercase d-block mb-1">SPA Estimated Rate</small>
                 <div class="fs-5 fw-bold {% if results.statistical.sample_pair_analysis.is_suspicious %}text-danger{% else %}text-success{% endif %} font-monospace">
                     {{ results.statistical.sample_pair_analysis.estimated_percentage }}%
                 </div>
-                <small class="text-secondary" style="font-size: 0.75rem;">Sample Pair Rate</small>
+                <small class="metric-sub text-secondary">Sample Pair Rate</small>
             </div>
         </div>
     </div>
@@ -142,80 +142,82 @@
                 <i class="bi bi-layers text-info me-2"></i>Visual Bit-Plane Decomposition &amp; Distribution
             </h5>
         </div>
-        <div class="p-3">
-            <ul class="nav nav-pills nav-pills-cyber mb-3" id="bitplane-tabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="tab-gray-lsb" data-bs-toggle="pill" data-bs-target="#pane-gray-lsb" type="button" role="tab">
-                        Grayscale LSB (Bit 0)
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-red-lsb" data-bs-toggle="pill" data-bs-target="#pane-red-lsb" type="button" role="tab">
-                        Red LSB
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-green-lsb" data-bs-toggle="pill" data-bs-target="#pane-green-lsb" type="button" role="tab">
-                        Green LSB
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-blue-lsb" data-bs-toggle="pill" data-bs-target="#pane-blue-lsb" type="button" role="tab">
-                        Blue LSB
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-rgb-lsb" data-bs-toggle="pill" data-bs-target="#pane-rgb-lsb" type="button" role="tab">
-                        RGB LSB Composite
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-gray-msb" data-bs-toggle="pill" data-bs-target="#pane-gray-msb" type="button" role="tab">
-                        Grayscale MSB (Bit 7)
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="tab-hist" data-bs-toggle="pill" data-bs-target="#pane-hist" type="button" role="tab">
-                        Intensity Histogram
-                    </button>
-                </li>
-            </ul>
+        <div class="p-3 p-sm-4">
+            <div class="bitplane-nav-scroll mb-3">
+                <ul class="nav nav-pills nav-pills-cyber flex-wrap" id="bitplane-tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="tab-gray-lsb" data-bs-toggle="pill" data-bs-target="#pane-gray-lsb" type="button" role="tab">
+                            Grayscale LSB (Bit 0)
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-red-lsb" data-bs-toggle="pill" data-bs-target="#pane-red-lsb" type="button" role="tab">
+                            Red LSB
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-green-lsb" data-bs-toggle="pill" data-bs-target="#pane-green-lsb" type="button" role="tab">
+                            Green LSB
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-blue-lsb" data-bs-toggle="pill" data-bs-target="#pane-blue-lsb" type="button" role="tab">
+                            Blue LSB
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-rgb-lsb" data-bs-toggle="pill" data-bs-target="#pane-rgb-lsb" type="button" role="tab">
+                            RGB LSB Composite
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-gray-msb" data-bs-toggle="pill" data-bs-target="#pane-gray-msb" type="button" role="tab">
+                            Grayscale MSB (Bit 7)
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-hist" data-bs-toggle="pill" data-bs-target="#pane-hist" type="button" role="tab">
+                            Intensity Histogram
+                        </button>
+                    </li>
+                </ul>
+            </div>
 
             <div class="tab-content text-center py-2" id="bitplane-content">
                 <div class="tab-pane fade show active" id="pane-gray-lsb" role="tabpanel">
                     <img src="{{ results.visual.previews.gray_lsb }}" class="img-fluid bitplane-preview-img mb-2" alt="Grayscale LSB">
-                    <p class="text-muted small">Grayscale Least Significant Bit Plane (Bit 0 multiplied to full dynamic range 0/255).</p>
+                    <p class="text-secondary small">Grayscale Least Significant Bit Plane (Bit 0 multiplied to full dynamic range 0/255).</p>
                 </div>
                 <div class="tab-pane fade" id="pane-red-lsb" role="tabpanel">
                     <img src="{{ results.visual.previews.red_lsb }}" class="img-fluid bitplane-preview-img mb-2" alt="Red LSB">
-                    <p class="text-muted small">Red Channel LSB Plane.</p>
+                    <p class="text-secondary small">Red Channel LSB Plane.</p>
                 </div>
                 <div class="tab-pane fade" id="pane-green-lsb" role="tabpanel">
                     <img src="{{ results.visual.previews.green_lsb }}" class="img-fluid bitplane-preview-img mb-2" alt="Green LSB">
-                    <p class="text-muted small">Green Channel LSB Plane.</p>
+                    <p class="text-secondary small">Green Channel LSB Plane.</p>
                 </div>
                 <div class="tab-pane fade" id="pane-blue-lsb" role="tabpanel">
                     <img src="{{ results.visual.previews.blue_lsb }}" class="img-fluid bitplane-preview-img mb-2" alt="Blue LSB">
-                    <p class="text-muted small">Blue Channel LSB Plane.</p>
+                    <p class="text-secondary small">Blue Channel LSB Plane.</p>
                 </div>
                 <div class="tab-pane fade" id="pane-rgb-lsb" role="tabpanel">
                     <img src="{{ results.visual.previews.rgb_lsb }}" class="img-fluid bitplane-preview-img mb-2" alt="RGB LSB Composite">
-                    <p class="text-muted small">Combined RGB LSB Composite.</p>
+                    <p class="text-secondary small">Combined RGB LSB Composite.</p>
                 </div>
                 <div class="tab-pane fade" id="pane-gray-msb" role="tabpanel">
                     <img src="{{ results.visual.previews.gray_msb }}" class="img-fluid bitplane-preview-img mb-2" alt="Grayscale MSB">
-                    <p class="text-muted small">Grayscale Most Significant Bit Plane (Bit 7). Demonstrates normal structural geometry.</p>
+                    <p class="text-secondary small">Grayscale Most Significant Bit Plane (Bit 7). Demonstrates normal structural geometry.</p>
                 </div>
                 <div class="tab-pane fade" id="pane-hist" role="tabpanel">
                     <img src="{{ results.statistical.histogram_plot }}" class="img-fluid bitplane-preview-img mb-2" alt="Pixel Histogram">
-                    <p class="text-muted small">Pixel intensity frequency distributions across color channels.</p>
+                    <p class="text-secondary small">Pixel intensity frequency distributions across color channels.</p>
                 </div>
             </div>
 
-            <div class="alert alert-dark border-secondary p-3 mt-2 mb-0">
-                <small class="text-secondary">
+            <div class="cyber-guide-box p-3 mt-3">
+                <small class="text-secondary d-block">
                     <i class="bi bi-info-circle-fill text-info me-1"></i>
-                    <strong>Visual Forensics Guide:</strong> In unmodified natural images, LSB planes reflect sensor noise but typically still reveal faint object contours. If an encrypted or compressed payload is hidden in the LSB, the plane degrades into uniform high-frequency white noise ("salt and pepper" pattern) devoid of geometric structure.
+                    <strong class="text-light">Visual Forensics Guide:</strong> In unmodified natural images, LSB planes reflect sensor noise but typically still reveal faint object contours. If an encrypted or compressed payload is hidden in the LSB, the plane degrades into uniform high-frequency white noise ("salt and pepper" pattern) devoid of geometric structure.
                 </small>
             </div>
         </div>
@@ -223,20 +225,24 @@
 
     <!-- Detailed Detector Breakdown Table -->
     <div class="cyber-card mb-4">
-        <div class="cyber-card-header">
+        <div class="cyber-card-header d-flex justify-content-between align-items-center">
             <h5 class="text-light fw-bold mb-0">
                 <i class="bi bi-clipboard2-data-fill text-info me-2"></i>Detailed Findings by Forensic Test
             </h5>
+            <small class="text-muted font-monospace d-none d-sm-inline">5 Tests Evaluated</small>
+        </div>
+        <div class="d-md-none px-3 pt-2 text-end">
+            <small class="text-muted font-monospace"><i class="bi bi-arrows-expand me-1"></i>Scroll table horizontally &rarr;</small>
         </div>
         <div class="table-responsive">
-            <table class="table forensic-table table-hover">
+            <table class="table forensic-table table-hover align-middle">
                 <thead>
                     <tr>
-                        <th>Category</th>
-                        <th>Detector Method</th>
-                        <th>Status</th>
-                        <th>Impact</th>
-                        <th>Technical Findings</th>
+                        <th style="min-width: 140px;">Category</th>
+                        <th style="min-width: 170px;">Detector Method</th>
+                        <th style="min-width: 110px;">Status</th>
+                        <th style="min-width: 100px;">Impact</th>
+                        <th style="min-width: 260px;">Technical Findings</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -260,7 +266,7 @@
                                 <span class="text-muted font-monospace">+0.0 pts</span>
                             {% endif %}
                         </td>
-                        <td class="text-light small">{{ item.details }}</td>
+                        <td class="text-secondary small">{{ item.details }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -276,16 +282,16 @@
                 <i class="bi bi-exclamation-triangle-fill me-2"></i>Structural Anomaly: Appended EOF Trailing Data
             </h5>
         </div>
-        <div class="p-3">
+        <div class="p-3 p-sm-4">
             <p class="text-light small mb-2">
                 This image contains <strong>{{ results.metadata.trailing_data.trailing_bytes_count }} bytes</strong> appended past its standard format End-of-File marker. This is a common indicator of naive append steganography (file concatenation).
             </p>
             <div class="mb-2">
-                <small class="text-muted d-block mb-1">Hexadecimal Preview (First 64 Bytes):</small>
+                <small class="text-muted d-block mb-1 font-monospace">Hexadecimal Preview (First 64 Bytes):</small>
                 <div class="hash-code text-danger">{{ results.metadata.trailing_data.preview_hex }}</div>
             </div>
             <div>
-                <small class="text-muted d-block mb-1">ASCII Preview:</small>
+                <small class="text-muted d-block mb-1 font-monospace">ASCII Preview:</small>
                 <div class="hash-code text-warning">{{ results.metadata.trailing_data.preview_ascii }}</div>
             </div>
         </div>
@@ -293,9 +299,9 @@
     {% endif %}
 
     <!-- Academic & Legal Disclaimer Banner -->
-    <div class="alert alert-secondary cyber-card border-secondary p-3">
+    <div class="cyber-card p-3 border-secondary mb-4">
         <div class="d-flex align-items-start">
-            <i class="bi bi-shield-exclamation text-warning fs-4 me-3 mt-1"></i>
+            <i class="bi bi-shield-exclamation text-warning fs-4 me-3 mt-1 flex-shrink-0"></i>
             <div>
                 <h6 class="text-light fw-bold mb-1">Forensic Disclaimer &amp; Academic Notice</h6>
                 <p class="text-secondary small mb-0">{{ results.scoring.disclaimer }}</p>

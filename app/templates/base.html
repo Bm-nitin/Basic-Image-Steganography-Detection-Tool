@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,25 +14,25 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url_for('main.index') }}">
                 <i class="bi bi-shield-lock-fill brand-icon me-2 fs-4"></i>
                 <span class="brand-title">StegoDetector</span>
-                <span class="badge bg-secondary ms-2 text-uppercase font-monospace" style="font-size: 0.65rem;">Forensic v1.0</span>
+                <span class="badge badge-cyber-tag ms-2 text-uppercase font-monospace d-none d-sm-inline-block">Forensic v1.0</span>
             </a>
-            <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#navContent">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-controls="navContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ url_for('main.index') }}">
+                        <a class="nav-link nav-link-cyber" href="{{ url_for('main.index') }}">
                             <i class="bi bi-upload me-1"></i> New Inspection
                         </a>
                     </li>
                     <li class="nav-item ms-lg-2">
-                        <a class="nav-link text-secondary" href="https://github.com" target="_blank" rel="noopener">
+                        <a class="nav-link nav-link-cyber" href="https://github.com/Bm-nitin/Basic-Image-Steganography-Detection-Tool" target="_blank" rel="noopener">
                             <i class="bi bi-github me-1"></i> Repository
                         </a>
                     </li>
@@ -70,11 +70,11 @@
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-md-start text-muted">
+            <div class="row align-items-center gy-2">
+                <div class="col-md-6 text-md-start text-secondary">
                     <small><i class="bi bi-shield-check text-info me-1"></i> B.Tech Computer Science Cybersecurity Project</small>
                 </div>
-                <div class="col-md-6 text-md-end text-muted mt-2 mt-md-0">
+                <div class="col-md-6 text-md-end text-secondary">
                     <small>Heuristic &amp; Statistical Digital Forensic Analyzer</small>
                 </div>
             </div>

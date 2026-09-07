@@ -58,3 +58,6 @@ temp_reports/*
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# any pdf file 
+*.pdf

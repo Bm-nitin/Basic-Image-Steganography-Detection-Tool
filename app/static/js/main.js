@@ -15,9 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const ALLOWED_EXTS = ['png', 'jpg', 'jpeg', 'bmp', 'webp'];
 
     if (dropzone && fileInput) {
-        // Trigger file picker on dropzone click
+        // Trigger file picker on dropzone click or keyboard activation
         dropzone.addEventListener('click', () => {
             fileInput.click();
+        });
+
+        dropzone.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                fileInput.click();
+            }
         });
 
         // Drag & Drop event listeners
@@ -37,17 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Drop handling
+        // Drop handling with DataTransfer binding
         dropzone.addEventListener('drop', (e) => {
             if (e.dataTransfer && e.dataTransfer.files.length > 0) {
                 const droppedFile = e.dataTransfer.files[0];
+                try {
+                    const dt = new DataTransfer();
+                    dt.items.add(droppedFile);
+                    fileInput.files = dt.files;
+                } catch (err) {
+                    console.warn('DataTransfer API fallback:', err);
+                }
                 handleFileSelection(droppedFile);
             }
         });
 
         // File input change handling
         fileInput.addEventListener('change', (e) => {
-            if (fileInput.files.length > 0) {
+            if (fileInput.files && fileInput.files.length > 0) {
                 handleFileSelection(fileInput.files[0]);
             }
         });
