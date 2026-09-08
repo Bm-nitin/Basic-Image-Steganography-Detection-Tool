@@ -8,6 +8,12 @@ from .file_forensics import FileForensicsAnalyzer
 from .rs_analysis import RSAnalyzer
 from .spa_analysis import SPAnalyzer
 from .jpeg_analysis import JPEGDomainAnalyzer
+from .ela_analysis import ELAAnalyzer
+from .noise_analysis import NoiseAnalyzer
+from .local_variance_analysis import LocalVarianceAnalyzer
+from .edge_analysis import EdgeAnalyzer
+from .copy_move_analysis import CopyMoveAnalyzer
+from .tampering import TamperingAnalyzer
 
 __all__ = [
     'MetadataAnalyzer',
@@ -19,7 +25,14 @@ __all__ = [
     'FileForensicsAnalyzer',
     'RSAnalyzer',
     'SPAnalyzer',
-    'JPEGDomainAnalyzer'
+    'JPEGDomainAnalyzer',
+    'ELAAnalyzer',
+    'NoiseAnalyzer',
+    'LocalVarianceAnalyzer',
+    'EdgeAnalyzer',
+    'CopyMoveAnalyzer',
+    'TamperingAnalyzer'
 ]
+
 
 

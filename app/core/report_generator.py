@@ -290,23 +290,132 @@ class ReportGenerator:
         story.append(metrics_table)
         story.append(Spacer(1, 14))
 
-        # 6. Embedded Histogram Plot & Visual Slices Preview
+        # 6. Image Tampering & Manipulation Forensics (Phase D)
+        tampering_data = analysis_results.get('tampering', {})
+        if tampering_data and tampering_data.get('available'):
+            t_story = [
+                Paragraph("4. Image Tampering & Manipulation Forensics", heading2_style)
+            ]
+            t_dets = tampering_data.get('detectors', {})
+            ela_d = t_dets.get('ela', {})
+            noise_d = t_dets.get('noise', {})
+            var_d = t_dets.get('local_variance', {})
+            edge_d = t_dets.get('edge', {})
+            cm_d = t_dets.get('copy_move', {})
+
+            t_rows = [
+                [
+                    Paragraph("<b>Detector / Forensic Layer</b>", cell_text_bold),
+                    Paragraph("<b>Observed Metrics</b>", cell_text_bold),
+                    Paragraph("<b>Indicator</b>", cell_text_bold),
+                    Paragraph("<b>Status</b>", cell_text_bold)
+                ]
+            ]
+
+            # ELA row
+            if ela_d.get('available'):
+                ela_stat = "Anomaly" if ela_d.get('is_suspicious') else ("Suspicious" if ela_d.get('anomaly_indicator', 0) > 0.35 else "Clean")
+                t_rows.append([
+                    Paragraph("Error Level Analysis (ELA)", cell_text),
+                    Paragraph(f"Mean error {ela_d.get('mean_error', 0.0):.2f}, high-err {ela_d.get('high_error_fraction', 0.0):.1%}", cell_text),
+                    Paragraph(f"{ela_d.get('anomaly_indicator', 0.0):.3f}", cell_text),
+                    Paragraph(f"<b>{ela_stat}</b>", cell_text)
+                ])
+            else:
+                t_rows.append([
+                    Paragraph("Error Level Analysis (ELA)", cell_text),
+                    Paragraph("Non-JPEG image format; ELA not applicable", cell_text),
+                    Paragraph("N/A", cell_text),
+                    Paragraph("N/A", cell_text)
+                ])
+
+            # Noise row
+            if noise_d.get('available'):
+                noise_stat = "Anomaly" if noise_d.get('is_suspicious') else ("Suspicious" if noise_d.get('anomaly_indicator', 0) > 0.35 else "Clean")
+                t_rows.append([
+                    Paragraph("Local Residual Noise Consistency", cell_text),
+                    Paragraph(f"Residual MAD {noise_d.get('global_noise_std', 0.0):.2f}, outliers {noise_d.get('outlier_region_fraction', 0.0):.1%}", cell_text),
+                    Paragraph(f"{noise_d.get('anomaly_indicator', 0.0):.3f}", cell_text),
+                    Paragraph(f"<b>{noise_stat}</b>", cell_text)
+                ])
+
+            # Variance row
+            if var_d.get('available'):
+                var_stat = "Anomaly" if var_d.get('is_suspicious') else ("Suspicious" if var_d.get('anomaly_indicator', 0) > 0.35 else "Clean")
+                t_rows.append([
+                    Paragraph("Texture Variance Disparity", cell_text),
+                    Paragraph(f"Global var {var_d.get('global_variance', 0.0):.1f}, outliers {var_d.get('outlier_region_fraction', 0.0):.1%}", cell_text),
+                    Paragraph(f"{var_d.get('anomaly_indicator', 0.0):.3f}", cell_text),
+                    Paragraph(f"<b>{var_stat}</b>", cell_text)
+                ])
+
+            # Edge row
+            if edge_d.get('available'):
+                edge_stat = "Anomaly" if edge_d.get('is_suspicious') else ("Suspicious" if edge_d.get('anomaly_indicator', 0) > 0.35 else "Clean")
+                t_rows.append([
+                    Paragraph("Edge Discontinuity & Gradients", cell_text),
+                    Paragraph(f"Mean grad {edge_d.get('mean_gradient', 0.0):.1f}, density {edge_d.get('edge_density', 0.0):.1%}", cell_text),
+                    Paragraph(f"{edge_d.get('anomaly_indicator', 0.0):.3f}", cell_text),
+                    Paragraph(f"<b>{edge_stat}</b>", cell_text)
+                ])
+
+            # Copy-Move row
+            if cm_d.get('available'):
+                cm_stat = "Anomaly" if cm_d.get('is_suspicious') else ("Suspicious" if cm_d.get('cluster_count', 0) > 0 else "Clean")
+                t_rows.append([
+                    Paragraph("Copy-Move Duplicate Matching", cell_text),
+                    Paragraph(f"{cm_d.get('candidate_matches', 0)} pairs, {cm_d.get('cluster_count', 0)} coherent cluster(s)", cell_text),
+                    Paragraph(f"{cm_d.get('anomaly_indicator', 0.0):.3f}", cell_text),
+                    Paragraph(f"<b>{cm_stat}</b>", cell_text)
+                ])
+
+            t_table = Table(t_rows, colWidths=[150, 190, 100, 100])
+            t_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2e8f0')),
+                ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
+                ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f8fafc')]),
+                ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                ('TOPPADDING', (0, 0), (-1, -1), 3),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+            ]))
+            t_story.append(t_table)
+
+            # ELA heatmap thumbnail if available
+            ela_hm = ela_d.get('heatmap', {})
+            if ela_hm.get('heatmap_available') and ela_hm.get('heatmap_base64'):
+                try:
+                    b64_img = ela_hm['heatmap_base64']
+                    if b64_img.startswith('data:image/png;base64,'):
+                        raw_hm_png = base64.b64decode(b64_img.split(',', 1)[1])
+                        hm_buf = BytesIO(raw_hm_png)
+                        t_story.append(Spacer(1, 6))
+                        t_story.append(Paragraph("<b>Error Level Analysis (ELA) Amplified Difference Heatmap:</b>", cell_text))
+                        t_story.append(Spacer(1, 4))
+                        t_story.append(RLImage(hm_buf, width=2.6 * inch, height=2.6 * inch))
+                except Exception:
+                    pass
+
+            t_story.append(Spacer(1, 12))
+            story.append(KeepTogether(t_story))
+
+        # 7. Embedded Histogram Plot & Visual Slices Preview
         hist_b64 = stat_data.get('histogram_plot', '')
         if hist_b64 and hist_b64.startswith('data:image/png;base64,'):
             try:
                 raw_png = base64.b64decode(hist_b64.split(',', 1)[1])
                 hist_buf = BytesIO(raw_png)
                 story.append(KeepTogether([
-                    Paragraph("4. Pixel Intensity Histogram Visualization", heading2_style),
+                    Paragraph("5. Pixel Intensity Histogram Visualization", heading2_style),
                     RLImage(hist_buf, width=5.5 * inch, height=2.6 * inch),
                     Spacer(1, 10)
                 ]))
             except Exception:
                 pass
 
-        # 7. Forensic Disclaimer & Signoff
+        # 8. Forensic Disclaimer & Signoff
         story.append(Spacer(1, 10))
         story.append(Paragraph("<b>FORENSIC DISCLAIMER:</b> " + score_info.get('disclaimer', ''), disclaimer_style))
 
         doc.build(story)
         return buffer.getvalue()
+

@@ -15,10 +15,12 @@ class SuspicionScoringEngine:
                  metadata_res: Dict[str, Any], 
                  visual_res: Dict[str, Any], 
                  statistical_res: Dict[str, Any],
-                 forensics_res: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+                 forensics_res: Optional[Dict[str, Any]] = None,
+                 tampering_res: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
-        Evaluates test results from Layers 1, 2, 3, and File Forensics to compute a composite suspicion score.
+        Evaluates test results from Layers 1, 2, 3, File Forensics, and Tampering Forensics.
         """
+
         score = 0.0
         breakdown: List[Dict[str, Any]] = []
 
@@ -312,6 +314,76 @@ class SuspicionScoringEngine:
             'details': msg
         })
 
+        # 5. Image Tampering & Manipulation Forensics (Independent Forensic Layer)
+        tampering_indicator = 0.0
+        tampering_score = 0.0
+        tampering_suspicious = False
+        if tampering_res and tampering_res.get('available', False):
+            tampering_indicator = float(tampering_res.get('combined_indicator', 0.0))
+            tampering_score = float(tampering_res.get('combined_score', 0.0))
+            tampering_suspicious = bool(tampering_res.get('is_suspicious', False))
+
+            t_dets = tampering_res.get('detectors', {})
+            # 5a. Error Level Analysis (ELA)
+            ela_d = t_dets.get('ela', {})
+            if ela_d.get('available', False):
+                ela_status = 'Anomaly' if ela_d.get('is_suspicious') else ('Suspicious' if ela_d.get('anomaly_indicator', 0) > 0.35 else 'Clean')
+                breakdown.append({
+                    'category': 'Tampering & Manipulation Forensics',
+                    'detector': 'Error Level Analysis (ELA)',
+                    'status': ela_status,
+                    'points_added': 0.0,
+                    'details': ela_d.get('details', '')
+                })
+
+            # 5b. Local Residual Noise Consistency
+            noise_d = t_dets.get('noise', {})
+            if noise_d.get('available', False):
+                noise_status = 'Anomaly' if noise_d.get('is_suspicious') else ('Suspicious' if noise_d.get('anomaly_indicator', 0) > 0.35 else 'Clean')
+                breakdown.append({
+                    'category': 'Tampering & Manipulation Forensics',
+                    'detector': 'Local Residual Noise Consistency',
+                    'status': noise_status,
+                    'points_added': 0.0,
+                    'details': noise_d.get('details', '')
+                })
+
+            # 5c. Local Texture Variance Disparity
+            var_d = t_dets.get('local_variance', {})
+            if var_d.get('available', False):
+                var_status = 'Anomaly' if var_d.get('is_suspicious') else ('Suspicious' if var_d.get('anomaly_indicator', 0) > 0.35 else 'Clean')
+                breakdown.append({
+                    'category': 'Tampering & Manipulation Forensics',
+                    'detector': 'Texture Variance Disparity',
+                    'status': var_status,
+                    'points_added': 0.0,
+                    'details': var_d.get('details', '')
+                })
+
+            # 5d. Edge Discontinuity & Gradients
+            edge_d = t_dets.get('edge', {})
+            if edge_d.get('available', False):
+                edge_status = 'Anomaly' if edge_d.get('is_suspicious') else ('Suspicious' if edge_d.get('anomaly_indicator', 0) > 0.35 else 'Clean')
+                breakdown.append({
+                    'category': 'Tampering & Manipulation Forensics',
+                    'detector': 'Edge Discontinuity & Gradients',
+                    'status': edge_status,
+                    'points_added': 0.0,
+                    'details': edge_d.get('details', '')
+                })
+
+            # 5e. Copy-Move Duplicate Matching
+            cm_d = t_dets.get('copy_move', {})
+            if cm_d.get('available', False):
+                cm_status = 'Anomaly' if cm_d.get('is_suspicious') else ('Suspicious' if cm_d.get('cluster_count', 0) > 0 else 'Clean')
+                breakdown.append({
+                    'category': 'Tampering & Manipulation Forensics',
+                    'detector': 'Copy-Move Duplicate Detection',
+                    'status': cm_status,
+                    'points_added': 0.0,
+                    'details': cm_d.get('details', '')
+                })
+
         # Clamp composite score between 0 and 100
         final_score = round(max(0.0, min(100.0, score)), 1)
 
@@ -334,11 +406,15 @@ class SuspicionScoringEngine:
             'risk_level': risk_level,
             'risk_badge': risk_badge,
             'risk_summary': risk_summary,
+            'tampering_indicator': tampering_indicator,
+            'tampering_score': tampering_score,
+            'tampering_suspicious': tampering_suspicious,
             'category_scores': {
                 'structural': round(structural_pts, 1),
                 'metadata': round(sig_pts, 1),
                 'statistical': round(total_stat_pts, 1),
-                'visual': round(vis_pts, 1)
+                'visual': round(vis_pts, 1),
+                'tampering': round(tampering_score, 1)
             },
             'detector_breakdown': breakdown,
             'disclaimer': (
@@ -347,3 +423,4 @@ class SuspicionScoringEngine:
                 'or synthetic artwork can trigger elevated statistical indicators.'
             )
         }
+

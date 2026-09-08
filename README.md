@@ -65,15 +65,23 @@ The application applies a multi-layer forensic pipeline:
        │     ├── Multi-channel (Red, Green, Blue) and Alpha channel independence analysis
        │     └── Pixel intensity distribution histogram (Matplotlib Agg backend)
        │
-       ├── Layer 4: Normalized Heuristic Risk Scoring
+       ├── Layer 4: Image Tampering & Manipulation Forensics (Phase D)
+       │     ├── Error Level Analysis (ELA) with controlled recompression & base64 preview
+       │     ├── Local residual noise consistency using robust MAD estimator
+       │     ├── Localized texture variance consistency analysis
+       │     ├── Directional edge discontinuity & high-frequency gradient inspection
+       │     ├── Copy-move block duplicate matching via cKDTree & rigid displacement clustering
+       │     └── Independent manipulation indicator and suspicious region mapping
+       │
+       ├── Layer 5: Normalized Heuristic Risk Scoring
        │     ├── Category weights: Structural (20%), Metadata (10%), Statistical (50%), Visual (20%)
        │     ├── Dynamic statistical budget: 50.0 pt max with automatic JPEG / non-JPEG redistribution
-       │     ├── Steganography Suspicion Index (0 - 100)
+       │     ├── Steganography Suspicion Index (0 - 100) & Independent Tampering Score (0 - 100)
        │     └── Calibrated Risk Classification (Low, Medium, High Risk)
        │
-       └── Layer 5: Visualization & PDF Reporting
+       └── Layer 6: Visualization & PDF Reporting
              ├── Interactive web dashboard with tabbed bit-plane viewer
-             └── Exportable digital forensic PDF report (ReportLab)
+             └── Exportable digital forensic PDF report with tampering section (ReportLab)
 ```
 
 ---
@@ -141,6 +149,17 @@ Inspects genuine JPEG container markers without faking DCT coefficients:
 - Evaluates Red, Green, and Blue channels independently for LSB density, bit-plane entropy, and variance.
 - Computes cross-channel Pearson correlations ($r_{RG}, r_{GB}, r_{RB}$) and cross-channel LSB difference (XOR) entropies $H(R_{LSB} \oplus G_{LSB})$.
 - Evaluates the Alpha channel (when present) to distinguish uniform opacity or valid transparency masks from modulated pseudorandom noise payloads.
+
+### 9. Image Tampering & Manipulation Forensics (Phase D)
+Operates as an independent forensic inspection layer designed to identify localized tampering, splicing, and cloning anomalies:
+- **Error Level Analysis (ELA)**: Recompresses JPEG image streams at a controlled quality factor ($Q=90$) in-memory and evaluates pixel-level error distributions. Foreign spliced patches with divergent compression histories exhibit discordant error levels. Generates a bounded ($512\text{px}$) amplified difference preview. For non-JPEG formats, gracefully reports `available: False`.
+- **Local Residual Noise Analysis**: Computes high-frequency spatial residuals via $3 \times 3$ smoothing (`residual = original - smoothed`). Evaluates local noise dispersion using the **Median Absolute Deviation (MAD)** estimator:
+  $$\sigma_{\text{MAD}} = \frac{\text{median}(|\text{residual} - \text{median}(\text{residual})|)}{0.6745}$$
+  Unlike standard deviation, MAD suppresses false alarms on sharp geometric edges in synthetic graphics while sensitively flagging spliced camera sensor patches.
+- **Local Texture Variance Consistency**: Partitions luminance into bounded blocks ($32 \times 32$, stride 16) and identifies statistical outlier blocks where local texture energy abruptly departs from carrier baselines.
+- **Edge Discontinuity & Gradients**: Uses directional SciPy Sobel operators to inspect local gradient densities. Hard cut-and-paste seams without edge feathering trigger elevated boundary gradient density outliers.
+- **Copy-Move Duplicate Matching**: Implements block-based duplicate detection using compact 8D descriptors and `scipy.spatial.cKDTree` nearest-neighbor search ($O(N \log N)$). Filters out flat regions ($\sigma < 10.0$) and 1D straight lines via anisotropy thresholds. Groups candidate matches into rigid displacement vector clusters ($\vec{v} = (\Delta x, \Delta y)$). Matches with consistent translation vectors flag duplicated/cloned regions.
+- **Independent Forensic Reporting**: Tampering indicators and coordinates are exposed as independent evidence layers (`tampering_score`, `tampering_indicator`, and `suspicious_regions`) without distorting the 0–100 steganography suspicion index.
 
 ---
 
@@ -283,7 +302,32 @@ Empirical detection accuracy, true positive rates, and receiver operating charac
 
 ---
 
-## 9. Academic & Forensic Disclaimer
+## 9. Image Tampering Interpretation and Limitations
+
+The **Image Tampering & Manipulation Forensics** layer provides explainable heuristic evidence for detecting localized tampering, splicing, retouching, and duplication. Forensic analysts must interpret these outputs within the following operational limits:
+
+### 1. Error Level Analysis (ELA) Limitations
+- **JPEG Exclusivity**: ELA relies on standard $8 \times 8$ Discrete Cosine Transform (DCT) lossy quantization. For lossless formats (PNG, BMP) or modern intra-coded formats (WebP), ELA is technically non-applicable and correctly returns `available: False`.
+- **Contrast & Edge Artifacts**: High-contrast boundaries, fine text, and sharp geometric transitions naturally yield elevated compression errors even in untampered images. High ELA values along sharp natural edges do not prove manipulation.
+- **Multiple Recompressions**: An image recompressed numerous times at uniform quality across the entire canvas will exhibit low error levels, potentially masking historical splicing.
+
+### 2. Local Noise and Texture Variance Limits
+- **Depth of Field & Lens Effects**: Legitimate optical phenomena—such as shallow depth of field, bokeh, optical vignetting, and motion blur—produce significant disparities in local residual noise and texture variance across an image.
+- **Sensor Non-Uniformity**: Uneven lighting, shadows, and camera ISO noise reduction algorithms naturally vary across different regions of a photographic frame.
+- **Robust MAD Suppression**: While our Median Absolute Deviation (MAD) residual estimator suppresses false alarms on sharp step boundaries, intentional high-frequency noise injection or grain matching can mimic authentic photographic residuals.
+
+### 3. Copy-Move Duplicate Matching Limits
+- **Natural Scene Symmetry & Periodic Architecture**: Regular building facades (windows, bricks), tiled textures, repetitive foliage, or reflection in water can trigger duplicate block matches. The analyzer uses strict rigid displacement clustering to mitigate these, but highly regular architectural patterns can still show candidate clusters.
+- **Geometrical Transformations**: The block-matching engine evaluates rigid 2D translations. Duplicated regions that undergo severe rotation, non-linear warping, or scaling may not be captured by rigid translation descriptors.
+
+### 4. Non-Conclusive Forensic Stance
+- Tampering detectors output **forensic indicators** ($I \in [0.0, 1.0]$) and highlight candidate suspicious regions.
+- The system **never claims** that an image is "proven fake", "forged", or "tampered". The findings indicate statistical anomalies that warrant skilled forensic verification.
+
+---
+
+## 10. Academic & Forensic Disclaimer
 
 > **IMPORTANT FORENSIC NOTICE:**
-> The **Steganography Suspicion Index** produced by this tool is a **heuristic indicator** developed for triage and academic demonstration. Statistical tests (such as Chi-Square PoVs, RS Steganalysis, and Shannon Entropy) can be influenced by natural factors including high-frequency image textures, non-standard lossy compression, camera sensor noise, and synthetic graphic patterns. Therefore, a high suspicion score indicates statistical anomalies requiring further manual investigation, not definitive mathematical proof of steganography.
+> The **Steganography Suspicion Index** and **Image Tampering Indicators** produced by this tool are **heuristic indicators** developed for triage, education, and cybersecurity research. Statistical tests (such as Chi-Square PoVs, RS Steganalysis, Shannon Entropy, ELA, and Copy-Move matching) can be influenced by natural factors including high-frequency image textures, camera sensor characteristics, lossy compression cycles, and synthetic graphic design. Therefore, elevated suspicion scores indicate forensic anomalies requiring manual expert review, NOT definitive legal or scientific proof of steganography or forgery.
+

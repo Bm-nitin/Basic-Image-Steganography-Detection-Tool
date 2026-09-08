@@ -104,4 +104,10 @@ class TestRoutes:
         assert 'scoring' in json_res
         assert 'metadata' in json_res
         assert 'statistical' in json_res
+        assert 'tampering' in json_res
+        assert 'combined_indicator' in json_res['tampering']
+        assert 'combined_score' in json_res['tampering']
+        assert 'is_suspicious' in json_res['tampering']
+        assert 'detectors' in json_res['tampering']
         assert json_res['scoring']['risk_level'] in ['Low', 'Medium', 'High']
+

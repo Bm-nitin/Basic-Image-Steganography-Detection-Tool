@@ -8,7 +8,9 @@ from app.core import (
     VisualExtractor,
     StatisticalAnalyzer,
     SuspicionScoringEngine,
-    ReportGenerator
+    ReportGenerator,
+    LocalVarianceAnalyzer,
+    EdgeAnalyzer
 )
 
 SAMPLE_DIR = os.path.join(os.path.dirname(__file__), 'test_samples')
@@ -258,3 +260,50 @@ class TestReportGenerator:
         assert len(pdf_bytes) > 1000
         # Valid PDF header
         assert pdf_bytes.startswith(b'%PDF')
+
+
+class TestLocalVarianceAnalyzer:
+    def test_uniform_image(self):
+        img = Image.new('RGB', (100, 100), color=(120, 120, 120))
+        res = LocalVarianceAnalyzer.analyze(img)
+        assert res['available'] is True
+        assert res['global_variance'] == 0.0
+        assert res['anomaly_indicator'] == 0.0
+        assert res['is_suspicious'] is False
+
+    def test_clean_sample(self):
+        img = Image.open('tests/test_samples/clean_sample.png')
+        res = LocalVarianceAnalyzer.analyze(img)
+        assert res['available'] is True
+        assert res['anomaly_indicator'] < 0.35
+        assert res['is_suspicious'] is False
+
+    def test_insufficient_dimensions(self):
+        img = Image.new('RGB', (10, 10), color=(100, 100, 100))
+        res = LocalVarianceAnalyzer.analyze(img)
+        assert res['available'] is False
+        assert res['reason'] == 'insufficient_dimensions'
+
+
+class TestEdgeAnalyzer:
+    def test_uniform_image(self):
+        img = Image.new('RGB', (100, 100), color=(120, 120, 120))
+        res = EdgeAnalyzer.analyze(img)
+        assert res['available'] is True
+        assert res['mean_gradient'] == 0.0
+        assert res['anomaly_indicator'] == 0.0
+        assert res['is_suspicious'] is False
+
+    def test_clean_sample(self):
+        img = Image.open('tests/test_samples/clean_sample.png')
+        res = EdgeAnalyzer.analyze(img)
+        assert res['available'] is True
+        assert res['anomaly_indicator'] < 0.30
+        assert res['is_suspicious'] is False
+
+    def test_insufficient_dimensions(self):
+        img = Image.new('RGB', (10, 10), color=(100, 100, 100))
+        res = EdgeAnalyzer.analyze(img)
+        assert res['available'] is False
+        assert res['reason'] == 'insufficient_dimensions'
+

@@ -25,7 +25,8 @@ from app.core import (
     SuspicionScoringEngine,
     ReportGenerator,
     ImageValidator,
-    FileForensicsAnalyzer
+    FileForensicsAnalyzer,
+    TamperingAnalyzer
 )
 
 main_bp = Blueprint('main', __name__)
@@ -118,8 +119,21 @@ def analyze():
             image_format=meta_res.get('detected_format')
         )
 
-        # Layer 4: Heuristic Scoring & Risk Classification
-        scoring_res = SuspicionScoringEngine.evaluate(meta_res, visual_res, statistical_res, forensics_res=forensics_res)
+        # Layer 4: Image Tampering & Manipulation Forensics (Phase D)
+        tampering_res = TamperingAnalyzer.analyze(
+            pil_img,
+            file_bytes=file_bytes,
+            image_format=meta_res.get('detected_format')
+        )
+
+        # Layer 5: Heuristic Scoring & Risk Classification
+        scoring_res = SuspicionScoringEngine.evaluate(
+            meta_res,
+            visual_res,
+            statistical_res,
+            forensics_res=forensics_res,
+            tampering_res=tampering_res
+        )
 
         # Compile full analysis payload
         analysis_id = str(uuid.uuid4())
@@ -130,6 +144,7 @@ def analyze():
             'file_forensics': forensics_res,
             'visual': visual_res,
             'statistical': statistical_res,
+            'tampering': tampering_res,
             'scoring': scoring_res,
             'cached_at': time.time()
         }
@@ -237,7 +252,18 @@ def api_analyze():
             file_bytes=file_bytes,
             image_format=meta_res.get('detected_format')
         )
-        scoring_res = SuspicionScoringEngine.evaluate(meta_res, visual_res, statistical_res, forensics_res=forensics_res)
+        tampering_res = TamperingAnalyzer.analyze(
+            pil_img,
+            file_bytes=file_bytes,
+            image_format=meta_res.get('detected_format')
+        )
+        scoring_res = SuspicionScoringEngine.evaluate(
+            meta_res,
+            visual_res,
+            statistical_res,
+            forensics_res=forensics_res,
+            tampering_res=tampering_res
+        )
 
         # Exclude raw base64 bitplane images from JSON payload to keep API response compact
         response_payload = {
@@ -255,6 +281,7 @@ def api_analyze():
                 'channel_analysis': statistical_res['channel_analysis'],
                 'combined_indicator': statistical_res['combined_indicator']
             },
+            'tampering': tampering_res,
             'scoring': scoring_res
         }
 

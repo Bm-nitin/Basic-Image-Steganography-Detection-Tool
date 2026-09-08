@@ -10,7 +10,9 @@ from app.core import (
     VisualExtractor,
     StatisticalAnalyzer,
     SuspicionScoringEngine,
-    ReportGenerator
+    ReportGenerator,
+    FileForensicsAnalyzer,
+    TamperingAnalyzer
 )
 
 def run_verification():
@@ -26,10 +28,12 @@ def run_verification():
             file_bytes = f.read()
 
         meta = MetadataAnalyzer.analyze(file_bytes, filename)
+        forensics = FileForensicsAnalyzer.analyze(file_bytes, meta)
         img = Image.open(path)
         visual = VisualExtractor.extract_bit_planes(img)
-        stat = StatisticalAnalyzer.analyze(img)
-        scoring = SuspicionScoringEngine.evaluate(meta, visual, stat)
+        stat = StatisticalAnalyzer.analyze(img, file_bytes=file_bytes, image_format=meta.get('detected_format'))
+        tampering = TamperingAnalyzer.analyze(img, file_bytes=file_bytes, image_format=meta.get('detected_format'))
+        scoring = SuspicionScoringEngine.evaluate(meta, visual, stat, forensics_res=forensics, tampering_res=tampering)
 
         print(f"==================================================")
         print(f"TEST: {title}")
@@ -38,19 +42,22 @@ def run_verification():
         print(f"SUSPICION SCORE: {scoring['suspicion_score']} / 100")
         print(f"RISK LEVEL:      {scoring['risk_level'].upper()}")
         print(f"SUMMARY:         {scoring['risk_summary']}")
+        print(f"TAMPERING SCORE: {scoring.get('tampering_score', 0.0)} / 100 (Indicator: {scoring.get('tampering_indicator', 0.0)})")
         print(f"--------------------------------------------------")
         print("Detailed Detector Findings:")
         for d in scoring['detector_breakdown']:
             status_symbol = "[ANOMALY]" if d['status'] == 'Anomaly' else ("[SUSPICIOUS]" if d['status'] == 'Suspicious' else "[CLEAN]")
             pts = f"(+{d['points_added']} pts)" if d['points_added'] > 0 else ""
-            print(f"  {status_symbol:12} {d['detector']:30} {pts:12} -> {d['details']}")
+            print(f"  {status_symbol:12} {d['detector']:32} {pts:12} -> {d['details']}")
 
         # Verify PDF report generation as well
         payload = {
             'filename': filename,
             'metadata': meta,
+            'file_forensics': forensics,
             'visual': visual,
             'statistical': stat,
+            'tampering': tampering,
             'scoring': scoring
         }
         pdf = ReportGenerator.generate_pdf_bytes(payload)
