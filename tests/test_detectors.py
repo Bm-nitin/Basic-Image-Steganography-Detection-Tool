@@ -139,9 +139,101 @@ class TestSuspicionScoring:
         stat = StatisticalAnalyzer.analyze(img)
 
         score_res = SuspicionScoringEngine.evaluate(meta, visual, stat)
-        # Should detect trailing bytes and add at least 25 points
+        # Should detect trailing bytes and add anomaly status
         assert any(d['detector'] == 'Appended Trailing Data' and d['status'] == 'Anomaly'
                    for d in score_res['detector_breakdown'])
+
+    def test_statistical_category_budget_cap_50(self):
+        # Synthetic worst-case where all detectors trigger maximum anomaly
+        meta = {'trailing_data': {'has_trailing_data': False, 'size': 0}, 'metadata': {}}
+        visual = {'min_balance_delta': 0.0001}
+        extreme_stat = {
+            'chi_square': {'max_indicator': 1.0, 'max_probability': 1.0},
+            'entropy': {'lsb_entropy': {'max': 1.0}},
+            'spa_analysis': {'estimated_embedding_rate': 1.0, 'suspicion_indicator': 1.0},
+            'rs_analysis': {'estimated_embedding_rate': 1.0, 'suspicion_indicator': 1.0},
+            'jpeg_analysis': {'available': True, 'jpeg_structural_indicator': 1.0},
+            'channel_analysis': {'channel_anomaly_indicator': 1.0, 'alpha_analysis': {'suspicious': True}}
+        }
+        score_res = SuspicionScoringEngine.evaluate(meta, visual, extreme_stat)
+        assert score_res['category_scores']['statistical'] <= 50.0
+        assert score_res['suspicion_score'] <= 100.0
+
+    def test_composite_score_hard_ceiling_100(self):
+        # Synthetic worst-case where all 4 layers fire maximum points
+        meta = {
+            'trailing_data': {'has_trailing_data': True, 'trailing_bytes_count': 10000},
+            'metadata': {'suspicious_signatures': ['steghide', 'outguess']}
+        }
+        forensics = {
+            'trailing_data': {'has_trailing_data': True, 'trailing_bytes_count': 10000},
+            'embedded_signatures': [{'type': 'ZIP archive', 'offset': 500, 'evidence_strength': 'high'}],
+            'polyglot_suspected': True,
+            'polyglot_reason': 'ZIP in JPEG',
+            'structural_anomaly_indicator': 1.0
+        }
+        visual = {'min_balance_delta': 0.00001}
+        extreme_stat = {
+            'chi_square': {'max_indicator': 1.0, 'max_probability': 1.0},
+            'entropy': {'lsb_entropy': {'max': 1.0}},
+            'spa_analysis': {'estimated_embedding_rate': 1.0, 'suspicion_indicator': 1.0},
+            'rs_analysis': {'estimated_embedding_rate': 1.0, 'suspicion_indicator': 1.0},
+            'jpeg_analysis': {'available': True, 'jpeg_structural_indicator': 1.0},
+            'channel_analysis': {'channel_anomaly_indicator': 1.0}
+        }
+        score_res = SuspicionScoringEngine.evaluate(meta, visual, extreme_stat, forensics_res=forensics)
+        assert score_res['suspicion_score'] == 100.0
+        assert score_res['category_scores']['structural'] <= 20.0
+        assert score_res['category_scores']['metadata'] <= 10.0
+        assert score_res['category_scores']['statistical'] <= 50.0
+        assert score_res['category_scores']['visual'] <= 20.0
+
+    def test_dynamic_non_jpeg_weight_redistribution(self):
+        meta = {'metadata': {}}
+        visual = {'min_balance_delta': 0.05}
+        non_jpeg_stat = {
+            'chi_square': {'max_indicator': 0.90},
+            'entropy': {'lsb_entropy': {'max': 0.999}},
+            'spa_analysis': {'estimated_embedding_rate': 0.80},
+            'rs_analysis': {'estimated_embedding_rate': 0.80},
+            'jpeg_analysis': {'available': False, 'reason': 'not_jpeg'},
+            'channel_analysis': {'channel_anomaly_indicator': 0.0}
+        }
+        score_res = SuspicionScoringEngine.evaluate(meta, visual, non_jpeg_stat)
+        # JPEG structural detector should NOT appear in breakdown for non-JPEG
+        detectors = [d['detector'] for d in score_res['detector_breakdown']]
+        assert 'JPEG Structural Analysis' not in detectors
+        # Statistical category should receive full 50.0 pts from proportional redistribution
+        assert score_res['category_scores']['statistical'] == 50.0
+
+
+class TestMultiChannelAnalysis:
+    def test_analyze_channels_rgb(self, clean_image_bytes):
+        from io import BytesIO
+        img = Image.open(BytesIO(clean_image_bytes))
+        res = StatisticalAnalyzer.analyze_channels(img)
+        assert res['has_alpha'] is False
+        assert 'red' in res['channel_metrics']
+        assert 'green' in res['channel_metrics']
+        assert 'blue' in res['channel_metrics']
+        assert 'rg' in res['cross_channel_correlations']
+        assert 'rg' in res['cross_channel_lsb_xor_entropy']
+
+    def test_analyze_channels_rgba_constant(self):
+        rgba = Image.new('RGBA', (64, 64), (100, 150, 200, 255))
+        res = StatisticalAnalyzer.analyze_channels(rgba)
+        assert res['has_alpha'] is True
+        assert res['alpha_analysis']['is_constant'] is True
+        assert res['alpha_analysis']['suspicious'] is False
+
+    def test_analyze_channels_rgba_modulated_alpha(self):
+        rgba = Image.new('RGBA', (64, 64), (100, 150, 200, 255))
+        noisy_alpha = np.random.randint(180, 256, (64, 64), dtype=np.uint8)
+        rgba.putalpha(Image.fromarray(noisy_alpha))
+        res = StatisticalAnalyzer.analyze_channels(rgba)
+        assert res['has_alpha'] is True
+        assert res['alpha_analysis']['is_constant'] is False
+        assert res['alpha_analysis']['suspicious'] is True
 
 
 class TestReportGenerator:

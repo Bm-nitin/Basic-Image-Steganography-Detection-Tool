@@ -23,7 +23,9 @@ from app.core import (
     VisualExtractor,
     StatisticalAnalyzer,
     SuspicionScoringEngine,
-    ReportGenerator
+    ReportGenerator,
+    ImageValidator,
+    FileForensicsAnalyzer
 )
 
 main_bp = Blueprint('main', __name__)
@@ -79,63 +81,45 @@ def analyze():
 
     file = request.files['image']
 
-    if file.filename == '':
-        flash('No image file selected. Please select a valid file.', 'danger')
-        return redirect(url_for('main.index'))
+    val_res = ImageValidator.validate(
+        file_source=file,
+        filename=file.filename,
+        client_mimetype=file.mimetype,
+        config=current_app.config
+    )
 
-    raw_filename = secure_filename(file.filename) or f"upload_{int(time.time())}.png"
-
-    if not is_allowed_file(raw_filename):
-        flash(f"Unsupported file extension. Allowed formats: {', '.join(current_app.config['ALLOWED_EXTENSIONS']).upper()}", 'danger')
+    if not val_res['valid']:
+        err_msg = val_res['errors'][0] if val_res['errors'] else 'Image validation failed.'
+        flash(err_msg, 'danger')
         return redirect(url_for('main.index'))
 
     try:
-        # Read file bytes
-        file_bytes = file.read()
-        file_size = len(file_bytes)
-
-        if file_size == 0:
-            flash('The uploaded file is completely empty (0 bytes).', 'danger')
-            return redirect(url_for('main.index'))
-
-        if file_size > current_app.config['MAX_CONTENT_LENGTH']:
-            flash(f"File exceeds maximum allowed size of {current_app.config['MAX_CONTENT_LENGTH'] // (1024 * 1024)} MB.", 'danger')
-            return redirect(url_for('main.index'))
+        file_bytes = val_res['file_bytes']
+        raw_filename = val_res['safe_filename']
+        pil_img = val_res['pil_image']
 
         # Layer 1: Structural & Metadata Analysis
         meta_res = MetadataAnalyzer.analyze(file_bytes, raw_filename)
+        if val_res.get('warnings'):
+            meta_res.setdefault('warnings', []).extend(val_res['warnings'])
+        if val_res.get('format_consistency'):
+            meta_res['format_consistency'] = val_res['format_consistency']
 
-        if not meta_res['is_valid_format']:
-            flash(f"Security Alert: Magic byte verification failed! {meta_res['signature_verification']}", 'danger')
-            return redirect(url_for('main.index'))
-
-        # Pillow image loading with decompression bomb protection
-        Image.MAX_IMAGE_PIXELS = current_app.config['MAX_IMAGE_PIXELS']
-        try:
-            pil_img = Image.open(BytesIO(file_bytes))
-            # Verify dimensions do not exceed safety boundary
-            w, h = pil_img.size
-            if w > current_app.config['MAX_IMAGE_DIMENSION'] or h > current_app.config['MAX_IMAGE_DIMENSION']:
-                flash(f"Image dimensions ({w}x{h}) exceed maximum allowed dimension of {current_app.config['MAX_IMAGE_DIMENSION']}px.", 'danger')
-                return redirect(url_for('main.index'))
-            
-            # Force load image data to catch truncation or decompression errors
-            pil_img.load()
-        except Image.DecompressionBombError:
-            flash('Security Alert: Potential decompression bomb / pixel flood attack detected.', 'danger')
-            return redirect(url_for('main.index'))
-        except Exception as e:
-            flash(f'Malformed or corrupt image structure: {str(e)}', 'danger')
-            return redirect(url_for('main.index'))
+        # Layer 1B: File & Container Forensics (Phase B)
+        forensics_res = FileForensicsAnalyzer.analyze(file_bytes, meta_res)
 
         # Layer 2: Visual Bit-Plane Extraction
         visual_res = VisualExtractor.extract_bit_planes(pil_img)
 
         # Layer 3: Statistical Steganalysis
-        statistical_res = StatisticalAnalyzer.analyze(pil_img)
+        statistical_res = StatisticalAnalyzer.analyze(
+            pil_img,
+            file_bytes=file_bytes,
+            image_format=meta_res.get('detected_format')
+        )
 
         # Layer 4: Heuristic Scoring & Risk Classification
-        scoring_res = SuspicionScoringEngine.evaluate(meta_res, visual_res, statistical_res)
+        scoring_res = SuspicionScoringEngine.evaluate(meta_res, visual_res, statistical_res, forensics_res=forensics_res)
 
         # Compile full analysis payload
         analysis_id = str(uuid.uuid4())
@@ -143,6 +127,7 @@ def analyze():
             'analysis_id': analysis_id,
             'filename': raw_filename,
             'metadata': meta_res,
+            'file_forensics': forensics_res,
             'visual': visual_res,
             'statistical': statistical_res,
             'scoring': scoring_res,
@@ -208,40 +193,77 @@ def api_analyze():
     clean_expired_cache()
 
     if 'image' not in request.files:
-        return jsonify({'error': 'Missing image file in request'}), 400
+        return jsonify({
+            'error': 'Missing image file in request',
+            'code': 'MISSING_FILE',
+            'details': 'No image file uploaded in the "image" form field.'
+        }), 400
 
     file = request.files['image']
-    if file.filename == '':
-        return jsonify({'error': 'Empty filename'}), 400
 
-    raw_filename = secure_filename(file.filename) or 'api_upload.png'
-    file_bytes = file.read()
+    val_res = ImageValidator.validate(
+        file_source=file,
+        filename=file.filename,
+        client_mimetype=file.mimetype,
+        config=current_app.config
+    )
 
-    meta_res = MetadataAnalyzer.analyze(file_bytes, raw_filename)
-    if not meta_res['is_valid_format']:
-        return jsonify({'error': 'Invalid image format', 'details': meta_res['signature_verification']}), 400
+    if not val_res['valid']:
+        status_code = 413 if val_res['error_code'] == 'FILE_TOO_LARGE' else 400
+        details = val_res['errors'][0] if val_res['errors'] else 'Image validation failed'
+        return jsonify({
+            'error': 'Image validation failed',
+            'code': val_res['error_code'],
+            'details': details
+        }), status_code
 
     try:
-        pil_img = Image.open(BytesIO(file_bytes))
-        pil_img.load()
+        file_bytes = val_res['file_bytes']
+        raw_filename = val_res['safe_filename']
+        pil_img = val_res['pil_image']
+
+        meta_res = MetadataAnalyzer.analyze(file_bytes, raw_filename)
+        if val_res.get('warnings'):
+            meta_res.setdefault('warnings', []).extend(val_res['warnings'])
+        if val_res.get('format_consistency'):
+            meta_res['format_consistency'] = val_res['format_consistency']
+
+        # Layer 1B: File & Container Forensics (Phase B)
+        forensics_res = FileForensicsAnalyzer.analyze(file_bytes, meta_res)
+
+        visual_res = VisualExtractor.extract_bit_planes(pil_img)
+        statistical_res = StatisticalAnalyzer.analyze(
+            pil_img,
+            file_bytes=file_bytes,
+            image_format=meta_res.get('detected_format')
+        )
+        scoring_res = SuspicionScoringEngine.evaluate(meta_res, visual_res, statistical_res, forensics_res=forensics_res)
+
+        # Exclude raw base64 bitplane images from JSON payload to keep API response compact
+        response_payload = {
+            'filename': raw_filename,
+            'metadata': meta_res,
+            'file_forensics': forensics_res,
+            'statistical': {
+                'entropy': statistical_res['entropy'],
+                'chi_square': statistical_res['chi_square'],
+                'correlations': statistical_res['correlations'],
+                'sample_pair_analysis': statistical_res['sample_pair_analysis'],
+                'spa_analysis': statistical_res['spa_analysis'],
+                'rs_analysis': statistical_res['rs_analysis'],
+                'jpeg_analysis': statistical_res['jpeg_analysis'],
+                'channel_analysis': statistical_res['channel_analysis'],
+                'combined_indicator': statistical_res['combined_indicator']
+            },
+            'scoring': scoring_res
+        }
+
+        return jsonify(to_serializable(response_payload)), 200
+
     except Exception as e:
-        return jsonify({'error': 'Corrupt image', 'details': str(e)}), 400
-
-    visual_res = VisualExtractor.extract_bit_planes(pil_img)
-    statistical_res = StatisticalAnalyzer.analyze(pil_img)
-    scoring_res = SuspicionScoringEngine.evaluate(meta_res, visual_res, statistical_res)
-
-    # Exclude raw base64 bitplane images from JSON payload to keep API response compact
-    response_payload = {
-        'filename': raw_filename,
-        'metadata': meta_res,
-        'statistical': {
-            'entropy': statistical_res['entropy'],
-            'chi_square': statistical_res['chi_square'],
-            'correlations': statistical_res['correlations'],
-            'sample_pair_analysis': statistical_res['sample_pair_analysis']
-        },
-        'scoring': scoring_res
-    }
-
-    return jsonify(to_serializable(response_payload)), 200
+        current_app.logger.error(f"API analysis error: {str(e)}", exc_info=True)
+        return jsonify({
+            'error': 'Forensic analysis failed',
+            'code': 'ANALYSIS_ERROR',
+            'details': str(e)
+        }), 500

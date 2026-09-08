@@ -221,7 +221,9 @@ class ReportGenerator:
         stat_data = analysis_results.get('statistical', {})
         entropy_data = stat_data.get('entropy', {})
         chi2_data = stat_data.get('chi_square', {})
-        spa_data = stat_data.get('sample_pair_analysis', {})
+        spa_data = stat_data.get('spa_analysis', stat_data.get('sample_pair_analysis', {}))
+        rs_data = stat_data.get('rs_analysis', {})
+        jpeg_data = stat_data.get('jpeg_analysis', {})
         trailing_data = meta.get('trailing_data', {})
 
         metrics_data = [
@@ -253,7 +255,13 @@ class ReportGenerator:
                 Paragraph("Sample Pair (SPA) Embedding", cell_text),
                 Paragraph(f"{spa_data.get('estimated_percentage', 0.0)}% capacity", cell_text),
                 Paragraph("< 15% (Clean carrier)", cell_text),
-                Paragraph("High" if spa_data.get('estimated_percentage', 0) > 40 else "Normal", cell_text)
+                Paragraph("Anomaly" if spa_data.get('estimated_embedding_rate', 0) > 0.60 else ("Suspicious" if spa_data.get('estimated_embedding_rate', 0) > 0.30 else "Normal"), cell_text)
+            ],
+            [
+                Paragraph("RS Steganalysis Embedding", cell_text),
+                Paragraph(f"{rs_data.get('estimated_percentage', 0.0)}% capacity", cell_text),
+                Paragraph("< 20% (Natural symmetry)", cell_text),
+                Paragraph("Anomaly" if rs_data.get('estimated_embedding_rate', 0) > 0.50 else ("Suspicious" if rs_data.get('estimated_embedding_rate', 0) > 0.25 else "Normal"), cell_text)
             ],
             [
                 Paragraph("Appended EOF Trailing Data", cell_text),
@@ -262,6 +270,14 @@ class ReportGenerator:
                 Paragraph("Anomaly" if trailing_data.get('has_trailing_data') else "Clean", cell_text)
             ]
         ]
+
+        if jpeg_data.get('available'):
+            metrics_data.append([
+                Paragraph("JPEG Structural / Quantization", cell_text),
+                Paragraph(f"Quality ~{jpeg_data.get('estimated_quality', 'N/A')}, {jpeg_data.get('subsampling', 'N/A')}", cell_text),
+                Paragraph("Standard IJG Markers", cell_text),
+                Paragraph("Suspicious" if jpeg_data.get('is_suspicious') else "Clean", cell_text)
+            ])
         metrics_table = Table(metrics_data, colWidths=[140, 120, 140, 140])
         metrics_table.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2e8f0')),

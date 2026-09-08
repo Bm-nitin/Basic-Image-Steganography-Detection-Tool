@@ -1,7 +1,13 @@
 import urllib.request
 import re
+import pytest
 
 def test_live_workflow():
+    try:
+        urllib.request.urlopen('http://127.0.0.1:5000/health', timeout=0.5)
+    except Exception:
+        pytest.skip("Local test server not running on http://127.0.0.1:5000")
+
     boundary = '----WebKitFormBoundaryForensicTest123'
     with open('tests/test_samples/stego_lsb_sample.png', 'rb') as f:
         img_data = f.read()

@@ -1,12 +1,16 @@
 import base64
 from io import BytesIO
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 import numpy as np
 import scipy.stats as stats
 import matplotlib
 matplotlib.use('Agg')  # Headless backend: thread-safe, no GUI window, prevents memory leaks
 import matplotlib.pyplot as plt
 from PIL import Image
+
+from .rs_analysis import RSAnalyzer
+from .spa_analysis import SPAnalyzer
+from .jpeg_analysis import JPEGDomainAnalyzer
 
 class StatisticalAnalyzer:
     """
@@ -125,6 +129,7 @@ class StatisticalAnalyzer:
                 'chi2_stat': 0.0,
                 'df': 0,
                 'p_value': 0.0,
+                'chi_square_indicator': 0.0,
                 'probability_stego': 0.0,
                 'is_suspicious': False,
                 'details': 'Insufficient pixel variation for Chi-Square attack.'
@@ -151,9 +156,10 @@ class StatisticalAnalyzer:
             'df': int(df),
             'ratio': round(ratio, 2),
             'p_value': round(float(p_val), 4),
+            'chi_square_indicator': round(float(prob_stego), 4),
             'probability_stego': round(float(prob_stego), 4),
             'is_suspicious': bool(is_suspicious),
-            'details': f'Equalized PoV distribution (P={prob_stego:.2%}, ratio={ratio:.2f})' if is_suspicious else f'Natural variation between adjacent values (ratio={ratio:.2f})'
+            'details': f'Equalized PoV distribution (Indicator={prob_stego:.2%}, ratio={ratio:.2f})' if is_suspicious else f'Natural variation between adjacent values (ratio={ratio:.2f})'
         }
 
     @classmethod
@@ -203,58 +209,132 @@ class StatisticalAnalyzer:
     @classmethod
     def sample_pair_analysis(cls, gray: np.ndarray) -> Dict[str, Any]:
         """
-        Sample Pair Analysis (SPA) by Dumitrescu, Wu, and Wang.
-        Estimates the hidden LSB message length p in [0, 1].
+        Sample Pair Analysis (SPA) for LSB message length estimation.
+        Delegates to SPAnalyzer while maintaining backward compatibility.
         """
-        h, w = gray.shape
-        # Downsample for SPA if image is larger than 1024x1024 to bound compute
-        work_img = gray
-        if h > 800 or w > 800:
-            step_y = max(1, h // 600)
-            step_x = max(1, w // 600)
-            work_img = gray[::step_y, ::step_x]
+        return SPAnalyzer.analyze(gray)
 
-        # Flatten horizontal pairs
-        u = work_img[:, :-1].flatten().astype(int)
-        v = work_img[:, 1:].flatten().astype(int)
+    @classmethod
+    def analyze_channels(cls, image_pil: Image.Image) -> Dict[str, Any]:
+        """
+        Analyzes individual color planes (R, G, B) and Alpha channel (when present)
+        for LSB density, Shannon bit-plane entropy, variance, cross-channel correlation,
+        and cross-channel LSB difference (XOR) entropy.
+        """
+        has_alpha = ('A' in image_pil.getbands())
+        rgb_img = image_pil.convert('RGB')
+        img_np = np.array(rgb_img, dtype=np.uint8)
 
-        # Count pair types:
-        # P = {(u, v) : v is even and u < v OR v is odd and u > v}
-        # In SPA formulation:
-        # X: pairs with (u >> 1 == v >> 1) and (u & 1 != v & 1)
-        # Y: pairs with (u >> 1 == v >> 1) and (u & 1 == v & 1)
-        # Z: pairs with (u >> 1 != v >> 1) and condition
-        u_div = u >> 1
-        v_div = v >> 1
-        same_pov = (u_div == v_div)
-        diff_lsb = ((u & 1) != (v & 1))
-        same_lsb = ((u & 1) == (v & 1))
+        channel_metrics = {}
+        for idx, name in enumerate(['red', 'green', 'blue']):
+            c_arr = img_np[:, :, idx]
+            ent = cls.calculate_shannon_entropy(c_arr)
+            lsb_ent = cls.calculate_binary_entropy(c_arr & 1)
+            lsb_dens = float(np.mean(c_arr & 1))
+            var_val = float(np.var(c_arr))
+            channel_metrics[name] = {
+                'entropy': round(ent, 4),
+                'lsb_entropy': round(lsb_ent, 4),
+                'lsb_density': round(lsb_dens, 4),
+                'variance': round(var_val, 2)
+            }
 
-        c_diff = np.sum(same_pov & diff_lsb)
-        c_same = np.sum(same_pov & same_lsb)
+        # Cross-channel correlations and XOR LSB entropy
+        r_lsb = img_np[:, :, 0] & 1
+        g_lsb = img_np[:, :, 1] & 1
+        b_lsb = img_np[:, :, 2] & 1
 
-        total_pairs = len(u)
-        if total_pairs == 0:
-            return {'estimated_embedding_rate': 0.0, 'is_suspicious': False}
+        xor_rg = r_lsb ^ g_lsb
+        xor_gb = g_lsb ^ b_lsb
+        xor_rb = r_lsb ^ b_lsb
 
-        # Simplified sample pair estimation based on PoV parity asymmetry:
-        # For clean image, c_diff ~ 0.5 * same_pov
-        # Under full LSB replacement, c_diff and c_same equalize.
-        sum_pov = c_diff + c_same
-        if sum_pov < 50:
-            est_rate = 0.0
-        else:
-            diff_ratio = abs(c_diff - c_same) / float(sum_pov)
-            # In clean image diff_ratio is high; in fully embedded stego diff_ratio -> 0
-            est_rate = max(0.0, min(1.0, 1.0 - diff_ratio))
+        xor_entropies = {
+            'rg': round(cls.calculate_binary_entropy(xor_rg), 4),
+            'gb': round(cls.calculate_binary_entropy(xor_gb), 4),
+            'rb': round(cls.calculate_binary_entropy(xor_rb), 4)
+        }
 
-        is_suspicious = bool(est_rate > 0.40)
+        r_flat = img_np[:, :, 0].flatten().astype(np.float64)
+        g_flat = img_np[:, :, 1].flatten().astype(np.float64)
+        b_flat = img_np[:, :, 2].flatten().astype(np.float64)
+
+        corr_rg = float(np.corrcoef(r_flat, g_flat)[0, 1]) if np.std(r_flat) > 0 and np.std(g_flat) > 0 else 1.0
+        corr_gb = float(np.corrcoef(g_flat, b_flat)[0, 1]) if np.std(g_flat) > 0 and np.std(b_flat) > 0 else 1.0
+        corr_rb = float(np.corrcoef(r_flat, b_flat)[0, 1]) if np.std(r_flat) > 0 and np.std(b_flat) > 0 else 1.0
+
+        correlations = {
+            'rg': round(corr_rg, 4),
+            'gb': round(corr_gb, 4),
+            'rb': round(corr_rb, 4)
+        }
+
+        # Alpha channel evaluation
+        alpha_info = {
+            'present': has_alpha,
+            'is_constant': True,
+            'unique_values': 0,
+            'suspicious': False,
+            'details': 'No alpha channel present in image carrier.'
+        }
+
+        if has_alpha:
+            try:
+                alpha_plane = np.array(image_pil.split()[-1], dtype=np.uint8)
+                u_vals = len(np.unique(alpha_plane))
+                is_const = bool(u_vals <= 1)
+                a_ent = cls.calculate_shannon_entropy(alpha_plane)
+                a_lsb_ent = cls.calculate_binary_entropy(alpha_plane & 1)
+                a_dens = float(np.mean(alpha_plane & 1))
+                a_var = float(np.var(alpha_plane))
+
+                channel_metrics['alpha'] = {
+                    'entropy': round(a_ent, 4),
+                    'lsb_entropy': round(a_lsb_ent, 4),
+                    'lsb_density': round(a_dens, 4),
+                    'variance': round(a_var, 2)
+                }
+
+                # Flag non-constant modulated alpha
+                a_suspicious = bool(not is_const and u_vals > 8 and a_lsb_ent > 0.98)
+                alpha_info = {
+                    'present': True,
+                    'is_constant': is_const,
+                    'unique_values': int(u_vals),
+                    'suspicious': a_suspicious,
+                    'details': (
+                        'Elevated LSB entropy in non-constant alpha channel (potential modulated payload).'
+                        if a_suspicious else (
+                            f'Uniform constant alpha channel ({int(alpha_plane[0, 0])}).'
+                            if is_const else 'Alpha channel conforms to standard transparency masking.'
+                        )
+                    )
+                }
+            except Exception:
+                pass
+
+        # Channel anomaly heuristic indicator
+        anom_score = 0.0
+        if alpha_info.get('suspicious'):
+            anom_score += 0.50
+        max_xor_ent = max(xor_entropies.values())
+        if max_xor_ent >= 0.995:
+            anom_score += 0.30
+        min_corr = min(correlations.values())
+        if min_corr < 0.40 and not has_alpha:
+            anom_score += 0.20
+
+        anom_score = float(min(1.0, max(0.0, anom_score)))
 
         return {
-            'estimated_embedding_rate': round(float(est_rate), 4),
-            'estimated_percentage': round(float(est_rate * 100), 2),
-            'is_suspicious': bool(is_suspicious),
-            'confidence': 'High' if est_rate > 0.6 else ('Medium' if est_rate > 0.3 else 'Low')
+            'has_alpha': has_alpha,
+            'mode': image_pil.mode,
+            'channel_metrics': channel_metrics,
+            'cross_channel_correlations': correlations,
+            'cross_channel_lsb_xor_entropy': xor_entropies,
+            'alpha_analysis': alpha_info,
+            'channel_anomaly_indicator': round(anom_score, 4),
+            'is_suspicious': bool(anom_score > 0.40),
+            'summary': alpha_info['details']
         }
 
     @classmethod
@@ -300,8 +380,21 @@ class StatisticalAnalyzer:
         return f"data:image/png;base64,{encoded}"
 
     @classmethod
-    def analyze(cls, image_pil: Image.Image) -> Dict[str, Any]:
-        """Runs full Layer 3 statistical analysis."""
+    def analyze(cls, 
+                image_pil: Image.Image, 
+                file_bytes: Optional[bytes] = None, 
+                image_format: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Runs comprehensive Layer 3 statistical steganalysis:
+        - Global, channel-wise, and LSB Shannon entropy
+        - Westfeld's Chi-Square PoV attack across color and grayscale planes
+        - Adjacent pixel correlation (horizontal, vertical, diagonal)
+        - Sample Pair Analysis (SPA)
+        - Regular-Singular (RS) steganalysis
+        - Safe static JPEG structural / compression domain analysis
+        - Multi-channel RGB + Alpha analysis
+        - Pixel intensity distribution histogram
+        """
         rgb_img = image_pil.convert('RGB')
         img_np = np.array(rgb_img, dtype=np.uint8)
         gray_np = np.array(rgb_img.convert('L'), dtype=np.uint8)
@@ -312,8 +405,8 @@ class StatisticalAnalyzer:
         chi2_green = cls.chi_square_attack(img_np[:, :, 1])
         chi2_blue = cls.chi_square_attack(img_np[:, :, 2])
 
-        # Max chi2 stego probability across all channels
-        max_chi2_prob = max(
+        # Max chi2 stego indicator across all channels
+        max_chi2_indicator = max(
             chi2_gray['probability_stego'],
             chi2_red['probability_stego'],
             chi2_green['probability_stego'],
@@ -321,8 +414,59 @@ class StatisticalAnalyzer:
         )
 
         corr_res = cls.calculate_pixel_correlations(gray_np)
-        spa_res = cls.sample_pair_analysis(gray_np)
+        spa_res = SPAnalyzer.analyze(image_pil)
+        rs_res = RSAnalyzer.analyze(image_pil)
+
+        # JPEG structural analysis
+        if file_bytes:
+            jpeg_res = JPEGDomainAnalyzer.analyze(file_bytes, image_format=image_format)
+        else:
+            detected_fmt = getattr(image_pil, 'format', None) or image_format
+            if detected_fmt and detected_fmt.upper() != 'JPEG':
+                jpeg_res = {
+                    'available': False,
+                    'reason': 'not_jpeg',
+                    'components': 0,
+                    'sampling_factors': {},
+                    'subsampling': 'N/A',
+                    'quantization_tables_count': 0,
+                    'quantization_tables': {},
+                    'sos_entropy': 0.0,
+                    'estimated_quality': None,
+                    'recompression_indicator': 0.0,
+                    'jpeg_structural_indicator': 0.0,
+                    'dct_suspicion_indicator': 0.0,
+                    'is_suspicious': False,
+                    'details': 'JPEG-domain structural analysis is only applicable to JPEG files.'
+                }
+            else:
+                jpeg_res = {
+                    'available': False,
+                    'reason': 'missing_file_bytes',
+                    'components': 0,
+                    'sampling_factors': {},
+                    'subsampling': 'N/A',
+                    'quantization_tables_count': 0,
+                    'quantization_tables': {},
+                    'sos_entropy': 0.0,
+                    'estimated_quality': None,
+                    'recompression_indicator': 0.0,
+                    'jpeg_structural_indicator': 0.0,
+                    'dct_suspicion_indicator': 0.0,
+                    'is_suspicious': False,
+                    'details': 'No raw file bytes provided for JPEG structural analysis.'
+                }
+
+        channel_res = cls.analyze_channels(image_pil)
         histogram_b64 = cls.generate_histogram_plot(img_np)
+
+        combined_indicator = round(float(max(
+            max_chi2_indicator,
+            entropy_res.get('lsb_entropy', {}).get('max', 0.0) if entropy_res.get('is_suspicious') else 0.0,
+            spa_res.get('suspicion_indicator', 0.0),
+            rs_res.get('suspicion_indicator', 0.0),
+            jpeg_res.get('jpeg_structural_indicator', 0.0)
+        )), 4)
 
         return {
             'entropy': entropy_res,
@@ -331,10 +475,16 @@ class StatisticalAnalyzer:
                 'red': chi2_red,
                 'green': chi2_green,
                 'blue': chi2_blue,
-                'max_probability': round(max_chi2_prob, 4),
-                'is_suspicious': bool(max_chi2_prob > 0.70)
+                'max_indicator': round(max_chi2_indicator, 4),
+                'max_probability': round(max_chi2_indicator, 4),
+                'is_suspicious': bool(max_chi2_indicator > 0.70)
             },
             'correlations': corr_res,
             'sample_pair_analysis': spa_res,
+            'spa_analysis': spa_res,
+            'rs_analysis': rs_res,
+            'jpeg_analysis': jpeg_res,
+            'channel_analysis': channel_res,
+            'combined_indicator': combined_indicator,
             'histogram_plot': histogram_b64
         }
