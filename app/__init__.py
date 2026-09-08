@@ -13,6 +13,17 @@ def create_app(config_name: str = None) -> Flask:
     config_obj = config_by_name.get(config_name, config_by_name['default'])
     app.config.from_object(config_obj)
 
+    # Security check: Production environment MUST have SECRET_KEY provided via environment
+    if config_name == 'production':
+        prod_secret = os.environ.get('SECRET_KEY')
+        if not prod_secret:
+            raise RuntimeError(
+                "CRITICAL SECURITY CONFIGURATION ERROR: The 'SECRET_KEY' environment variable "
+                "is required in production mode. Set a cryptographically secure random string "
+                "in your production environment variables (e.g., via `python -c 'import secrets; print(secrets.token_hex(32))'`)."
+            )
+        app.config['SECRET_KEY'] = prod_secret
+
     # Ensure secure temporary directories exist
     os.makedirs(app.config.get('TEMP_STORAGE_DIR', '/tmp'), exist_ok=True)
 

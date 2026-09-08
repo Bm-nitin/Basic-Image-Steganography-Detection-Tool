@@ -1,4 +1,6 @@
 from typing import Dict, Any, List, Optional
+from .evidence import EvidenceCollector
+from .explainability import ExplainabilityEngine
 
 class SuspicionScoringEngine:
     """
@@ -401,6 +403,22 @@ class SuspicionScoringEngine:
             risk_badge = 'success'
             risk_summary = 'Low suspicion; characteristics align with clean/unmodified photographic imagery.'
 
+        # Collect Phase E Evidence and Explainable Assessment
+        evidence_data = EvidenceCollector.collect_all(
+            metadata_res, visual_res, statistical_res,
+            forensics_res=forensics_res,
+            tampering_res=tampering_res
+        )
+        explainability_data = ExplainabilityEngine.generate(
+            evidence_data,
+            {
+                'suspicion_score': final_score,
+                'risk_level': risk_level,
+                'detector_breakdown': breakdown
+            },
+            tampering_res=tampering_res
+        )
+
         return {
             'suspicion_score': final_score,
             'risk_level': risk_level,
@@ -417,6 +435,8 @@ class SuspicionScoringEngine:
                 'tampering': round(tampering_score, 1)
             },
             'detector_breakdown': breakdown,
+            'evidence': evidence_data,
+            'explainability': explainability_data,
             'disclaimer': (
                 'Notice: The Steganography Suspicion Index is a heuristic digital forensics indicator '
                 'and is not proof that hidden information is present. Non-standard compression, heavy noise, '

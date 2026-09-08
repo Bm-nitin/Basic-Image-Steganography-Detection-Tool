@@ -5,44 +5,46 @@
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![Framework](https://img.shields.io/badge/Framework-Flask%203.x-lightgrey.svg)](https://flask.palletsprojects.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Deployment](https://img.shields.io/badge/Deploy-Render-success.svg)](https://render.com/)
+[![Deployment](https://img.shields.io/badge/Deploy-Render-success.svg)](https://basic-image-steganography-detection-tool.onrender.com/)
 
 ---
 
-## 1. Project Overview
+## 1. Project Overview & Motivation
 
-The **Basic Image Steganography Detection Tool** is a web-based cybersecurity digital forensics application designed to analyze digital images (`.png`, `.bmp`, `.jpg`, `.jpeg`, `.webp`) and detect signs of embedded steganographic payloads.
+The **Basic Image Steganography Detection Tool** is a web-based cybersecurity digital forensics application designed to analyze digital images (`.png`, `.bmp`, `.jpg`, `.jpeg`, `.webp`) and detect indicators of embedded steganographic payloads and image tampering.
 
-In digital steganography, secret data or malware payloads are hidden within innocent-looking carrier images by manipulating pixel least significant bits (spatial domain) or appending data past standard file termination markers. This application provides a multi-layered forensic inspection engine that evaluates images through file structure carving, visual bit-plane decomposition, and mathematical statistical tests.
+In digital steganography, secret data or malware payloads are hidden within innocent-looking carrier images by manipulating pixel least significant bits (spatial domain) or appending data past standard file termination markers. This application provides a multi-layered forensic inspection engine that evaluates images through file structure carving, visual bit-plane decomposition, mathematical statistical tests, and explainable tampering detectors.
 
-### Key Features
+### Key Capabilities
 - **Application Factory Pattern**: Clean modular Flask backend decoupled from forensic calculation modules.
-- **Cybersecurity Dark UI**: High-contrast, responsive dashboard built with Bootstrap 5.
+- **Cybersecurity Dark UI**: High-contrast, mobile-responsive dashboard built with Bootstrap 5.
 - **Drag-and-Drop Ingestion**: Client-side validated file upload portal with real-time analysis status updates.
-- **Multi-Tier Detection**: Structural/EOF carving, static file/container forensics, visual bit planes, Shannon entropy, Chi-Square attack, and Sample Pair Analysis (SPA).
-- **File & Container Forensics**: Identifies foreign embedded archive/executable signatures, trailing bytes, and potential polyglot structures without executing untrusted data.
+- **Multi-Tier Detection**: Structural/EOF carving, static file/container forensics, visual bit planes, Shannon entropy, Chi-Square attack, Sample Pair Analysis (SPA), Regular-Singular (RS) steganalysis, and safe JPEG structural inspection.
+- **Image Tampering Forensics**: Independent evaluation of Error Level Analysis (ELA), local noise consistency (MAD estimator), texture variance, edge discontinuities, and block copy-move matching.
 - **Heuristic Suspicion Scoring**: Combines individual tests into a normalized, weighted 0–100 suspicion score and Low/Medium/High risk classification.
+- **Forensic Evidence & Explainability**: Standardized evidence abstraction and dual-dimension plain-English summaries answering *"Why did this image receive this score?"*
 - **Forensic PDF Reports**: Instantly generates downloadable, court-style forensic summary reports using ReportLab.
-- **Zero Heavy Infrastructure**: Runs entirely with standard scientific Python packages; no database, Docker, or Node.js required.
+- **Zero Heavy Infrastructure**: Runs entirely with standard scientific Python packages; no database, Docker, OpenCV, or machine learning models required.
 
 ---
 
-## 2. Multi-Layer Detection Architecture
+## 2. Multi-Tier Forensic Architecture
 
-The application applies a multi-layer forensic pipeline:
+The application executes an end-to-end multi-layer forensic inspection pipeline:
 
 ```
-[Uploaded Image]
+[Uploaded Image Stream]
        │
        ├── Layer 0: Authoritative Ingestion & Security Validation
        │     ├── Extension whitelisting & magic-byte validation (PNG, JPEG, BMP, WebP)
        │     ├── Upload size ceiling (10 MB) & dimension constraints (4096px, 25 MP)
-       │     └── Pillow raster decompression-bomb protection
+       │     ├── Path traversal and filename sanitation (secure_filename)
+       │     └── Pillow raster decompression-bomb protection (Image.MAX_IMAGE_PIXELS)
        │
        ├── Layer 1: Structural & Metadata Analysis
        │     ├── MD5 & SHA-256 integrity hash calculation
        │     ├── EXIF & metadata tag extraction
-       │     └── Format & MIME consistency verification
+       │     └── Format & MIME consistency verification (spoofing detection)
        │
        ├── Layer 1B: File & Container Forensics
        │     ├── Appended trailing data detection (past JPEG FFD9, PNG IEND, BMP size, WebP RIFF)
@@ -71,22 +73,25 @@ The application applies a multi-layer forensic pipeline:
        │     ├── Localized texture variance consistency analysis
        │     ├── Directional edge discontinuity & high-frequency gradient inspection
        │     ├── Copy-move block duplicate matching via cKDTree & rigid displacement clustering
-       │     └── Independent manipulation indicator and suspicious region mapping
+       │     └── Independent manipulation indicator (0.0 pts to steganography score)
        │
-       ├── Layer 5: Normalized Heuristic Risk Scoring
-       │     ├── Category weights: Structural (20%), Metadata (10%), Statistical (50%), Visual (20%)
+       ├── Layer 5: Normalized Heuristic Risk Scoring & Explainability (Phase E)
+       │     ├── Fixed weights: Structural (20%), Metadata (10%), Statistical (50%), Visual (20%)
        │     ├── Dynamic statistical budget: 50.0 pt max with automatic JPEG / non-JPEG redistribution
        │     ├── Steganography Suspicion Index (0 - 100) & Independent Tampering Score (0 - 100)
-       │     └── Calibrated Risk Classification (Low, Medium, High Risk)
+       │     ├── Calibrated Risk Classification (Low, Medium, High Risk)
+       │     ├── Standardized forensic evidence collation (EvidenceCollector)
+       │     └── Dual-dimension plain-English assessments (ExplainabilityEngine)
        │
        └── Layer 6: Visualization & PDF Reporting
              ├── Interactive web dashboard with tabbed bit-plane viewer
-             └── Exportable digital forensic PDF report with tampering section (ReportLab)
+             ├── REST API JSON endpoint (/api/analyze)
+             └── Exportable digital forensic PDF report with tampering & evidence sections (ReportLab)
 ```
 
 ---
 
-## 3. Implemented Detection Methods & Theory
+## 3. Detection Methods & Theoretical Foundations
 
 ### 1. Structural Carving & Container Forensics
 Performs safe static inspection of raw image bytes to identify appended data and foreign container signatures:
@@ -159,33 +164,139 @@ Operates as an independent forensic inspection layer designed to identify locali
 - **Local Texture Variance Consistency**: Partitions luminance into bounded blocks ($32 \times 32$, stride 16) and identifies statistical outlier blocks where local texture energy abruptly departs from carrier baselines.
 - **Edge Discontinuity & Gradients**: Uses directional SciPy Sobel operators to inspect local gradient densities. Hard cut-and-paste seams without edge feathering trigger elevated boundary gradient density outliers.
 - **Copy-Move Duplicate Matching**: Implements block-based duplicate detection using compact 8D descriptors and `scipy.spatial.cKDTree` nearest-neighbor search ($O(N \log N)$). Filters out flat regions ($\sigma < 10.0$) and 1D straight lines via anisotropy thresholds. Groups candidate matches into rigid displacement vector clusters ($\vec{v} = (\Delta x, \Delta y)$). Matches with consistent translation vectors flag duplicated/cloned regions.
-- **Independent Forensic Reporting**: Tampering indicators and coordinates are exposed as independent evidence layers (`tampering_score`, `tampering_indicator`, and `suspicious_regions`) without distorting the 0–100 steganography suspicion index.
+- **Strict Forensic Independence**: Tampering detectors contribute exactly `points_added = 0.0` to the Steganography Suspicion Index, exposing tampering results on their own independent 0–100 scale.
 
 ---
 
-## 4. Security Considerations & Hardening
+## 4. Heuristic Suspicion Scoring & Risk Triage Model
 
-1. **Magic Byte / Signature Verification**: Strictly verifies the file header signature (e.g. `\x89PNG\r\n\x1a\n` or `\xff\xd8\xff`), rejecting spoofed extensions (e.g. malicious `.exe` renamed to `.png`).
-2. **Decompression Bomb Protection**: Enforces `Image.MAX_IMAGE_PIXELS = 25_000_000` and dimensions $\le 4096 \times 4096$ to prevent memory exhaustion and DoS via pixel floods.
-3. **Upload Size Ceiling**: Enforces `MAX_CONTENT_LENGTH = 10 * 1024 * 1024` (10 MB).
-4. **Secure Filename Handling**: Uses `werkzeug.utils.secure_filename` combined with session UUIDs.
-5. **Safe Memory Processing**: Images are processed in-memory and temporary caches are purged every 30 minutes, preventing disk accumulation.
-6. **Thread-Safe Plotting**: Matplotlib uses the headless `'Agg'` backend and explicitly closes figures to prevent memory leaks.
+The application synthesizes forensic findings into an interpretable **Steganography Suspicion Index** normalized to the $[0.0, 100.0]$ range.
+
+### Category Scoring Budget
+The 100-point composite score is allocated across four forensic categories:
+- **Structural / File Forensics (20% / Max 20.0 pts)**:
+  - Appended trailing data past EOF: up to 20.0 pts (scaled by payload size).
+  - Embedded container/payload signatures (ZIP, PDF, PE, ELF): up to 20.0 pts.
+- **Metadata & Container Consistency (10% / Max 10.0 pts)**:
+  - Extension spoofing (mismatch with magic bytes): up to 10.0 pts.
+  - MIME type discrepancies and missing headers: up to 5.0 pts.
+- **Advanced Statistical Steganalysis (50% / Max 50.0 pts)**:
+  - Non-JPEG images (PNG, BMP, WebP):
+    - RS Steganalysis: up to 18.0 pts
+    - Sample Pair Analysis (SPA): up to 16.0 pts
+    - Chi-Square PoVs Attack: up to 10.0 pts
+    - LSB Shannon Entropy: up to 6.0 pts
+  - JPEG images:
+    - JPEG Structural & Quantization Inconsistency: up to 18.0 pts
+    - Chi-Square PoVs Attack: up to 14.0 pts
+    - LSB Shannon Entropy: up to 10.0 pts
+    - Scan Stream High Entropy: up to 8.0 pts
+- **Visual Bit-Plane Analysis (20% / Max 20.0 pts)**:
+  - LSB visual noise uniformity and contour erasure: up to 14.0 pts.
+  - Multi-channel LSB parity asymmetry: up to 6.0 pts.
+
+### Tampering Independence
+Image tampering and manipulation forensics (ELA, Local Noise MAD, Texture Variance, Edge Discontinuity, Copy-Move) operate on an **independent 0–100 scale**. They are reported in the detailed detector breakdown with `points_added = 0.0` to preserve mathematical integrity and prevent spatial editing from skewing steganographic carrier assessment.
+
+### Risk Classification Triage Levels
+- **Low Risk (`0.0 - 19.9`)**: Characteristics conform strictly to clean, unmodified photographic imagery.
+- **Medium Risk (`20.0 - 59.9`)**: Moderate forensic or structural anomalies detected; manual analyst review recommended.
+- **High Risk (`60.0 - 100.0`)**: Strong suspicious indicators observed across multiple independent detector layers.
 
 ---
 
-## 5. Technology Stack
+## 5. Security Hardening & Safe Ingestion Architecture
 
-- **Backend**: Python 3.10+, Flask 3.x, Werkzeug, Gunicorn
-- **Scientific Computing**: NumPy, SciPy
-- **Image Processing**: Pillow (PIL), OpenCV Headless (`opencv-python-headless`)
-- **Visuals & Reporting**: Matplotlib (Agg backend), ReportLab
-- **Frontend**: HTML5, CSS3, JavaScript (Vanilla ES6), Bootstrap 5.3, Bootstrap Icons
-- **Testing**: Pytest
+The ingestion pipeline (`app/core/image_validator.py`) enforces strict defense-in-depth controls:
+
+1. **Magic-Byte File Header Verification**: Inspects leading bytes against authoritative image format signatures (`\x89PNG\r\n\x1a\n`, `\xff\xd8\xff`, `BM`, `RIFF...WEBP`), rejecting disguised executables or scripts.
+2. **Decompression Bomb & Pixel-Flood Defense**: Enforces `Image.MAX_IMAGE_PIXELS = 25_000_000` (25 MP ceiling) and maximum dimensions $\le 4096 \times 4096$ pixels, preventing memory exhaustion and denial-of-service (DoS) via malicious compression ratios.
+3. **Strict Upload Size Ceiling**: Enforces `MAX_CONTENT_LENGTH = 10 * 1024 * 1024` (10 MB). Oversized payloads are terminated before memory ingestion.
+4. **Filename Sanitization & Path Traversal Prevention**: Strips relative path specifiers (`../`, `..\`) via `werkzeug.utils.secure_filename` and isolates analysis with unique UUIDs.
+5. **Production Secret Key Enforcement**: In production (`FLASK_ENV=production`), `ProductionConfig` strictly requires `SECRET_KEY` from the system environment and raises a fatal `RuntimeError` if unset, preventing insecure default sessions.
+6. **Thread-Safe Headless Plotting**: Matplotlib uses the headless `'Agg'` backend and explicitly closes all figure canvases (`plt.close('all')`) to eliminate memory leaks.
+7. **Ephemeral In-Memory Storage**: Image processing operates in-memory; cached analysis results are automatically purged after 30 minutes.
 
 ---
 
-## 6. Local Setup and Installation
+## 6. Technology Stack & Minimal Dependencies
+
+The application relies on lightweight, well-maintained scientific computing packages without heavy frameworks, machine learning models, or external databases:
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| **Web Framework** | Flask 3.x, Werkzeug | Modular application factory, routing, CSRF protection |
+| **WSGI Server** | Gunicorn | Multi-worker HTTP server for production deployment |
+| **Image Processing** | Pillow (PIL) | Pure-Python image decoding, format inspection, pixel extraction |
+| **Scientific Computing** | NumPy, SciPy | Spatial matrix algebra, fast KD-Tree search, convolution, Chi-Square |
+| **Visualization** | Matplotlib (`Agg`) | Thread-safe pixel intensity histograms and distribution curves |
+| **Forensic Reporting** | ReportLab | Court-style, multi-page vector PDF forensic reports |
+| **Frontend UI** | Bootstrap 5.3, Bootstrap Icons | Responsive cyber dark theme, tabbed viewers, mobile navigation |
+| **Testing** | Pytest | Comprehensive test suite (134+ automated tests) |
+
+> **Dependency Hygiene**: This project intentionally excludes OpenCV (`cv2`) and machine learning libraries (TensorFlow, PyTorch) to ensure rapid cold starts, small deployment slugs (<100 MB), and zero native compilation issues.
+
+---
+
+## 7. Evidence Aggregation & Explainability Engine (Phase E)
+
+Phase E introduces a standardized forensic evidence abstraction and explainability engine to provide transparent, traceable answers to: **"Why did this image receive this score?"**
+
+### Standardized Evidence Representation (`app/core/evidence.py`)
+All detectors across structural, metadata, statistical, visual, and tampering layers report observations through a standardized dataclass:
+- `category`: Forensic domain (`structural`, `metadata`, `statistical`, `visual`, `tampering`)
+- `detector`: Technical detector name (e.g., `RS Steganalysis`, `Error Level Analysis`)
+- `severity`: Normalized anomaly rank (`anomaly` > `suspicious` > `clean` > `info`)
+- `indicator`: Quantitative anomaly metric normalized to $[0.0, 1.0]$
+- `observed_value`: Human-readable technical observation (e.g., `75.4% estimated capacity`)
+- `threshold`: Forensic reference baseline for continuous-tone photography (e.g., `< 25.0% estimated capacity`)
+- `explanation`: Explainable, non-conclusive forensic statement detailing why the metric is considered normal or anomalous
+- `supporting_details`: Dictionary containing raw metric components without sensitive filesystem paths or system secrets
+
+### Dual-Dimension Explainability Engine (`app/core/explainability.py`)
+Synthesizes evidence into human-readable assessments while keeping Steganography and Tampering strictly independent:
+- **Steganography Assessment**: Synthesizes suspicion score (0–100), calibrated risk level (Low/Medium/High), dynamic metric-traced summary, and mathematical detector contribution breakdown.
+- **Tampering Assessment**: Synthesizes independent tampering score (0–100), status (`SUSPICIOUS` / `NOT SUSPICIOUS`), dynamic summary detailing specific localized indicators (copy-move, ELA, noise inconsistency), and detector contributions (contributing 0.0 pts to steganography score).
+- **Primary vs. Supporting Evidence**: Automatically segments findings into primary anomalies/suspicious items requiring analyst attention versus supporting baseline checks.
+
+### UI & Reporting Integration
+- **Web UI (`app/templates/results.html`)**: Interactive "Forensic Evidence & Explainable Assessment" card featuring side-by-side Steganography and Tampering assessment badges and a responsive primary evidence table.
+- **PDF Report (`app/core/report_generator.py`)**: Dedicated Section 5 "Forensic Evidence & Explainable Assessment" and Section 6 "Detector Contribution Breakdown" in official downloadable forensic reports.
+- **REST API (`/api/analyze`)**: JSON payload includes top-level `"evidence"` and `"explainability"` objects.
+
+---
+
+## 8. Controlled Evaluation Framework & Ground-Truth Benchmarks
+
+The repository includes a reproducible evaluation harness for evaluating detector sensitivity, specificity, and false-alarm rates against ground-truth controlled samples.
+
+### Dataset Generator (`tests/evaluation/sample_generator.py`)
+Deterministically creates synthetic and semi-synthetic benchmark samples with known ground truth:
+1. `clean_carrier.png`: Clean photographic carrier with smooth gradients and geometric shapes (0 trailing bytes).
+2. `clean_carrier.jpg`: High-quality JPEG carrier (Q90) with standard format termination.
+3. `stego_lsb_low.png`: Spatial LSB embedding at ~15% capacity with pseudorandom sequence.
+4. `stego_lsb_medium.png`: Spatial LSB embedding at ~50% capacity.
+5. `stego_lsb_high.png`: Spatial LSB embedding at 100% capacity.
+6. `stego_eof.jpg`: Valid JPEG with 780 bytes of appended secret payload past the EOF marker.
+7. `tamper_copymove.png`: Photographic carrier with an identical 48x48 textured block translated and duplicated.
+8. `tamper_spliced_noise.png`: Photographic carrier with an 80x80 localized gaussian noise patch injected.
+
+### Running the Evaluation Harness
+Execute the evaluation runner from the command line:
+```bash
+python -m tests.evaluation.evaluator
+```
+The evaluator outputs performance metrics and writes a machine-readable report to `tests/evaluation/evaluation_report.json`:
+- Confusion matrices (True Positives, False Positives, True Negatives, False Negatives)
+- Accuracy, Sensitivity / Recall, Specificity, False Positive Rate (FPR), and Precision
+- Sample-by-sample forensic breakdown and explainability summaries
+
+> **Academic Note on Evaluation:**
+> *In the project's controlled 8-sample synthetic evaluation set, the implemented thresholds achieved 100% accuracy, sensitivity, and specificity. These preliminary results are from a **Controlled Synthetic Evaluation** and are not representative of general or real-world detector accuracy. Real-world performance varies significantly depending on carrier entropy, natural textures, compression history, and adaptive steganography schemes.*
+
+---
+
+## 9. Local Setup and Installation Instructions
 
 ### Prerequisites
 - Python 3.10 or higher installed
@@ -195,7 +306,7 @@ Operates as an independent forensic inspection layer designed to identify locali
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-username/Basic-Image-Steganography-Detection-Tool.git
+   git clone https://github.com/Bm-nitin/Basic-Image-Steganography-Detection-Tool.git
    cd Basic-Image-Steganography-Detection-Tool
    ```
 
@@ -219,13 +330,10 @@ Operates as an independent forensic inspection layer designed to identify locali
 4. **Generate Controlled Test Samples**:
    ```bash
    python generate_test_samples.py
+   python -m tests.evaluation.sample_generator
    ```
-   This generates:
-   - `tests/test_samples/clean_sample.png` (Clean carrier baseline)
-   - `tests/test_samples/stego_lsb_sample.png` (Pseudorandom spatial LSB payload)
-   - `tests/test_samples/stego_eof_sample.jpg` (Appended trailing data past EOF)
 
-5. **Run the Test Suite**:
+5. **Run the Automated Test Suite**:
    ```bash
    pytest -v tests/
    ```
@@ -234,50 +342,141 @@ Operates as an independent forensic inspection layer designed to identify locali
    ```bash
    python wsgi.py
    ```
-   Access the web application in your browser at:
+   Access the web dashboard in your browser at:
    ```
    http://127.0.0.1:5000
    ```
 
 ---
 
-## 7. Render Deployment Guide
+## 10. REST API Specification
 
-The application is fully prepared for zero-configuration deployment on **Render**:
+The application provides a programmatic JSON REST API for automated forensic analysis pipelines and CI/CD security scanning.
 
-1. **Push to GitHub**:
-   Ensure all files are committed and pushed to your GitHub repository.
+### Health Check Endpoint
+- **URL**: `/health`
+- **Method**: `GET`
+- **Response** (`200 OK`):
+  ```json
+  {
+    "service": "Basic Image Steganography Detection Tool",
+    "status": "healthy",
+    "version": "1.0.0"
+  }
+  ```
 
-2. **Create New Web Service on Render**:
-   - Go to the [Render Dashboard](https://dashboard.render.com/) and click **New + > Web Service**.
-   - Connect your GitHub repository.
+### Forensic Analysis Endpoint
+- **URL**: `/api/analyze`
+- **Method**: `POST`
+- **Content-Type**: `multipart/form-data`
+- **Body**: `image` (binary file upload)
 
-3. **Configure Settings**:
-   - **Name**: `stego-detector` (or your preferred name)
-   - **Region**: Closest to your users (e.g., Frankfurt, Oregon, Singapore)
-   - **Environment**: `Python 3`
-   - **Branch**: `main`
-   - **Build Command**:
-     ```bash
-     pip install --upgrade pip && pip install -r requirements.txt
-     ```
-   - **Start Command**:
-     ```bash
-     gunicorn wsgi:app --workers 2 --threads 2 --timeout 120
-     ```
+#### Example cURL Request:
+```bash
+curl -X POST -F "image=@evidence.png" http://127.0.0.1:5000/api/analyze
+```
 
-4. **Environment Variables**:
-   Add in the Render Environment Variables tab:
-   - `FLASK_ENV` = `production`
-   - `SECRET_KEY` = `<your-secure-random-string>`
-   - `MAX_CONTENT_LENGTH` = `10485760`
+#### Successful JSON Response (`200 OK`):
+```json
+{
+  "filename": "evidence.png",
+  "scoring": {
+    "suspicion_score": 70.0,
+    "risk_level": "High",
+    "risk_badge": "danger",
+    "risk_summary": "Strong suspicious indicators detected; multiple forensic anomalies observed.",
+    "tampering_score": 0.0,
+    "tampering_indicator": 0.0,
+    "tampering_suspicious": false,
+    "category_scores": {
+      "structural": 0.0,
+      "metadata": 0.0,
+      "statistical": 50.0,
+      "visual": 20.0,
+      "tampering": 0.0
+    },
+    "detector_breakdown": [
+      {
+        "category": "Statistical Steganalysis",
+        "detector": "RS Steganalysis",
+        "status": "Anomaly",
+        "points_added": 18.0,
+        "details": "Regular-Singular difference convergence indicates spatial LSB embedding."
+      }
+    ]
+  },
+  "metadata": {
+    "dimensions": [300, 300],
+    "format": "PNG",
+    "sha256": "4a5c...78e9"
+  },
+  "file_forensics": {
+    "trailing_data": {"has_trailing_data": false, "size": 0},
+    "embedded_payloads": {"detected": false}
+  },
+  "evidence": {
+    "primary_anomalies": [...],
+    "supporting_evidence": [...]
+  },
+  "explainability": {
+    "steganography": {
+      "score": 70.0,
+      "risk": "HIGH",
+      "summary": "High steganography suspicion index driven by elevated statistical and visual anomalies."
+    },
+    "tampering": {
+      "score": 0.0,
+      "status": "NOT SUSPICIOUS",
+      "summary": "No localized tampering or manipulation patterns detected."
+    }
+  }
+}
+```
 
-5. **Deploy**:
-   Click **Create Web Service**. Render will automatically build the environment, install the dependencies, and start the Gunicorn server.
+#### Error Responses:
+| HTTP Status | Error Code | Description |
+|---|---|---|
+| `400 Bad Request` | `MISSING_FILE` | Form body did not include the `image` file field. |
+| `400 Bad Request` | `EMPTY_FILE` | Uploaded file contains 0 bytes. |
+| `400 Bad Request` | `UNSUPPORTED_EXTENSION` | Extension is not in `.png, .bmp, .jpg, .jpeg, .webp`. |
+| `400 Bad Request` | `INVALID_MAGIC_BYTES` | File header signature does not match accepted image formats. |
+| `400 Bad Request` | `IMAGE_DIMENSION_LIMIT` | Image width or height exceeds 4096px. |
+| `400 Bad Request` | `PIXEL_COUNT_LIMIT` | Total pixel count exceeds 25,000,000 pixels. |
+| `400 Bad Request` | `CORRUPT_IMAGE` | Corrupt or truncated image stream. |
+| `413 Payload Too Large` | `FILE_TOO_LARGE` | File exceeds maximum upload limit of 10 MB. |
 
 ---
 
-## 8. Interpretation and Limitations
+## 11. Deployment Architecture & Production Readiness
+
+The application is fully prepared for containerless, zero-configuration production deployment on **Render**, **Railway**, or any standard Linux VPS:
+
+### Production Entrypoint
+- **WSGI Module**: `wsgi.py` exposes `app = create_app(os.environ.get('FLASK_ENV', 'development'))`.
+- **Gunicorn Procfile**:
+  ```procfile
+  web: gunicorn wsgi:app --workers 2 --threads 2 --timeout 120
+  ```
+
+### Production Environment Variables
+| Variable | Value | Description |
+|---|---|---|
+| `FLASK_ENV` | `production` | Enables production security safeguards. |
+| `SECRET_KEY` | `<secure-random-string>` | **Mandatory** session encryption secret. In production, missing key raises `RuntimeError`. |
+| `MAX_CONTENT_LENGTH` | `10485760` | 10 MB maximum request ceiling. |
+| `PORT` | `5000` (or injected by host) | Server listening port. |
+
+### Render Deployment Steps
+1. Push repository commits to GitHub.
+2. In the [Render Dashboard](https://dashboard.render.com/), click **New + > Web Service** and select this repository.
+3. Set **Build Command**: `pip install --upgrade pip && pip install -r requirements.txt`
+4. Set **Start Command**: `gunicorn wsgi:app --workers 2 --threads 2 --timeout 120`
+5. In **Environment Variables**, set `FLASK_ENV=production` and generate a cryptographically strong `SECRET_KEY`.
+6. Click **Create Web Service**.
+
+---
+
+## 12. Comprehensive Forensic Limitations & Interpretation
 
 Digital steganalysis is an inherently probabilistic science with distinct boundaries:
 
@@ -302,9 +501,9 @@ Empirical detection accuracy, true positive rates, and receiver operating charac
 
 ---
 
-## 9. Image Tampering Interpretation and Limitations
+## 13. Image Tampering Interpretation & Operational Boundaries
 
-The **Image Tampering & Manipulation Forensics** layer provides explainable heuristic evidence for detecting localized tampering, splicing, retouching, and duplication. Forensic analysts must interpret these outputs within the following operational limits:
+The **Image Tampering & Manipulation Forensics** layer provides explainable heuristic evidence for detecting localized tampering, splicing, retouching, and duplication within the following boundaries:
 
 ### 1. Error Level Analysis (ELA) Limitations
 - **JPEG Exclusivity**: ELA relies on standard $8 \times 8$ Discrete Cosine Transform (DCT) lossy quantization. For lossless formats (PNG, BMP) or modern intra-coded formats (WebP), ELA is technically non-applicable and correctly returns `available: False`.
@@ -326,8 +525,57 @@ The **Image Tampering & Manipulation Forensics** layer provides explainable heur
 
 ---
 
-## 10. Academic & Forensic Disclaimer
+## 14. Ethical, Legal, & Research Disclaimers
 
-> **IMPORTANT FORENSIC NOTICE:**
-> The **Steganography Suspicion Index** and **Image Tampering Indicators** produced by this tool are **heuristic indicators** developed for triage, education, and cybersecurity research. Statistical tests (such as Chi-Square PoVs, RS Steganalysis, Shannon Entropy, ELA, and Copy-Move matching) can be influenced by natural factors including high-frequency image textures, camera sensor characteristics, lossy compression cycles, and synthetic graphic design. Therefore, elevated suspicion scores indicate forensic anomalies requiring manual expert review, NOT definitive legal or scientific proof of steganography or forgery.
+> **IMPORTANT FORENSIC AND LEGAL NOTICE:**
+> 1. **Triage Tool**: The **Steganography Suspicion Index** and **Image Tampering Indicators** generated by this application are heuristic indicators designed for digital forensics triage, cybersecurity education, and academic research.
+> 2. **Non-Conclusive Evidence**: Statistical variations, lossy compression cycles, camera sensor noise profiles, and synthetic artwork can produce elevated suspicion scores on benign images. Conversely, advanced steganographic schemes (e.g. adaptive edge-embedding, spread spectrum) may produce low suspicion scores.
+> 3. **Manual Verification Required**: Outputs from this tool do not constitute admissible courtroom proof or definitive mathematical certainty. Any flagged carrier must undergo thorough manual verification by a certified digital forensics examiner.
+> 4. **Ethical Use**: This tool is provided solely for defensive research, forensic education, and authorized security auditing.
 
+---
+
+## 15. Verification & Test Suite Matrix
+
+The codebase includes an extensive suite of automated tests, security audits, and performance benchmarks:
+
+### Automated Pytest Suite
+Run the test suite across all functional layers:
+```bash
+pytest -v tests/
+```
+The suite includes **134+ automated tests** verifying:
+- `test_validation.py`: Extension whitelist, magic-byte checks, decompression bomb limits, oversized files, corrupt streams.
+- `test_malformed_inputs.py`: Zero-byte uploads, missing file fields, directory traversal attempts, truncated JPEG/PNG chunks.
+- `test_security_config.py`: Enforces missing `SECRET_KEY` failure in production, development fallback, and testing isolation.
+- `test_consistency.py`: Score mathematical breakdown verification (sum equals total score, tampering points equal 0.0, PDF payload generation).
+- `test_file_forensics.py`: Appended trailing data, archive/container signature carving, polyglot detection.
+- `test_detectors.py`: Chi-Square PoVs attack, Shannon entropy, pixel correlation, bit-plane decomposition.
+- `test_rs_analysis.py`: Regular-Singular (RS) steganalysis groups, dual flipping masks, embedding rate estimation.
+- `test_spa_analysis.py`: Sample Pair Analysis (SPA) trace multisets, parity asymmetry.
+- `test_jpeg_analysis.py`: Safe JPEG structural inspection, DQT extraction, quality factor estimation.
+- `test_tampering.py`, `test_ela_analysis.py`, `test_noise_analysis.py`, `test_copy_move_analysis.py`: Phase D tampering detectors.
+- `test_evidence.py`, `test_explainability.py`, `test_evaluation.py`: Phase E evidence aggregation, plain-English summaries, and benchmark evaluation harness.
+- `test_routes.py`: Flask web and API routes, PDF streaming.
+
+### Additional Verification Scripts
+- **Security Hygiene Audit**:
+  ```bash
+  python tests/check_security_hygiene.py
+  ```
+  Scans the repository to ensure zero hardcoded secrets, API tokens, internal developer paths, or user directory leaks.
+- **Performance Benchmark**:
+  ```bash
+  python tests/benchmark_performance.py
+  ```
+  Measures latency across diverse carrier types (clean PNG, LSB stego, JPEG, large 1024px images, PDF generation). All operations complete in under 700 ms.
+- **Independent Sample Validation**:
+  ```bash
+  python tests/independent_validation.py
+  ```
+  Executes independent verification on 11 diverse test samples, writing results to `tests/independent_validation_report.json`.
+- **Live Remote Deployment Verification**:
+  ```bash
+  python tests/check_remote_live.py
+  ```
+  Validates that the live Render deployment (`/health`, `/`, `/api/analyze`) is responsive and operational.

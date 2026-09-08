@@ -1,0 +1,259 @@
+{
+  "timestamp": "2026-09-08T12:25:19Z",
+  "framework_version": "Phase E Controlled Evaluation",
+  "evaluation_scope": "Deterministic synthetic benchmark dataset",
+  "sample_count": 8,
+  "steganography_performance": {
+    "confusion_matrix": {
+      "tp": 4,
+      "fp": 0,
+      "tn": 4,
+      "fn": 0
+    },
+    "accuracy": 1.0,
+    "sensitivity_recall": 1.0,
+    "specificity": 1.0,
+    "false_positive_rate": 0.0,
+    "precision": 1.0
+  },
+  "tampering_performance": {
+    "confusion_matrix": {
+      "tp": 2,
+      "fp": 0,
+      "tn": 6,
+      "fn": 0
+    },
+    "accuracy": 1.0,
+    "sensitivity_recall": 1.0,
+    "specificity": 1.0,
+    "false_positive_rate": 0.0,
+    "precision": 1.0
+  },
+  "samples_evaluation": [
+    {
+      "id": "clean_png",
+      "name": "Clean Carrier Baseline (PNG)",
+      "format": "PNG",
+      "ground_truth": {
+        "has_steganography": false,
+        "stego_type": "none",
+        "embedding_rate": 0.0,
+        "has_tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 3.5,
+        "indicator": 0.0353,
+        "status": "NOT SUSPICIOUS",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 0
+    },
+    {
+      "id": "clean_jpeg",
+      "name": "Clean Carrier Baseline (JPEG)",
+      "format": "JPEG",
+      "ground_truth": {
+        "has_steganography": false,
+        "stego_type": "none",
+        "embedding_rate": 0.0,
+        "has_tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 7.5,
+        "risk": "Low",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 3.4,
+        "indicator": 0.0336,
+        "status": "NOT SUSPICIOUS",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 1
+    },
+    {
+      "id": "stego_lsb_low",
+      "name": "Low Capacity LSB Steganography (~15%)",
+      "format": "PNG",
+      "ground_truth": {
+        "has_steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 0.15,
+        "has_tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 26.5,
+        "risk": "Medium",
+        "predicted_positive": true,
+        "outcome": "TRUE POSITIVE",
+        "summary": "Moderate forensic anomalies identified in RS Steganalysis (Regular-Singular), Sample Pair Analysis (SPA). Results warrant secondary manual inspection."
+      },
+      "tampering": {
+        "score": 3.5,
+        "indicator": 0.0353,
+        "status": "NOT SUSPICIOUS",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 2
+    },
+    {
+      "id": "stego_lsb_med",
+      "name": "Medium Capacity LSB Steganography (~50%)",
+      "format": "PNG",
+      "ground_truth": {
+        "has_steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 0.5,
+        "has_tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 26.5,
+        "risk": "Medium",
+        "predicted_positive": true,
+        "outcome": "TRUE POSITIVE",
+        "summary": "Moderate forensic anomalies identified in RS Steganalysis (Regular-Singular), Sample Pair Analysis (SPA). Results warrant secondary manual inspection."
+      },
+      "tampering": {
+        "score": 3.6,
+        "indicator": 0.0357,
+        "status": "NOT SUSPICIOUS",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 2
+    },
+    {
+      "id": "stego_lsb_high",
+      "name": "High Capacity LSB Steganography (100%)",
+      "format": "PNG",
+      "ground_truth": {
+        "has_steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 1.0,
+        "has_tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 70.0,
+        "risk": "High",
+        "predicted_positive": true,
+        "outcome": "TRUE POSITIVE",
+        "summary": "Strong statistical anomalies observed across Shannon Entropy (LSB Plane), RS Steganalysis (Regular-Singular), Chi-Square Attack (PoVs), indicating elevated characteristics consistent with possible spatial LSB payload embedding."
+      },
+      "tampering": {
+        "score": 3.5,
+        "indicator": 0.0349,
+        "status": "NOT SUSPICIOUS",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 5
+    },
+    {
+      "id": "stego_eof",
+      "name": "Appended EOF Trailing Data (JPEG + 780B)",
+      "format": "JPEG",
+      "ground_truth": {
+        "has_steganography": true,
+        "stego_type": "appended_eof",
+        "embedding_rate": 0.0,
+        "has_tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 27.5,
+        "risk": "Medium",
+        "predicted_positive": true,
+        "outcome": "TRUE POSITIVE",
+        "summary": "Suspicious indicators detected primarily driven by appended data past the format EOF marker. Spatial LSB planes exhibit moderate or baseline characteristics."
+      },
+      "tampering": {
+        "score": 3.4,
+        "indicator": 0.0336,
+        "status": "NOT SUSPICIOUS",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 2
+    },
+    {
+      "id": "tamper_copymove",
+      "name": "Copy-Move Cloned Manipulation",
+      "format": "PNG",
+      "ground_truth": {
+        "has_steganography": false,
+        "stego_type": "none",
+        "embedding_rate": 0.0,
+        "has_tampering": true,
+        "tampering_type": "copy_move"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 85.0,
+        "indicator": 0.85,
+        "status": "SUSPICIOUS",
+        "predicted_positive": true,
+        "outcome": "TRUE POSITIVE",
+        "summary": "Spatially separated duplicate block clusters detected by copy-move analysis, consistent with possible localized cloning or stamp manipulation. Localized inconsistencies observed across high-frequency texture/noise layers (noise, copy_move)."
+      },
+      "primary_evidence_count": 2
+    },
+    {
+      "id": "tamper_spliced_noise",
+      "name": "Spliced Local Noise Inconsistency",
+      "format": "PNG",
+      "ground_truth": {
+        "has_steganography": false,
+        "stego_type": "none",
+        "embedding_rate": 0.0,
+        "has_tampering": true,
+        "tampering_type": "noise_disparity"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "predicted_positive": false,
+        "outcome": "TRUE NEGATIVE",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 47.2,
+        "indicator": 0.4725,
+        "status": "SUSPICIOUS",
+        "predicted_positive": true,
+        "outcome": "TRUE POSITIVE",
+        "summary": "Localized inconsistencies observed across high-frequency texture/noise layers (noise)."
+      },
+      "primary_evidence_count": 1
+    }
+  ],
+  "academic_limitations": "Controlled Synthetic Evaluation Notice: In the project's controlled 8-sample synthetic evaluation set, the implemented thresholds achieved 100% accuracy, sensitivity, and specificity. These preliminary results are not representative of real-world performance, which will vary based on carrier entropy, image texture, compression history, and low-capacity adaptive steganography schemes."
+}

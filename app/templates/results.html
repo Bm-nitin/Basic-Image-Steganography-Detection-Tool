@@ -223,13 +223,102 @@
         </div>
     </div>
 
+    <!-- Phase E: Forensic Evidence & Explainability Assessment -->
+    {% set explain = results.explainability or results.scoring.explainability %}
+    {% if explain %}
+    <div class="cyber-card mb-4">
+        <div class="cyber-card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <h5 class="text-light fw-bold mb-0">
+                <i class="bi bi-shield-check text-info me-2"></i>Forensic Evidence &amp; Explainable Assessment
+            </h5>
+            <span class="badge bg-dark border border-info text-info font-monospace">Phase E Explainability</span>
+        </div>
+        <div class="p-3 p-sm-4">
+            <!-- Steganography & Tampering Dual Dimension Cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <div class="p-3 rounded bg-dark border border-secondary h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="text-uppercase section-label small font-monospace">Steganography Assessment</span>
+                            {% set s_risk = explain.steganography.risk %}
+                            <span class="badge {% if s_risk == 'HIGH' %}bg-danger{% elif s_risk == 'MEDIUM' %}bg-warning text-dark{% else %}bg-success{% endif %} font-monospace">
+                                {{ s_risk }} RISK ({{ explain.steganography.score }}/100)
+                            </span>
+                        </div>
+                        <p class="text-light small mb-0">{{ explain.steganography.summary }}</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-3 rounded bg-dark border border-secondary h-100">
+                        <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-1">
+                            <span class="text-uppercase section-label small font-monospace">Tampering &amp; Manipulation</span>
+                            {% set t_stat = explain.tampering.status %}
+                            <span class="badge {% if t_stat == 'SUSPICIOUS' %}bg-danger{% elif t_stat == 'NOT AVAILABLE' %}bg-secondary{% else %}bg-success{% endif %} font-monospace">
+                                {{ t_stat }} ({{ explain.tampering.score }}/100)
+                            </span>
+                        </div>
+                        <p class="text-light small mb-0">{{ explain.tampering.summary }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Primary Key Evidence -->
+            {% set primary_items = explain.steganography.primary_evidence + explain.tampering.primary_evidence %}
+            <h6 class="text-light fw-bold mb-2">
+                <i class="bi bi-list-stars text-info me-1"></i>Key Primary Forensic Evidence
+            </h6>
+            {% if primary_items %}
+            <div class="table-responsive">
+                <table class="table forensic-table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 110px;">Category</th>
+                            <th style="min-width: 160px;">Detector</th>
+                            <th style="min-width: 100px;">Severity</th>
+                            <th style="min-width: 160px;">Observed Metric</th>
+                            <th style="min-width: 150px;">Baseline Threshold</th>
+                            <th style="min-width: 250px;">Forensic Explanation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in primary_items %}
+                        <tr>
+                            <td class="text-muted text-uppercase small font-monospace">{{ item.category }}</td>
+                            <td class="fw-semibold text-info">{{ item.detector }}</td>
+                            <td>
+                                {% if item.severity == 'anomaly' %}
+                                    <span class="badge bg-danger"><i class="bi bi-exclamation-octagon-fill me-1"></i>Anomaly</span>
+                                {% elif item.severity == 'suspicious' %}
+                                    <span class="badge bg-warning text-dark"><i class="bi bi-exclamation-triangle-fill me-1"></i>Suspicious</span>
+                                {% else %}
+                                    <span class="badge bg-success"><i class="bi bi-check-circle-fill me-1"></i>Clean</span>
+                                {% endif %}
+                            </td>
+                            <td class="font-monospace text-light small">{{ item.observed_value }}</td>
+                            <td class="font-monospace text-secondary small">{{ item.threshold }}</td>
+                            <td class="text-secondary small">{{ item.explanation }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="alert alert-success d-flex align-items-center mb-0 py-2" role="alert">
+                <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                <small>No primary anomalies or suspicious indicators detected. All evaluated statistical, structural, and visual layers conform to expected photographic carrier baselines.</small>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
     <!-- Detailed Detector Breakdown Table -->
     <div class="cyber-card mb-4">
         <div class="cyber-card-header d-flex justify-content-between align-items-center">
             <h5 class="text-light fw-bold mb-0">
                 <i class="bi bi-clipboard2-data-fill text-info me-2"></i>Detailed Findings by Forensic Test
             </h5>
-            <small class="text-muted font-monospace d-none d-sm-inline">5 Tests Evaluated</small>
+            <small class="text-muted font-monospace d-none d-sm-inline">{{ results.scoring.detector_breakdown | length }} Tests Evaluated</small>
         </div>
         <div class="d-md-none px-3 pt-2 text-end">
             <small class="text-muted font-monospace"><i class="bi bi-arrows-expand me-1"></i>Scroll table horizontally &rarr;</small>

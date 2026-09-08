@@ -398,6 +398,186 @@ class ReportGenerator:
             t_story.append(Spacer(1, 12))
             story.append(KeepTogether(t_story))
 
+        # Ensure Phase E Evidence and Explainability are present
+        evidence_data = analysis_results.get('evidence') or score_info.get('evidence')
+        explainability_data = analysis_results.get('explainability') or score_info.get('explainability')
+
+        if not evidence_data or not explainability_data:
+            from .evidence import EvidenceCollector
+            from .explainability import ExplainabilityEngine
+            evidence_data = EvidenceCollector.collect_all(
+                meta,
+                analysis_results.get('visual', {}),
+                stat_data,
+                forensics_res=analysis_results.get('file_forensics'),
+                tampering_res=tampering_data
+            )
+            explainability_data = ExplainabilityEngine.generate(
+                evidence_data,
+                score_info,
+                tampering_res=tampering_data
+            )
+
+        stego_exp = explainability_data.get('steganography', {})
+        tamper_exp = explainability_data.get('tampering', {})
+
+        # 5. Forensic Evidence & Explainable Assessment (Phase E)
+        story.append(Paragraph("5. Forensic Evidence & Explainable Assessment", heading2_style))
+        
+        # Summary callouts
+        stego_box_data = [
+            [Paragraph("<b>Steganography Suspicion Assessment</b>", cell_text_bold),
+             Paragraph(f"Risk: <b>{stego_exp.get('risk', 'UNKNOWN')}</b> | Score: <b>{stego_exp.get('score', 0.0)} / 100</b>", cell_text_bold)],
+            [Paragraph(f"<b>Summary:</b> {stego_exp.get('summary', 'No summary available.')}", cell_text), ""]
+        ]
+        stego_box_table = Table(stego_box_data, colWidths=[270, 270])
+        stego_box_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f1f5f9')),
+            ('BOX', (0, 0), (-1, -1), 0.5, colors.HexColor('#94a3b8')),
+            ('SPAN', (0, 1), (1, 1)),
+            ('TOPPADDING', (0, 0), (-1, -1), 4),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+            ('LEFTPADDING', (0, 0), (-1, -1), 6),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 6),
+        ]))
+        story.append(stego_box_table)
+        story.append(Spacer(1, 6))
+
+        if tampering_data and tampering_data.get('available'):
+            tamper_box_data = [
+                [Paragraph("<b>Tampering & Manipulation Assessment</b>", cell_text_bold),
+                 Paragraph(f"Status: <b>{tamper_exp.get('status', 'UNKNOWN')}</b> | Score: <b>{tamper_exp.get('score', 0.0)} / 100</b>", cell_text_bold)],
+                [Paragraph(f"<b>Summary:</b> {tamper_exp.get('summary', 'No summary available.')}", cell_text), ""]
+            ]
+            tamper_box_table = Table(tamper_box_data, colWidths=[270, 270])
+            tamper_box_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f1f5f9')),
+                ('BOX', (0, 0), (-1, -1), 0.5, colors.HexColor('#94a3b8')),
+                ('SPAN', (0, 1), (1, 1)),
+                ('TOPPADDING', (0, 0), (-1, -1), 4),
+                ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+                ('LEFTPADDING', (0, 0), (-1, -1), 6),
+                ('RIGHTPADDING', (0, 0), (-1, -1), 6),
+            ]))
+            story.append(tamper_box_table)
+            story.append(Spacer(1, 6))
+
+        # Primary Evidence Table
+        story.append(Paragraph("<b>Primary Forensic Evidence Items:</b>", cell_text_bold))
+        story.append(Spacer(1, 4))
+
+        primary_items = list(stego_exp.get('primary_evidence', [])) + list(tamper_exp.get('primary_evidence', []))
+        ev_rows = [
+            [
+                Paragraph("<b>Category</b>", cell_text_bold),
+                Paragraph("<b>Detector</b>", cell_text_bold),
+                Paragraph("<b>Severity</b>", cell_text_bold),
+                Paragraph("<b>Observed Value</b>", cell_text_bold),
+                Paragraph("<b>Baseline</b>", cell_text_bold),
+                Paragraph("<b>Forensic Explanation</b>", cell_text_bold)
+            ]
+        ]
+
+        if primary_items:
+            for item in primary_items:
+                sev = item.get('severity', 'clean').lower()
+                if sev == 'anomaly':
+                    sev_color = colors.HexColor('#ef4444')
+                elif sev == 'suspicious':
+                    sev_color = colors.HexColor('#f59e0b')
+                else:
+                    sev_color = colors.HexColor('#10b981')
+
+                ev_rows.append([
+                    Paragraph(item.get('category', '').capitalize(), cell_text),
+                    Paragraph(item.get('detector', ''), cell_text),
+                    Paragraph(f"<b><font color='{sev_color.hexval()}'>{item.get('severity', '').upper()}</font></b>", cell_text),
+                    Paragraph(str(item.get('observed_value', '')), cell_text),
+                    Paragraph(str(item.get('threshold', '')), cell_text),
+                    Paragraph(str(item.get('explanation', '')), cell_text)
+                ])
+        else:
+            ev_rows.append([
+                Paragraph("All Categories", cell_text),
+                Paragraph("All Detectors", cell_text),
+                Paragraph("<b><font color='#10b981'>CLEAN</font></b>", cell_text),
+                Paragraph("Baseline values", cell_text),
+                Paragraph("Standard baselines", cell_text),
+                Paragraph("All evaluated forensic layers conform to clean, unmodified photographic carrier characteristics.", cell_text)
+            ])
+
+        ev_table = Table(ev_rows, colWidths=[65, 95, 55, 95, 85, 145])
+        ev_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2e8f0')),
+            ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
+            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f8fafc')]),
+            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+            ('TOPPADDING', (0, 0), (-1, -1), 3),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+        ]))
+        story.append(ev_table)
+        story.append(Spacer(1, 14))
+
+        # 6. Detector Contribution Breakdown (Phase E)
+        story.append(Paragraph("6. Detector Contribution Breakdown", heading2_style))
+        story.append(Paragraph(
+            "Mathematical point contributions to the Steganography Suspicion Index (0-100) under Phase A-C weighting: "
+            "Structural (20%), Metadata (10%), Statistical (50%), Visual (20%). "
+            "Tampering forensic detectors evaluate independent spatial manipulation dimensions and contribute 0.0 pts to the steganography index.",
+            cell_text
+        ))
+        story.append(Spacer(1, 6))
+
+        total_score_val = float(score_info.get('suspicion_score', 0.0))
+        contrib_rows = [
+            [
+                Paragraph("<b>Category</b>", cell_text_bold),
+                Paragraph("<b>Detector Method</b>", cell_text_bold),
+                Paragraph("<b>Status</b>", cell_text_bold),
+                Paragraph("<b>Points Added</b>", cell_text_bold),
+                Paragraph("<b>Impact Share</b>", cell_text_bold),
+                Paragraph("<b>Technical Details</b>", cell_text_bold)
+            ]
+        ]
+
+        for item in score_info.get('detector_breakdown', []):
+            st = item.get('status', 'Clean')
+            if st == 'Anomaly':
+                st_color = colors.HexColor('#ef4444')
+            elif st == 'Suspicious':
+                st_color = colors.HexColor('#f59e0b')
+            else:
+                st_color = colors.HexColor('#10b981')
+
+            pts = float(item.get('points_added', 0.0))
+            if total_score_val > 0 and pts > 0:
+                share_str = f"{(pts / total_score_val * 100):.1f}%"
+            elif item.get('category') == 'Tampering & Manipulation Forensics':
+                share_str = "Independent"
+            else:
+                share_str = "0.0%"
+
+            contrib_rows.append([
+                Paragraph(item.get('category', ''), cell_text),
+                Paragraph(item.get('detector', ''), cell_text),
+                Paragraph(f"<b><font color='{st_color.hexval()}'>{st}</font></b>", cell_text),
+                Paragraph(f"+{pts:.1f} pts", cell_text),
+                Paragraph(share_str, cell_text),
+                Paragraph(item.get('details', ''), cell_text)
+            ])
+
+        contrib_table = Table(contrib_rows, colWidths=[95, 105, 55, 60, 55, 170])
+        contrib_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e2e8f0')),
+            ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#cbd5e1')),
+            ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f8fafc')]),
+            ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+            ('TOPPADDING', (0, 0), (-1, -1), 3),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+        ]))
+        story.append(contrib_table)
+        story.append(Spacer(1, 14))
+
         # 7. Embedded Histogram Plot & Visual Slices Preview
         hist_b64 = stat_data.get('histogram_plot', '')
         if hist_b64 and hist_b64.startswith('data:image/png;base64,'):
@@ -405,7 +585,7 @@ class ReportGenerator:
                 raw_png = base64.b64decode(hist_b64.split(',', 1)[1])
                 hist_buf = BytesIO(raw_png)
                 story.append(KeepTogether([
-                    Paragraph("5. Pixel Intensity Histogram Visualization", heading2_style),
+                    Paragraph("7. Pixel Intensity Histogram Visualization", heading2_style),
                     RLImage(hist_buf, width=5.5 * inch, height=2.6 * inch),
                     Spacer(1, 10)
                 ]))

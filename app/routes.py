@@ -146,6 +146,8 @@ def analyze():
             'statistical': statistical_res,
             'tampering': tampering_res,
             'scoring': scoring_res,
+            'evidence': scoring_res.get('evidence', {}),
+            'explainability': scoring_res.get('explainability', {}),
             'cached_at': time.time()
         }
 
@@ -282,7 +284,9 @@ def api_analyze():
                 'combined_indicator': statistical_res['combined_indicator']
             },
             'tampering': tampering_res,
-            'scoring': scoring_res
+            'scoring': scoring_res,
+            'evidence': scoring_res.get('evidence', {}),
+            'explainability': scoring_res.get('explainability', {})
         }
 
         return jsonify(to_serializable(response_payload)), 200

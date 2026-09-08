@@ -2,8 +2,8 @@ import os
 import tempfile
 
 class Config:
-    """Application configuration settings."""
-    SECRET_KEY = os.environ.get('SECRET_KEY', 'cybersec-stego-detection-secret-key-2026')
+    """Application base configuration settings."""
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-insecure-secret-key-for-local-testing-only')
     
     # 10 MB upload ceiling to prevent memory exhaustion and DoS
     MAX_CONTENT_LENGTH = int(os.environ.get('MAX_CONTENT_LENGTH', 10 * 1024 * 1024))
@@ -33,11 +33,14 @@ class DevelopmentConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
+    # In production, SECRET_KEY must strictly come from the environment without hardcoded fallback
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 class TestingConfig(Config):
     TESTING = True
     DEBUG = True
+    SECRET_KEY = 'testing-mock-secret-key'
 
 
 config_by_name = {

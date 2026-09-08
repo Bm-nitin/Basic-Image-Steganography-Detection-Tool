@@ -82,7 +82,8 @@ def run_all_checks():
             risk_match = re.search(r'<h5 class="fw-bold[^>]*>\s*([A-Z]+)\s+RISK', html)
             score = score_match.group(1) if score_match else "N/A"
             risk = risk_match.group(1) if risk_match else "N/A"
-            print(f"  -> Detection Verdict: Score = {score}/100, Risk = {risk} RISK")
+            assert 'Forensic Evidence &amp; Explainable Assessment' in html
+            print(f"  -> HTML includes Phase E Forensic Evidence & Explainability section.")
 
             # Extract report link
             match = re.search(r'/download-report/([a-f0-9\-]+)', html)
@@ -98,6 +99,33 @@ def run_all_checks():
                 assert b'%%EOF' in pdf_data[-1024:], "PDF missing %%EOF trailer marker!"
                 assert len(pdf_data) > 20000, f"PDF file size suspiciously small: {len(pdf_data)} bytes"
                 print(f"  -> PDF Report verified: {len(pdf_data):,} bytes with valid %PDF-1.4 and %%EOF structure.")
+
+    # 3B. Verify POST /api/analyze returns Phase E evidence and explainability
+    print("\n[CHECK 3B] REST API: POST /api/analyze (Phase E Payload)")
+    api_boundary = '----WebKitFormBoundaryCheckApi123'
+    with open('tests/test_samples/stego_lsb_sample.png', 'rb') as f:
+        api_img_bytes = f.read()
+    api_body = (
+        f'--{api_boundary}\r\n'
+        f'Content-Disposition: form-data; name="image"; filename="stego_lsb_sample.png"\r\n'
+        f'Content-Type: image/png\r\n\r\n'
+    ).encode('utf-8') + api_img_bytes + f'\r\n--{api_boundary}--\r\n'.encode('utf-8')
+
+    api_req = urllib.request.Request(
+        f'{BASE_URL}/api/analyze',
+        data=api_body,
+        headers={'Content-Type': f'multipart/form-data; boundary={api_boundary}'},
+        method='POST'
+    )
+    with urllib.request.urlopen(api_req) as api_resp:
+        assert api_resp.getcode() == 200
+        api_json = json.loads(api_resp.read().decode('utf-8'))
+        assert 'evidence' in api_json, "Missing top-level 'evidence' in API response"
+        assert 'explainability' in api_json, "Missing top-level 'explainability' in API response"
+        assert 'steganography' in api_json['explainability'], "Missing 'steganography' in explainability"
+        assert 'tampering' in api_json['explainability'], "Missing 'tampering' in explainability"
+        assert len(api_json['evidence']['steganography']) > 0, "Missing steganography evidence items"
+        print("  -> API response verified: Contains evidence, explainability, steganography, and tampering.")
 
     # 4. Verify rejection of invalid extensions
     print("\n[CHECK 4] Security: Rejecting invalid file extensions")

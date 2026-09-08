@@ -1,0 +1,579 @@
+{
+  "evaluation_scope": "Phase F Independent Sample Validation",
+  "sample_count": 11,
+  "records": [
+    {
+      "filename": "clean_sample.png",
+      "path": "tests/test_samples/clean_sample.png",
+      "category": "A. Known Clean PNG",
+      "format": "PNG",
+      "file_size_bytes": 5001,
+      "ground_truth": {
+        "steganography": false,
+        "stego_type": "none",
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 4.0,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 0,
+      "primary_evidence": [],
+      "major_indicators": {
+        "rs_rate": 0.0107,
+        "spa_rate": 0.1825,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9451,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0403,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "clean_carrier.png",
+      "path": "tests/evaluation/samples/clean_carrier.png",
+      "category": "A. Known Clean PNG",
+      "format": "PNG",
+      "file_size_bytes": 4381,
+      "ground_truth": {
+        "steganography": false,
+        "stego_type": "none",
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 3.5,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 0,
+      "primary_evidence": [],
+      "major_indicators": {
+        "rs_rate": 0.018,
+        "spa_rate": 0.2143,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9427,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0353,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "clean_carrier.jpg",
+      "path": "tests/evaluation/samples/clean_carrier.jpg",
+      "category": "B. Known Clean JPEG",
+      "format": "JPEG",
+      "file_size_bytes": 7645,
+      "ground_truth": {
+        "steganography": false,
+        "stego_type": "none",
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 7.5,
+        "risk": "Low",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 3.4,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 1,
+      "primary_evidence": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "observed": "0.9997 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (0.9997 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.0089,
+        "spa_rate": 0.2405,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9997,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0336,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "stego_lsb_low.png",
+      "path": "tests/evaluation/samples/stego_lsb_low.png",
+      "category": "C. Controlled LSB Stego (Low ~15%)",
+      "format": "PNG",
+      "file_size_bytes": 35857,
+      "ground_truth": {
+        "steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 0.15,
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 26.5,
+        "risk": "Medium",
+        "summary": "Moderate forensic anomalies identified in RS Steganalysis (Regular-Singular), Sample Pair Analysis (SPA). Results warrant secondary manual inspection."
+      },
+      "tampering": {
+        "score": 3.5,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 2,
+      "primary_evidence": [
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "anomaly",
+          "observed": "16.89% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "Fridrich RS steganalysis curves demonstrate severe group count convergence (16.89% estimated rate), typical of LSB embedding."
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "anomaly",
+          "observed": "90.7% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "Dumitrescu-Wu-Wang SPA model estimates a high-capacity spatial LSB payload (90.7%)."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.1689,
+        "spa_rate": 0.907,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9594,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0353,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "stego_lsb_medium.png",
+      "path": "tests/evaluation/samples/stego_lsb_medium.png",
+      "category": "C. Controlled LSB Stego (Med ~50%)",
+      "format": "PNG",
+      "file_size_bytes": 50915,
+      "ground_truth": {
+        "steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 0.5,
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 26.5,
+        "risk": "Medium",
+        "summary": "Moderate forensic anomalies identified in RS Steganalysis (Regular-Singular), Sample Pair Analysis (SPA). Results warrant secondary manual inspection."
+      },
+      "tampering": {
+        "score": 3.6,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 2,
+      "primary_evidence": [
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "anomaly",
+          "observed": "51.19% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "Fridrich RS steganalysis curves demonstrate severe group count convergence (51.19% estimated rate), typical of LSB embedding."
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "anomaly",
+          "observed": "82.41% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "Dumitrescu-Wu-Wang SPA model estimates a high-capacity spatial LSB payload (82.41%)."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.5119,
+        "spa_rate": 0.8241,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.986,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0357,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "stego_lsb_high.png",
+      "path": "tests/evaluation/samples/stego_lsb_high.png",
+      "category": "C. Controlled LSB Stego (High 100%)",
+      "format": "PNG",
+      "file_size_bytes": 55121,
+      "ground_truth": {
+        "steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 1.0,
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 70.0,
+        "risk": "High",
+        "summary": "Strong statistical anomalies observed across Shannon Entropy (LSB Plane), RS Steganalysis (Regular-Singular), Chi-Square Attack (PoVs), indicating elevated characteristics consistent with possible spatial LSB payload embedding."
+      },
+      "tampering": {
+        "score": 3.5,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 5,
+      "primary_evidence": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "observed": "1.0000 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (1.0000 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload."
+        },
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "anomaly",
+          "observed": "98.24% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "Fridrich RS steganalysis curves demonstrate severe group count convergence (98.24% estimated rate), typical of LSB embedding."
+        },
+        {
+          "category": "statistical",
+          "detector": "Chi-Square Attack (PoVs)",
+          "severity": "anomaly",
+          "observed": "93.9% stego probability",
+          "threshold": "< 60.0% probability (Natural variation)",
+          "explanation": "Strong equalization of adjacent Pairs of Values (93.9%), consistent with sequential spatial LSB replacement."
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "anomaly",
+          "observed": "67.33% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "Dumitrescu-Wu-Wang SPA model estimates a high-capacity spatial LSB payload (67.33%)."
+        },
+        {
+          "category": "visual",
+          "detector": "LSB Parity Distribution",
+          "severity": "suspicious",
+          "observed": "Delta = 0.0006 (near 50.0/50.0)",
+          "threshold": "Delta >= 0.0050 (Natural photographic bias)",
+          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0006), typical of pseudorandom or encrypted keystreams."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.9824,
+        "spa_rate": 0.6733,
+        "chi_square_indicator": 0.9387,
+        "max_lsb_entropy": 1.0,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0349,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "stego_lsb_sample.png",
+      "path": "tests/test_samples/stego_lsb_sample.png",
+      "category": "C. Controlled LSB Stego (100% Deterministic)",
+      "format": "PNG",
+      "file_size_bytes": 73928,
+      "ground_truth": {
+        "steganography": true,
+        "stego_type": "spatial_lsb",
+        "embedding_rate": 1.0,
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 70.0,
+        "risk": "High",
+        "summary": "Strong statistical anomalies observed across Shannon Entropy (LSB Plane), RS Steganalysis (Regular-Singular), Chi-Square Attack (PoVs), indicating elevated characteristics consistent with possible spatial LSB payload embedding."
+      },
+      "tampering": {
+        "score": 4.0,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 5,
+      "primary_evidence": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "observed": "1.0000 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (1.0000 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload."
+        },
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "anomaly",
+          "observed": "75.37% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "Fridrich RS steganalysis curves demonstrate severe group count convergence (75.37% estimated rate), typical of LSB embedding."
+        },
+        {
+          "category": "statistical",
+          "detector": "Chi-Square Attack (PoVs)",
+          "severity": "anomaly",
+          "observed": "85.0% stego probability",
+          "threshold": "< 60.0% probability (Natural variation)",
+          "explanation": "Strong equalization of adjacent Pairs of Values (85.0%), consistent with sequential spatial LSB replacement."
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "anomaly",
+          "observed": "69.13% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "Dumitrescu-Wu-Wang SPA model estimates a high-capacity spatial LSB payload (69.13%)."
+        },
+        {
+          "category": "visual",
+          "detector": "LSB Parity Distribution",
+          "severity": "suspicious",
+          "observed": "Delta = 0.0005 (near 50.0/50.0)",
+          "threshold": "Delta >= 0.0050 (Natural photographic bias)",
+          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0005), typical of pseudorandom or encrypted keystreams."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.7537,
+        "spa_rate": 0.6913,
+        "chi_square_indicator": 0.85,
+        "max_lsb_entropy": 1.0,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.0398,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "stego_eof_sample.jpg",
+      "path": "tests/test_samples/stego_eof_sample.jpg",
+      "category": "D. Controlled JPEG Stego (Appended 82B)",
+      "format": "JPEG",
+      "file_size_bytes": 9585,
+      "ground_truth": {
+        "steganography": true,
+        "stego_type": "appended_eof",
+        "embedding_rate": 0.0,
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 41.5,
+        "risk": "Medium",
+        "summary": "Suspicious indicators detected primarily driven by appended data past the format EOF marker. Spatial LSB planes exhibit moderate or baseline characteristics."
+      },
+      "tampering": {
+        "score": 3.7,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 3,
+      "primary_evidence": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "observed": "1.0000 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (1.0000 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload."
+        },
+        {
+          "category": "structural",
+          "detector": "Appended Trailing Data",
+          "severity": "anomaly",
+          "observed": "82 bytes past EOF",
+          "threshold": "0 bytes (Standard format termination)",
+          "explanation": "Found 82 extra bytes appended past the valid End-of-File marker, characteristic of naive concatenation steganography."
+        },
+        {
+          "category": "visual",
+          "detector": "LSB Parity Distribution",
+          "severity": "suspicious",
+          "observed": "Delta = 0.0035 (near 50.0/50.0)",
+          "threshold": "Delta >= 0.0050 (Natural photographic bias)",
+          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0035), typical of pseudorandom or encrypted keystreams."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.0082,
+        "spa_rate": 0.2129,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 1.0,
+        "trailing_bytes": 82,
+        "tampering_indicator": 0.0365,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "stego_eof.jpg",
+      "path": "tests/evaluation/samples/stego_eof.jpg",
+      "category": "D. Controlled JPEG Stego (Appended 780B)",
+      "format": "JPEG",
+      "file_size_bytes": 8427,
+      "ground_truth": {
+        "steganography": true,
+        "stego_type": "appended_eof",
+        "embedding_rate": 0.0,
+        "tampering": false,
+        "tampering_type": "none"
+      },
+      "steganography": {
+        "score": 27.5,
+        "risk": "Medium",
+        "summary": "Suspicious indicators detected primarily driven by appended data past the format EOF marker. Spatial LSB planes exhibit moderate or baseline characteristics."
+      },
+      "tampering": {
+        "score": 3.4,
+        "status": "NOT SUSPICIOUS",
+        "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
+      },
+      "primary_evidence_count": 2,
+      "primary_evidence": [
+        {
+          "category": "structural",
+          "detector": "Appended Trailing Data",
+          "severity": "anomaly",
+          "observed": "782 bytes past EOF",
+          "threshold": "0 bytes (Standard format termination)",
+          "explanation": "Found 782 extra bytes appended past the valid End-of-File marker, characteristic of naive concatenation steganography."
+        },
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "observed": "0.9997 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (0.9997 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.0089,
+        "spa_rate": 0.2405,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9997,
+        "trailing_bytes": 782,
+        "tampering_indicator": 0.0336,
+        "tampering_is_suspicious": false
+      }
+    },
+    {
+      "filename": "tamper_copymove.png",
+      "path": "tests/evaluation/samples/tamper_copymove.png",
+      "category": "E. Controlled Tampering (Copy-Move)",
+      "format": "PNG",
+      "file_size_bytes": 12215,
+      "ground_truth": {
+        "steganography": false,
+        "stego_type": "none",
+        "tampering": true,
+        "tampering_type": "copy_move"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 85.0,
+        "status": "SUSPICIOUS",
+        "summary": "Spatially separated duplicate block clusters detected by copy-move analysis, consistent with possible localized cloning or stamp manipulation. Localized inconsistencies observed across high-frequency texture/noise layers (noise, copy_move)."
+      },
+      "primary_evidence_count": 2,
+      "primary_evidence": [
+        {
+          "category": "tampering",
+          "detector": "Copy-Move Duplicate Detection",
+          "severity": "anomaly",
+          "observed": "12 candidate pairs, 1 coherent cluster(s)",
+          "threshold": "0 coherent displacement clusters (>= 3 matching blocks)",
+          "explanation": "Copy-move evaluation: 215 textured blocks inspected, 12 candidate duplicate pairs, 1 coherent displacement clusters (11 clustered blocks)."
+        },
+        {
+          "category": "tampering",
+          "detector": "Local Residual Noise Consistency",
+          "severity": "anomaly",
+          "observed": "Residual MAD 0.33, outliers 3.1%",
+          "threshold": "Outlier fraction < 8.0%, indicator < 0.40",
+          "explanation": "Local noise MAD evaluation: global residual MAD 0.33, local block MAD std 6.27, outlier blocks 2/64 (3.1%)."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.0178,
+        "spa_rate": 0.2119,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9478,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.85,
+        "tampering_is_suspicious": true
+      }
+    },
+    {
+      "filename": "tamper_spliced_noise.png",
+      "path": "tests/evaluation/samples/tamper_spliced_noise.png",
+      "category": "E. Controlled Tampering (Spliced Noise)",
+      "format": "PNG",
+      "file_size_bytes": 24505,
+      "ground_truth": {
+        "steganography": false,
+        "stego_type": "none",
+        "tampering": true,
+        "tampering_type": "noise_disparity"
+      },
+      "steganography": {
+        "score": 0.0,
+        "risk": "Low",
+        "summary": "Low suspicion index across all evaluated forensic layers. RS steganalysis, Sample Pair Analysis, and Shannon entropy conform to clean carrier baselines with standard format termination."
+      },
+      "tampering": {
+        "score": 47.2,
+        "status": "SUSPICIOUS",
+        "summary": "Localized inconsistencies observed across high-frequency texture/noise layers (noise)."
+      },
+      "primary_evidence_count": 1,
+      "primary_evidence": [
+        {
+          "category": "tampering",
+          "detector": "Local Residual Noise Consistency",
+          "severity": "anomaly",
+          "observed": "Residual MAD 0.33, outliers 9.4%",
+          "threshold": "Outlier fraction < 8.0%, indicator < 0.40",
+          "explanation": "Local noise MAD evaluation: global residual MAD 0.33, local block MAD std 6.80, outlier blocks 6/64 (9.4%)."
+        }
+      ],
+      "major_indicators": {
+        "rs_rate": 0.0192,
+        "spa_rate": 0.2415,
+        "chi_square_indicator": 0.0,
+        "max_lsb_entropy": 0.9765,
+        "trailing_bytes": 0,
+        "tampering_indicator": 0.4725,
+        "tampering_is_suspicious": true
+      }
+    }
+  ]
+}

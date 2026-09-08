@@ -14,6 +14,8 @@ from .local_variance_analysis import LocalVarianceAnalyzer
 from .edge_analysis import EdgeAnalyzer
 from .copy_move_analysis import CopyMoveAnalyzer
 from .tampering import TamperingAnalyzer
+from .evidence import EvidenceItem, EvidenceCollector
+from .explainability import ExplainabilityEngine
 
 __all__ = [
     'MetadataAnalyzer',
@@ -31,7 +33,10 @@ __all__ = [
     'LocalVarianceAnalyzer',
     'EdgeAnalyzer',
     'CopyMoveAnalyzer',
-    'TamperingAnalyzer'
+    'TamperingAnalyzer',
+    'EvidenceItem',
+    'EvidenceCollector',
+    'ExplainabilityEngine'
 ]
 
 
