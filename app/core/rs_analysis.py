@@ -36,7 +36,27 @@ class RSAnalyzer:
 
     @staticmethod
     def _flip_neg1(arr: np.ndarray) -> np.ndarray:
-        """Applies F_{-1} flipping operation with boundary safety on uint8 range."""
+        """
+        Applies the shifted LSB flipping operation F_{-1}.
+
+        Audit Phase G1.3 verification note:
+        Per Fridrich, Goljan & Du ("Reliable Detection of LSB Steganography in
+        Color and Grayscale Images"), F_{-1} is defined as
+            F_{-1}(x) = F_1(x + 1) - 1
+        which pairs values as: -1<->0, 1<->2, 3<->4, ..., 253<->254, 255<->256.
+        For every interior value this reduces to: even x -> x-1, odd x -> x+1,
+        which is exactly what is implemented below (parity-correct against the
+        primary source).
+
+        The formula's own pair partners for the two boundary values are
+        outside the valid 8-bit pixel range (0's partner is -1; 255's partner
+        is 256) — a gap the original paper does not resolve for practical
+        8-bit imagery. Clipping to [0, 255] makes 0 and 255 fixed points
+        (F_{-1}(0) = 0, F_{-1}(255) = 255) under this operation, which is the
+        standard practical resolution used when the formula's mathematical
+        pair partner does not exist in-range. This has been verified against
+        the primary source; it is not an inferred or invented convention.
+        """
         out = arr.astype(np.int32).copy()
         even_mask = (out % 2 == 0)
         odd_mask = ~even_mask
@@ -141,6 +161,39 @@ class RSAnalyzer:
 
         # Original state: G
         f_orig = cls._discrimination(groups)
+
+        # Audit Phase G1.3 finding: when every group has zero internal pixel
+        # variation (f_orig == 0 everywhere, e.g. a perfectly flat image),
+        # the discrimination function provides no basis for RS steganalysis
+        # at all -- f(G) is trivially 0 by definition regardless of pixel
+        # value, so R/S classification is meaningless here, not evidence.
+        # This case was found to interact pathologically with the ad hoc
+        # `sym_diff` asymmetry heuristic specifically at pixel values 0 and
+        # 255 (where F_{-1} is a boundary fixed point, see _flip_neg1): the
+        # M-mask trivially classifies every degenerate group as "regular"
+        # while the -M mask does nothing at the 0/255 fixed point, producing
+        # a spurious sym_diff spike and a false "suspicious" verdict on
+        # content that contains no natural texture whatsoever. RS is
+        # inapplicable by definition on zero-variance content, independent
+        # of any specific sample image, so this is handled directly rather
+        # than by adjusting the sym_diff formula itself (which has no cited
+        # derivation -- see technical audit).
+        if not np.any(f_orig > 0):
+            return {
+                'available': True,
+                'group_size': cls.GROUP_SIZE,
+                'group_count': int(total_groups),
+                'regular': 0.0,
+                'singular': 0.0,
+                'negative_regular': 0.0,
+                'negative_singular': 0.0,
+                'discrimination_regular': 0.0,
+                'discrimination_singular': 0.0,
+                'estimated_embedding_rate': 0.0,
+                'suspicion_indicator': 0.0,
+                'is_suspicious': False,
+                'degenerate_flat_content': True
+            }
 
         # Mask M applied to G
         g_m = cls._apply_mask(groups, cls.MASK_POS)

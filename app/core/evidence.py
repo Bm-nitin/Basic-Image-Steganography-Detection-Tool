@@ -1,6 +1,8 @@
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass, field, asdict
 
+from .visual_extractor import VisualExtractor
+
 
 @dataclass
 class EvidenceItem:
@@ -308,15 +310,26 @@ class EvidenceCollector:
             ))
 
         # 8. Visual / Parity Balance
+        # G1.1 fix: defer to the detector's own decision (which applies the
+        # channel-independence-aware, Bonferroni-corrected threshold) instead
+        # of re-declaring a separate threshold literal here. Fall back to the
+        # single base constant only when given a bare delta with no decision
+        # attached (see scoring.py for the identical rationale).
         min_delta = visual_res.get('min_balance_delta', 1.0)
-        if min_delta < 0.005:
+        if 'is_visual_suspicious' in visual_res:
+            visual_suspicious = bool(visual_res['is_visual_suspicious'])
+        else:
+            visual_suspicious = min_delta < VisualExtractor.BASE_BALANCE_THRESHOLD
+        threshold_label = f"Delta >= {visual_res.get('effective_threshold', VisualExtractor.BASE_BALANCE_THRESHOLD):.5f} (natural photographic bias)"
+
+        if visual_suspicious:
             items.append(EvidenceItem(
                 category='visual',
                 detector='LSB Parity Distribution',
                 severity='suspicious',
                 indicator=1.0,
                 observed_value=f"Delta = {min_delta:.4f} (near 50.0/50.0)",
-                threshold="Delta >= 0.0050 (Natural photographic bias)",
+                threshold=threshold_label,
                 explanation=f"Near-perfect 50/50 parity balance in LSB plane (delta = {min_delta:.4f}), typical of pseudorandom or encrypted keystreams.",
                 supporting_details={'min_delta': round(min_delta, 5)}
             ))
@@ -327,7 +340,7 @@ class EvidenceCollector:
                 severity='clean',
                 indicator=0.0,
                 observed_value=f"Delta = {min_delta:.4f}",
-                threshold="Delta >= 0.0050 (Natural photographic bias)",
+                threshold=threshold_label,
                 explanation=f"Natural photographic bias preserved in LSB bit distribution (delta = {min_delta:.4f}).",
                 supporting_details={'min_delta': round(min_delta, 5)}
             ))

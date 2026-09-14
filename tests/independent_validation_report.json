@@ -279,7 +279,7 @@
           "detector": "LSB Parity Distribution",
           "severity": "suspicious",
           "observed": "Delta = 0.0006 (near 50.0/50.0)",
-          "threshold": "Delta >= 0.0050 (Natural photographic bias)",
+          "threshold": "Delta >= 0.00167 (natural photographic bias)",
           "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0006), typical of pseudorandom or encrypted keystreams."
         }
       ],
@@ -355,7 +355,7 @@
           "detector": "LSB Parity Distribution",
           "severity": "suspicious",
           "observed": "Delta = 0.0005 (near 50.0/50.0)",
-          "threshold": "Delta >= 0.0050 (Natural photographic bias)",
+          "threshold": "Delta >= 0.00167 (natural photographic bias)",
           "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0005), typical of pseudorandom or encrypted keystreams."
         }
       ],
@@ -383,7 +383,7 @@
         "tampering_type": "none"
       },
       "steganography": {
-        "score": 41.5,
+        "score": 21.5,
         "risk": "Medium",
         "summary": "Suspicious indicators detected primarily driven by appended data past the format EOF marker. Spatial LSB planes exhibit moderate or baseline characteristics."
       },
@@ -392,7 +392,7 @@
         "status": "NOT SUSPICIOUS",
         "summary": "No significant localized tampering detected across evaluated forensic layers. Residual noise, texture variance, and edge gradients conform to authentic carrier characteristics, and no coherent duplicate regions were identified by copy-move inspection."
       },
-      "primary_evidence_count": 3,
+      "primary_evidence_count": 2,
       "primary_evidence": [
         {
           "category": "statistical",
@@ -409,14 +409,6 @@
           "observed": "82 bytes past EOF",
           "threshold": "0 bytes (Standard format termination)",
           "explanation": "Found 82 extra bytes appended past the valid End-of-File marker, characteristic of naive concatenation steganography."
-        },
-        {
-          "category": "visual",
-          "detector": "LSB Parity Distribution",
-          "severity": "suspicious",
-          "observed": "Delta = 0.0035 (near 50.0/50.0)",
-          "threshold": "Delta >= 0.0050 (Natural photographic bias)",
-          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0035), typical of pseudorandom or encrypted keystreams."
         }
       ],
       "major_indicators": {

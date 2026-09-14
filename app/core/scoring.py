@@ -1,6 +1,7 @@
 from typing import Dict, Any, List, Optional
 from .evidence import EvidenceCollector
 from .explainability import ExplainabilityEngine
+from .visual_extractor import VisualExtractor
 
 class SuspicionScoringEngine:
     """
@@ -297,9 +298,25 @@ class SuspicionScoringEngine:
         score += total_stat_pts
 
         # 4. Visual Steganalysis / LSB Uniformity & Parity Balance (Weight: 20% / Max 20.0 pts)
+        #
+        # G1.1 fix: this must never re-derive the suspicion decision from its
+        # own copy of the threshold. When the detector's full output is
+        # available, its `is_visual_suspicious` decision (which already
+        # applies the channel-independence-aware, Bonferroni-corrected
+        # threshold — see visual_extractor.py) is authoritative. Only when a
+        # caller supplies a bare `min_balance_delta` with no decision attached
+        # (e.g. targeted unit tests exercising scoring logic in isolation) do
+        # we fall back to comparing against VisualExtractor's single base
+        # constant, since the channel count needed for the corrected
+        # threshold is not knowable from a bare delta value alone.
         min_delta = visual_res.get('min_balance_delta', 1.0)
+        if 'is_visual_suspicious' in visual_res:
+            visual_suspicious = bool(visual_res['is_visual_suspicious'])
+        else:
+            visual_suspicious = min_delta < VisualExtractor.BASE_BALANCE_THRESHOLD
+
         vis_pts = 0.0
-        if min_delta < 0.005:  # within 0.5% of perfect 50/50 balance
+        if visual_suspicious:
             vis_pts = 20.0
             status = 'Suspicious'
             msg = f"Near-perfect 50/50 binary distribution in LSB plane (delta = {min_delta:.4f}), typical of pseudorandom keystream."

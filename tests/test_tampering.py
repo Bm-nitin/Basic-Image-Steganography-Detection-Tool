@@ -62,8 +62,16 @@ class TestTamperingAnalyzer:
         stat = StatisticalAnalyzer.analyze(im, file_bytes=b, image_format='JPEG')
         score = SuspicionScoringEngine.evaluate(meta, vis, stat, forensics_res=forensics, tampering_res=tamp)
 
-        # Baseline overall score preserved
-        assert score['suspicion_score'] == 41.5
+        # G1.2 fix note: this sample's visual LSB balance delta is 0.00353,
+        # which cleared the old, uncorrected single-threshold check (0.005)
+        # -- previously contributing a spurious +20 "Visual" category points
+        # for a baseline total of 41.5 -- but correctly does NOT clear the
+        # corrected 3-independent-channel threshold (0.005/3 ~= 0.00167),
+        # since this is a real RGB image and gray is excluded from the pool.
+        # This is the intended effect of the multiple-comparisons fix
+        # (technical audit G1.2), verified against this repository's own
+        # sample, not an arbitrary re-tuning.
+        assert score['suspicion_score'] == 21.5
         assert score['risk_level'] == 'Medium'
         assert score['tampering_score'] == tamp['combined_score']
 
