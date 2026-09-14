@@ -1,0 +1,63 @@
+{
+  "total_samples": 37,
+  "calibration_count": 20,
+  "validation_count": 17,
+  "per_class_sample_counts": {
+    "photograph_proxy": 9,
+    "screenshot_proxy": 6,
+    "document_proxy": 5,
+    "illustration_proxy": 4,
+    "low_color_proxy": 4,
+    "alpha_proxy": 4,
+    "grayscale_proxy": 4,
+    "repeated_structure_proxy": 1
+  },
+  "minimum_per_class_count": 1,
+  "adequacy_threshold_used": {
+    "min_samples_per_class": 10,
+    "min_total_samples": 100
+  },
+  "corpus_is_adequate_for_threshold_calibration": false,
+  "adequacy_statement": "INADEQUATE: this corpus (37 samples total, 4-7 per class) is far too small to support statistically meaningful threshold calibration separate from validation. The split below exists as reproducible evaluation infrastructure and to demonstrate the methodology, but no threshold should be tuned against the 'calibration' half and reported as validated against the 'validation' half at this corpus size. A corpus at least in the low hundreds per class, across genuinely varied real-world instances (not just this generator's parameterizations), would be needed before that separation is meaningful.",
+  "calibration_filenames": [
+    "alpha_proxy_clean.png",
+    "alpha_proxy_stego_medium.png",
+    "document_proxy_clean.png",
+    "document_proxy_stego_medium.png",
+    "document_proxy_tamper_splice.png",
+    "grayscale_proxy_clean.png",
+    "grayscale_proxy_stego_medium.png",
+    "illustration_proxy_clean.png",
+    "illustration_proxy_stego_medium.png",
+    "low_color_proxy_clean.png",
+    "low_color_proxy_stego_medium.png",
+    "photograph_proxy_clean.jpg",
+    "photograph_proxy_clean.png",
+    "photograph_proxy_recompressed.jpg",
+    "photograph_proxy_stego_medium.png",
+    "photograph_proxy_tamper_copymove.png",
+    "repeated_structure_proxy_clean.png",
+    "screenshot_proxy_clean.jpg",
+    "screenshot_proxy_clean.png",
+    "screenshot_proxy_stego_medium.png"
+  ],
+  "validation_filenames": [
+    "alpha_proxy_stego_high.png",
+    "alpha_proxy_stego_low.png",
+    "document_proxy_stego_high.png",
+    "document_proxy_stego_low.png",
+    "grayscale_proxy_stego_high.png",
+    "grayscale_proxy_stego_low.png",
+    "illustration_proxy_stego_high.png",
+    "illustration_proxy_stego_low.png",
+    "low_color_proxy_stego_high.png",
+    "low_color_proxy_stego_low.png",
+    "photograph_proxy_stego_appended_eof.jpg",
+    "photograph_proxy_stego_high.png",
+    "photograph_proxy_stego_low.png",
+    "photograph_proxy_tamper_splice.png",
+    "screenshot_proxy_stego_appended_eof.jpg",
+    "screenshot_proxy_stego_high.png",
+    "screenshot_proxy_stego_low.png"
+  ]
+}

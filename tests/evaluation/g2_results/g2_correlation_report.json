@@ -1,0 +1,194 @@
+{
+  "n_samples": 37,
+  "detectors_analyzed": [
+    "chi_square",
+    "lsb_entropy",
+    "rs_indicator",
+    "spa_indicator",
+    "visual_balance_delta_inv"
+  ],
+  "correlation_threshold_for_clustering": 0.7,
+  "pearson_matrix": {
+    "chi_square": {
+      "chi_square": 1.0,
+      "lsb_entropy": 0.3589,
+      "rs_indicator": 0.2714,
+      "spa_indicator": 0.4843,
+      "visual_balance_delta_inv": 0.4814
+    },
+    "lsb_entropy": {
+      "chi_square": 0.3589,
+      "lsb_entropy": 1.0,
+      "rs_indicator": -0.2428,
+      "spa_indicator": 0.5241,
+      "visual_balance_delta_inv": 0.9517
+    },
+    "rs_indicator": {
+      "chi_square": 0.2714,
+      "lsb_entropy": -0.2428,
+      "rs_indicator": 1.0,
+      "spa_indicator": 0.0229,
+      "visual_balance_delta_inv": -0.2553
+    },
+    "spa_indicator": {
+      "chi_square": 0.4843,
+      "lsb_entropy": 0.5241,
+      "rs_indicator": 0.0229,
+      "spa_indicator": 1.0,
+      "visual_balance_delta_inv": 0.6284
+    },
+    "visual_balance_delta_inv": {
+      "chi_square": 0.4814,
+      "lsb_entropy": 0.9517,
+      "rs_indicator": -0.2553,
+      "spa_indicator": 0.6284,
+      "visual_balance_delta_inv": 1.0
+    }
+  },
+  "spearman_matrix": {
+    "chi_square": {
+      "chi_square": 1.0,
+      "lsb_entropy": 0.5687,
+      "rs_indicator": 0.2442,
+      "spa_indicator": 0.4562,
+      "visual_balance_delta_inv": 0.595
+    },
+    "lsb_entropy": {
+      "chi_square": 0.5687,
+      "lsb_entropy": 1.0,
+      "rs_indicator": -0.2833,
+      "spa_indicator": 0.6823,
+      "visual_balance_delta_inv": 0.9409
+    },
+    "rs_indicator": {
+      "chi_square": 0.2442,
+      "lsb_entropy": -0.2833,
+      "rs_indicator": 1.0,
+      "spa_indicator": 0.0406,
+      "visual_balance_delta_inv": -0.1908
+    },
+    "spa_indicator": {
+      "chi_square": 0.4562,
+      "lsb_entropy": 0.6823,
+      "rs_indicator": 0.0406,
+      "spa_indicator": 1.0,
+      "visual_balance_delta_inv": 0.7293
+    },
+    "visual_balance_delta_inv": {
+      "chi_square": 0.595,
+      "lsb_entropy": 0.9409,
+      "rs_indicator": -0.1908,
+      "spa_indicator": 0.7293,
+      "visual_balance_delta_inv": 1.0
+    }
+  },
+  "pairwise": [
+    {
+      "pair": [
+        "lsb_entropy",
+        "visual_balance_delta_inv"
+      ],
+      "pearson_r": 0.9517,
+      "pearson_p": 0.0,
+      "spearman_r": 0.9409,
+      "n": 37
+    },
+    {
+      "pair": [
+        "spa_indicator",
+        "visual_balance_delta_inv"
+      ],
+      "pearson_r": 0.6284,
+      "pearson_p": 3.1e-05,
+      "spearman_r": 0.7293,
+      "n": 37
+    },
+    {
+      "pair": [
+        "lsb_entropy",
+        "spa_indicator"
+      ],
+      "pearson_r": 0.5241,
+      "pearson_p": 0.00087,
+      "spearman_r": 0.6823,
+      "n": 37
+    },
+    {
+      "pair": [
+        "chi_square",
+        "spa_indicator"
+      ],
+      "pearson_r": 0.4843,
+      "pearson_p": 0.002387,
+      "spearman_r": 0.4562,
+      "n": 37
+    },
+    {
+      "pair": [
+        "chi_square",
+        "visual_balance_delta_inv"
+      ],
+      "pearson_r": 0.4814,
+      "pearson_p": 0.002555,
+      "spearman_r": 0.595,
+      "n": 37
+    },
+    {
+      "pair": [
+        "chi_square",
+        "lsb_entropy"
+      ],
+      "pearson_r": 0.3589,
+      "pearson_p": 0.029146,
+      "spearman_r": 0.5687,
+      "n": 37
+    },
+    {
+      "pair": [
+        "chi_square",
+        "rs_indicator"
+      ],
+      "pearson_r": 0.2714,
+      "pearson_p": 0.104255,
+      "spearman_r": 0.2442,
+      "n": 37
+    },
+    {
+      "pair": [
+        "rs_indicator",
+        "visual_balance_delta_inv"
+      ],
+      "pearson_r": -0.2553,
+      "pearson_p": 0.12721,
+      "spearman_r": -0.1908,
+      "n": 37
+    },
+    {
+      "pair": [
+        "lsb_entropy",
+        "rs_indicator"
+      ],
+      "pearson_r": -0.2428,
+      "pearson_p": 0.147666,
+      "spearman_r": -0.2833,
+      "n": 37
+    },
+    {
+      "pair": [
+        "rs_indicator",
+        "spa_indicator"
+      ],
+      "pearson_r": 0.0229,
+      "pearson_p": 0.8928,
+      "spearman_r": 0.0406,
+      "n": 37
+    }
+  ],
+  "high_correlation_clusters": [
+    [
+      "lsb_entropy",
+      "visual_balance_delta_inv"
+    ]
+  ],
+  "note": "visual_balance_delta_inv is the negated min_balance_delta (so that, like the other four fields, a HIGHER value means MORE suspicious), to make correlation direction directly comparable across detectors."
+}
