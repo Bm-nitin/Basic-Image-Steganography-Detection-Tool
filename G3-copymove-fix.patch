@@ -1,0 +1,80 @@
+--- /tmp/pristine/app/core/copy_move_analysis.py	2026-09-08 16:58:58.000000000 +0000
++++ /home/claude/audit/app/core/copy_move_analysis.py	2026-09-14 09:55:05.787093386 +0000
+@@ -39,6 +39,37 @@
+     MIN_SPATIAL_DIST = 32.0
+     MAX_MATCHES_REPORTED = 10
+ 
++    # --- G3 fix (see G3 technical report, Step 3) ---
++    # A genuinely localized copy-move forgery produces a small, bounded
++    # number of displacement clusters and clustered blocks (a deliberate,
++    # finite set of copy-paste operations). Naturally repetitive/periodic
++    # content (tiled patterns, repeated grid lines, large flat regions) can
++    # instead produce a very large number of coherent-but-coincidental
++    # clusters spanning much of the image -- evidence of global structural
++    # repetition, not a planted duplicate. This distinction is used in the
++    # copy-move literature (e.g. filtering to the single most-frequent
++    # displacement vector; discarding matches inconsistent with a bounded,
++    # localized transformation) even though implementations vary.
++    #
++    # These two caps were set from the empirically observed gap in the G3
++    # evaluation corpus (tests/evaluation/g3_results/), not chosen a priori:
++    #   - Every genuine/ambiguous case observed: cluster_count <= 3,
++    #     clustered_blocks <= 15.
++    #   - Every extreme, clearly-periodic false positive observed
++    #     (a repeated document grid, a checkerboard pattern):
++    #     cluster_count >= 15, clustered_blocks >= 194.
++    # The caps below sit within that large observed gap, with substantial
++    # margin on both sides, rather than at a boundary tuned to any single
++    # sample. They address the extreme, unambiguous portion of the measured
++    # false-positive burden only -- see the G3 report for the smaller-
++    # magnitude cases (e.g. a single large flat region producing one
++    # coincidental cluster of ~8-15 blocks) that remain unresolved because
++    # they sit too close, in this corpus, to the only confirmed genuine
++    # small-scale copy-move-positive sample to separate safely without
++    # risking that true positive.
++    MAX_CLUSTERS_BEFORE_PERIODICITY = 8
++    MAX_CLUSTERED_BLOCKS_BEFORE_PERIODICITY = 50
++
+     @classmethod
+     def analyze(cls, image_input: Union[Image.Image, np.ndarray]) -> Dict[str, Any]:
+         """
+@@ -223,13 +254,29 @@
+         # Compute bounded anomaly indicator [0.0, 1.0]
+         # Isolated matches are normal, but clustered duplicates indicate a duplicated region
+         raw_indicator = total_clustered_blocks / 6.0
+-        anomaly_indicator = float(max(0.0, min(1.0, raw_indicator)))
+-        is_suspicious = bool(anomaly_indicator > 0.40 or cluster_count >= 2)
++        uncapped_indicator = float(max(0.0, min(1.0, raw_indicator)))
++
++        # G3 fix: an extremely large number of clusters or clustered blocks
++        # is evidence of global periodic/repetitive structure (e.g. a tiled
++        # texture or a repeated document grid), not a bounded, localized
++        # forgery -- see the class docstring and the constants above for the
++        # evidence this threshold is drawn from. The indicator itself (not
++        # just the boolean suspicion flag) must be suppressed here, since
++        # TamperingAnalyzer's aggregation reads `anomaly_indicator` directly
++        # (both in its weighted sum and its max-pooling boost) rather than
++        # this detector's own `is_suspicious` decision.
++        is_periodic_like = bool(
++            cluster_count > cls.MAX_CLUSTERS_BEFORE_PERIODICITY
++            or total_clustered_blocks > cls.MAX_CLUSTERED_BLOCKS_BEFORE_PERIODICITY
++        )
++        anomaly_indicator = 0.0 if is_periodic_like else uncapped_indicator
++        is_suspicious = bool((not is_periodic_like) and (anomaly_indicator > 0.40 or cluster_count >= 2))
+ 
+         details_msg = (
+             f"Copy-move evaluation: {total_textured_blocks} textured blocks inspected, "
+             f"{candidate_match_count} candidate duplicate pairs, "
+             f"{cluster_count} coherent displacement clusters ({total_clustered_blocks} clustered blocks)."
++            + (" Pattern consistent with periodic/repetitive structure rather than a localized duplicate; suspicion suppressed." if is_periodic_like else "")
+         )
+ 
+         return {
+@@ -238,6 +285,7 @@
+             'candidate_matches': candidate_match_count,
+             'cluster_count': cluster_count,
+             'anomaly_indicator': round(anomaly_indicator, 4),
++            'is_periodic_like': is_periodic_like,
+             'is_suspicious': is_suspicious,
+             'matches': reported_matches,
+             'details': details_msg

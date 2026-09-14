@@ -6,7 +6,7 @@
   "samples": [
     {
       "filename": "photograph_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_clean.png",
       "image_class": "photograph_proxy",
       "format": "PNG",
       "dimensions": [
@@ -26,7 +26,7 @@
     },
     {
       "filename": "photograph_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_stego_low.png",
       "image_class": "photograph_proxy",
       "format": "PNG",
       "dimensions": [
@@ -46,7 +46,7 @@
     },
     {
       "filename": "photograph_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_stego_medium.png",
       "image_class": "photograph_proxy",
       "format": "PNG",
       "dimensions": [
@@ -66,7 +66,7 @@
     },
     {
       "filename": "photograph_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_stego_high.png",
       "image_class": "photograph_proxy",
       "format": "PNG",
       "dimensions": [
@@ -86,7 +86,7 @@
     },
     {
       "filename": "screenshot_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\screenshot_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/screenshot_proxy_clean.png",
       "image_class": "screenshot_proxy",
       "format": "PNG",
       "dimensions": [
@@ -106,7 +106,7 @@
     },
     {
       "filename": "screenshot_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\screenshot_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/screenshot_proxy_stego_low.png",
       "image_class": "screenshot_proxy",
       "format": "PNG",
       "dimensions": [
@@ -126,7 +126,7 @@
     },
     {
       "filename": "screenshot_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\screenshot_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/screenshot_proxy_stego_medium.png",
       "image_class": "screenshot_proxy",
       "format": "PNG",
       "dimensions": [
@@ -146,7 +146,7 @@
     },
     {
       "filename": "screenshot_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\screenshot_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/screenshot_proxy_stego_high.png",
       "image_class": "screenshot_proxy",
       "format": "PNG",
       "dimensions": [
@@ -166,7 +166,7 @@
     },
     {
       "filename": "document_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\document_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/document_proxy_clean.png",
       "image_class": "document_proxy",
       "format": "PNG",
       "dimensions": [
@@ -186,7 +186,7 @@
     },
     {
       "filename": "document_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\document_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/document_proxy_stego_low.png",
       "image_class": "document_proxy",
       "format": "PNG",
       "dimensions": [
@@ -206,7 +206,7 @@
     },
     {
       "filename": "document_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\document_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/document_proxy_stego_medium.png",
       "image_class": "document_proxy",
       "format": "PNG",
       "dimensions": [
@@ -226,7 +226,7 @@
     },
     {
       "filename": "document_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\document_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/document_proxy_stego_high.png",
       "image_class": "document_proxy",
       "format": "PNG",
       "dimensions": [
@@ -246,7 +246,7 @@
     },
     {
       "filename": "illustration_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\illustration_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/illustration_proxy_clean.png",
       "image_class": "illustration_proxy",
       "format": "PNG",
       "dimensions": [
@@ -266,7 +266,7 @@
     },
     {
       "filename": "illustration_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\illustration_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/illustration_proxy_stego_low.png",
       "image_class": "illustration_proxy",
       "format": "PNG",
       "dimensions": [
@@ -286,7 +286,7 @@
     },
     {
       "filename": "illustration_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\illustration_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/illustration_proxy_stego_medium.png",
       "image_class": "illustration_proxy",
       "format": "PNG",
       "dimensions": [
@@ -306,7 +306,7 @@
     },
     {
       "filename": "illustration_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\illustration_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/illustration_proxy_stego_high.png",
       "image_class": "illustration_proxy",
       "format": "PNG",
       "dimensions": [
@@ -326,7 +326,7 @@
     },
     {
       "filename": "low_color_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\low_color_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/low_color_proxy_clean.png",
       "image_class": "low_color_proxy",
       "format": "PNG",
       "dimensions": [
@@ -346,7 +346,7 @@
     },
     {
       "filename": "low_color_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\low_color_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/low_color_proxy_stego_low.png",
       "image_class": "low_color_proxy",
       "format": "PNG",
       "dimensions": [
@@ -366,7 +366,7 @@
     },
     {
       "filename": "low_color_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\low_color_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/low_color_proxy_stego_medium.png",
       "image_class": "low_color_proxy",
       "format": "PNG",
       "dimensions": [
@@ -386,7 +386,7 @@
     },
     {
       "filename": "low_color_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\low_color_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/low_color_proxy_stego_high.png",
       "image_class": "low_color_proxy",
       "format": "PNG",
       "dimensions": [
@@ -406,7 +406,7 @@
     },
     {
       "filename": "alpha_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\alpha_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/alpha_proxy_clean.png",
       "image_class": "alpha_proxy",
       "format": "PNG",
       "dimensions": [
@@ -426,7 +426,7 @@
     },
     {
       "filename": "alpha_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\alpha_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/alpha_proxy_stego_low.png",
       "image_class": "alpha_proxy",
       "format": "PNG",
       "dimensions": [
@@ -446,7 +446,7 @@
     },
     {
       "filename": "alpha_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\alpha_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/alpha_proxy_stego_medium.png",
       "image_class": "alpha_proxy",
       "format": "PNG",
       "dimensions": [
@@ -466,7 +466,7 @@
     },
     {
       "filename": "alpha_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\alpha_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/alpha_proxy_stego_high.png",
       "image_class": "alpha_proxy",
       "format": "PNG",
       "dimensions": [
@@ -486,7 +486,7 @@
     },
     {
       "filename": "grayscale_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\grayscale_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/grayscale_proxy_clean.png",
       "image_class": "grayscale_proxy",
       "format": "PNG",
       "dimensions": [
@@ -506,7 +506,7 @@
     },
     {
       "filename": "grayscale_proxy_stego_low.png",
-      "filepath": "tests/evaluation/g2_samples\\grayscale_proxy_stego_low.png",
+      "filepath": "tests/evaluation/g2_samples/grayscale_proxy_stego_low.png",
       "image_class": "grayscale_proxy",
       "format": "PNG",
       "dimensions": [
@@ -526,7 +526,7 @@
     },
     {
       "filename": "grayscale_proxy_stego_medium.png",
-      "filepath": "tests/evaluation/g2_samples\\grayscale_proxy_stego_medium.png",
+      "filepath": "tests/evaluation/g2_samples/grayscale_proxy_stego_medium.png",
       "image_class": "grayscale_proxy",
       "format": "PNG",
       "dimensions": [
@@ -546,7 +546,7 @@
     },
     {
       "filename": "grayscale_proxy_stego_high.png",
-      "filepath": "tests/evaluation/g2_samples\\grayscale_proxy_stego_high.png",
+      "filepath": "tests/evaluation/g2_samples/grayscale_proxy_stego_high.png",
       "image_class": "grayscale_proxy",
       "format": "PNG",
       "dimensions": [
@@ -566,7 +566,7 @@
     },
     {
       "filename": "photograph_proxy_clean.jpg",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_clean.jpg",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_clean.jpg",
       "image_class": "photograph_proxy",
       "format": "JPEG",
       "dimensions": [
@@ -586,7 +586,7 @@
     },
     {
       "filename": "photograph_proxy_stego_appended_eof.jpg",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_stego_appended_eof.jpg",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_stego_appended_eof.jpg",
       "image_class": "photograph_proxy",
       "format": "JPEG",
       "dimensions": [
@@ -606,7 +606,7 @@
     },
     {
       "filename": "screenshot_proxy_clean.jpg",
-      "filepath": "tests/evaluation/g2_samples\\screenshot_proxy_clean.jpg",
+      "filepath": "tests/evaluation/g2_samples/screenshot_proxy_clean.jpg",
       "image_class": "screenshot_proxy",
       "format": "JPEG",
       "dimensions": [
@@ -626,7 +626,7 @@
     },
     {
       "filename": "screenshot_proxy_stego_appended_eof.jpg",
-      "filepath": "tests/evaluation/g2_samples\\screenshot_proxy_stego_appended_eof.jpg",
+      "filepath": "tests/evaluation/g2_samples/screenshot_proxy_stego_appended_eof.jpg",
       "image_class": "screenshot_proxy",
       "format": "JPEG",
       "dimensions": [
@@ -646,7 +646,7 @@
     },
     {
       "filename": "photograph_proxy_tamper_copymove.png",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_tamper_copymove.png",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_tamper_copymove.png",
       "image_class": "photograph_proxy",
       "format": "PNG",
       "dimensions": [
@@ -666,7 +666,7 @@
     },
     {
       "filename": "photograph_proxy_tamper_splice.png",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_tamper_splice.png",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_tamper_splice.png",
       "image_class": "photograph_proxy",
       "format": "PNG",
       "dimensions": [
@@ -686,7 +686,7 @@
     },
     {
       "filename": "document_proxy_tamper_splice.png",
-      "filepath": "tests/evaluation/g2_samples\\document_proxy_tamper_splice.png",
+      "filepath": "tests/evaluation/g2_samples/document_proxy_tamper_splice.png",
       "image_class": "document_proxy",
       "format": "PNG",
       "dimensions": [
@@ -706,7 +706,7 @@
     },
     {
       "filename": "repeated_structure_proxy_clean.png",
-      "filepath": "tests/evaluation/g2_samples\\repeated_structure_proxy_clean.png",
+      "filepath": "tests/evaluation/g2_samples/repeated_structure_proxy_clean.png",
       "image_class": "repeated_structure_proxy",
       "format": "PNG",
       "dimensions": [
@@ -726,7 +726,7 @@
     },
     {
       "filename": "photograph_proxy_recompressed.jpg",
-      "filepath": "tests/evaluation/g2_samples\\photograph_proxy_recompressed.jpg",
+      "filepath": "tests/evaluation/g2_samples/photograph_proxy_recompressed.jpg",
       "image_class": "photograph_proxy",
       "format": "JPEG",
       "dimensions": [

@@ -345,9 +345,9 @@
     "metadata_score": 0.0,
     "statistical_score": 14.7,
     "visual_score": 0.0,
-    "tampering_score": 85.0,
-    "tampering_indicator": 0.85,
-    "tampering_suspicious": true,
+    "tampering_score": 1.2,
+    "tampering_indicator": 0.0124,
+    "tampering_suspicious": false,
     "chi_square_max_indicator": 0.0,
     "chi_square_is_suspicious": false,
     "lsb_entropy_max": 0.7662,
@@ -366,7 +366,7 @@
     "jpeg_structural_indicator": 0.0,
     "combined_statistical_indicator": 1.0,
     "pred_stego": false,
-    "pred_tamper": true
+    "pred_tamper": false
   },
   {
     "filename": "document_proxy_stego_low.png",
@@ -386,9 +386,9 @@
     "metadata_score": 0.0,
     "statistical_score": 14.7,
     "visual_score": 0.0,
-    "tampering_score": 85.0,
-    "tampering_indicator": 0.85,
-    "tampering_suspicious": true,
+    "tampering_score": 1.7,
+    "tampering_indicator": 0.0166,
+    "tampering_suspicious": false,
     "chi_square_max_indicator": 0.0,
     "chi_square_is_suspicious": false,
     "lsb_entropy_max": 0.8363,
@@ -407,7 +407,7 @@
     "jpeg_structural_indicator": 0.0,
     "combined_statistical_indicator": 1.0,
     "pred_stego": false,
-    "pred_tamper": true
+    "pred_tamper": false
   },
   {
     "filename": "document_proxy_stego_medium.png",
@@ -427,9 +427,9 @@
     "metadata_score": 0.0,
     "statistical_score": 26.5,
     "visual_score": 0.0,
-    "tampering_score": 85.0,
-    "tampering_indicator": 0.85,
-    "tampering_suspicious": true,
+    "tampering_score": 1.8,
+    "tampering_indicator": 0.018,
+    "tampering_suspicious": false,
     "chi_square_max_indicator": 0.0,
     "chi_square_is_suspicious": false,
     "lsb_entropy_max": 0.9467,
@@ -448,7 +448,7 @@
     "jpeg_structural_indicator": 0.0,
     "combined_statistical_indicator": 1.0,
     "pred_stego": true,
-    "pred_tamper": true
+    "pred_tamper": false
   },
   {
     "filename": "document_proxy_stego_high.png",
@@ -468,9 +468,9 @@
     "metadata_score": 0.0,
     "statistical_score": 50.0,
     "visual_score": 0.0,
-    "tampering_score": 85.0,
-    "tampering_indicator": 0.85,
-    "tampering_suspicious": true,
+    "tampering_score": 1.5,
+    "tampering_indicator": 0.0154,
+    "tampering_suspicious": false,
     "chi_square_max_indicator": 0.85,
     "chi_square_is_suspicious": true,
     "lsb_entropy_max": 1.0,
@@ -489,7 +489,7 @@
     "jpeg_structural_indicator": 0.0,
     "combined_statistical_indicator": 1.0,
     "pred_stego": true,
-    "pred_tamper": true
+    "pred_tamper": false
   },
   {
     "filename": "illustration_proxy_clean.png",
@@ -1411,9 +1411,9 @@
     "metadata_score": 0.0,
     "statistical_score": 14.7,
     "visual_score": 0.0,
-    "tampering_score": 85.0,
-    "tampering_indicator": 0.85,
-    "tampering_suspicious": true,
+    "tampering_score": 1.6,
+    "tampering_indicator": 0.0156,
+    "tampering_suspicious": false,
     "chi_square_max_indicator": 0.0,
     "chi_square_is_suspicious": false,
     "lsb_entropy_max": 0.778,
@@ -1432,7 +1432,7 @@
     "jpeg_structural_indicator": 0.0,
     "combined_statistical_indicator": 1.0,
     "pred_stego": false,
-    "pred_tamper": true
+    "pred_tamper": false
   },
   {
     "filename": "repeated_structure_proxy_clean.png",

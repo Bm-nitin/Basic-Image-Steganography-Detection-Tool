@@ -1,0 +1,2 @@
+G2 baseline tampering overall (before G3 fix): tp 2 fp 17 tn 17 fn 1
+FPR: 0.5 sensitivity: 0.6666666666666666
