@@ -191,6 +191,8 @@ class RSAnalyzer:
                 'discrimination_singular': 0.0,
                 'estimated_embedding_rate': 0.0,
                 'suspicion_indicator': 0.0,
+                'sym_diff': 0.0,
+                'rs_applicability_diagnostic': 0.0,
                 'is_suspicious': False,
                 'degenerate_flat_content': True
             }
@@ -230,9 +232,32 @@ class RSAnalyzer:
 
         est_rate = cls._solve_embedding_rate(d0, d1, d_neg0, d_neg1)
 
-        # Asymmetry metric between regular and singular groups
+        # G4 Target A fix (see G3/G4 RS source investigation):
+        #
+        # sym_diff = |R_M - R_-M| + |S_M - S_-M| measures how far this
+        # image's data violates the RS *clean-image applicability
+        # assumption* (R_M ~= R_-M, S_M ~= S_-M -- Fridrich, Goljan & Du,
+        # "equation 3"). That assumption being violated means RS's model may
+        # not be well-suited to this image (e.g. directional structure, or
+        # boundary-value fixed points under F_-1); it is NOT the mechanism
+        # the source uses to detect embedding. The source's actual
+        # embedding-evidence mechanism is the within-mask R_M-vs-S_M (and
+        # R_-M-vs-S_-M) convergence already captured correctly by est_rate
+        # via the quadratic solve above.
+        #
+        # Previously, `suspicion_indicator` was max(est_rate, sym_diff*4),
+        # which let this applicability diagnostic directly inflate the
+        # suspicion score as if it were independent embedding evidence, with
+        # no cited basis for the *4.0 scaling. That conflation is corrected
+        # here: `suspicion_indicator` now represents embedding evidence only
+        # (equal to est_rate, the source-grounded quantity), and the
+        # applicability diagnostic is preserved and reported separately
+        # under its own name rather than deleted. `estimated_embedding_rate`,
+        # the discrimination function, the flip operations, and the
+        # quadratic solve are all unchanged by this fix.
         sym_diff = abs(r_m - r_neg_m) + abs(s_m - s_neg_m)
-        indicator = float(max(est_rate, min(1.0, sym_diff * 4.0)))
+        rs_applicability_diagnostic = float(min(1.0, sym_diff * 4.0))
+        indicator = est_rate
 
         is_suspicious = bool(est_rate > 0.35 or indicator > 0.50)
 
@@ -248,6 +273,8 @@ class RSAnalyzer:
             'discrimination_singular': round(d_neg0, 5),
             'estimated_embedding_rate': round(est_rate, 4),
             'suspicion_indicator': round(indicator, 4),
+            'sym_diff': round(sym_diff, 5),
+            'rs_applicability_diagnostic': round(rs_applicability_diagnostic, 4),
             'is_suspicious': is_suspicious
         }
 
@@ -287,6 +314,7 @@ class RSAnalyzer:
         channels_res = {}
         max_rate = gray_res['estimated_embedding_rate']
         max_indicator = gray_res['suspicion_indicator']
+        max_applicability = gray_res.get('rs_applicability_diagnostic', 0.0)
 
         if len(img_np.shape) == 3 and img_np.shape[2] >= 3:
             for ch_idx, ch_name in enumerate(['red', 'green', 'blue']):
@@ -297,15 +325,20 @@ class RSAnalyzer:
                         max_rate = ch_out['estimated_embedding_rate']
                     if ch_out['suspicion_indicator'] > max_indicator:
                         max_indicator = ch_out['suspicion_indicator']
+                    if ch_out.get('rs_applicability_diagnostic', 0.0) > max_applicability:
+                        max_applicability = ch_out['rs_applicability_diagnostic']
 
         gray_res['channel_breakdown'] = channels_res
         gray_res['estimated_embedding_rate'] = round(float(max_rate), 4)
         gray_res['suspicion_indicator'] = round(float(max_indicator), 4)
+        gray_res['rs_applicability_diagnostic'] = round(float(max_applicability), 4)
         gray_res['is_suspicious'] = bool(max_rate > 0.35 or max_indicator > 0.50)
         gray_res['estimated_percentage'] = round(float(max_rate * 100.0), 2)
         gray_res['details'] = (
             f"RS Steganalysis estimates {max_rate * 100:.1f}% spatial LSB embedding capacity "
             f"(Regular={gray_res['regular']:.3f}, Singular={gray_res['singular']:.3f}, "
-            f"R_-M={gray_res['negative_regular']:.3f}, S_-M={gray_res['negative_singular']:.3f})."
+            f"R_-M={gray_res['negative_regular']:.3f}, S_-M={gray_res['negative_singular']:.3f}). "
+            f"Applicability diagnostic: {max_applicability:.3f} (measures assumption self-consistency, "
+            f"not embedding evidence -- see rs_applicability_diagnostic)."
         )
         return gray_res
