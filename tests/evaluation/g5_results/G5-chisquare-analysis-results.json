@@ -1,0 +1,5158 @@
+{
+  "note": "Detailed chi-square measurement over the EXISTING G3 corpus (not regenerated). Read-only measurement; chi_square_attack() itself is unmodified.",
+  "sample_count": 92,
+  "samples": [
+    {
+      "filename": "photograph_real_coffee_clean.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 601.48,
+          "df": 126,
+          "ratio": 4.77,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.77)"
+        },
+        "red": {
+          "chi2_stat": 714.26,
+          "df": 124,
+          "ratio": 5.76,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5.76)"
+        },
+        "green": {
+          "chi2_stat": 1255.78,
+          "df": 127,
+          "ratio": 9.89,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=9.89)"
+        },
+        "blue": {
+          "chi2_stat": 2697.59,
+          "df": 127,
+          "ratio": 21.24,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21.24)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_stego_low.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 632.07,
+          "df": 126,
+          "ratio": 5.02,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5.02)"
+        },
+        "red": {
+          "chi2_stat": 529.61,
+          "df": 124,
+          "ratio": 4.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.27)"
+        },
+        "green": {
+          "chi2_stat": 989.22,
+          "df": 127,
+          "ratio": 7.79,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7.79)"
+        },
+        "blue": {
+          "chi2_stat": 1980.63,
+          "df": 127,
+          "ratio": 15.6,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15.60)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_stego_medium.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 628.28,
+          "df": 126,
+          "ratio": 4.99,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.99)"
+        },
+        "red": {
+          "chi2_stat": 234.47,
+          "df": 124,
+          "ratio": 1.89,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.89)"
+        },
+        "green": {
+          "chi2_stat": 373.02,
+          "df": 127,
+          "ratio": 2.94,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.94)"
+        },
+        "blue": {
+          "chi2_stat": 822.9,
+          "df": 127,
+          "ratio": 6.48,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=6.48)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_stego_high.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 812.34,
+          "df": 126,
+          "ratio": 6.45,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=6.45)"
+        },
+        "red": {
+          "chi2_stat": 124.4,
+          "df": 124,
+          "ratio": 1.0,
+          "p_value": 0.473,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.00)"
+        },
+        "green": {
+          "chi2_stat": 148.79,
+          "df": 127,
+          "ratio": 1.17,
+          "p_value": 0.0905,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.17)"
+        },
+        "blue": {
+          "chi2_stat": 123.44,
+          "df": 127,
+          "ratio": 0.97,
+          "p_value": 0.5729,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.97)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_chelsea_clean.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 140.68,
+          "df": 89,
+          "ratio": 1.58,
+          "p_value": 0.0004,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.58)"
+        },
+        "red": {
+          "chi2_stat": 128.8,
+          "df": 104,
+          "ratio": 1.24,
+          "p_value": 0.05,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.24)"
+        },
+        "green": {
+          "chi2_stat": 123.29,
+          "df": 86,
+          "ratio": 1.43,
+          "p_value": 0.0052,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.43)"
+        },
+        "blue": {
+          "chi2_stat": 140.97,
+          "df": 88,
+          "ratio": 1.6,
+          "p_value": 0.0003,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.60)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_chelsea_stego_low.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 139.23,
+          "df": 89,
+          "ratio": 1.56,
+          "p_value": 0.0005,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.56)"
+        },
+        "red": {
+          "chi2_stat": 108.13,
+          "df": 104,
+          "ratio": 1.04,
+          "p_value": 0.3712,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.04)"
+        },
+        "green": {
+          "chi2_stat": 113.87,
+          "df": 86,
+          "ratio": 1.32,
+          "p_value": 0.0238,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.32)"
+        },
+        "blue": {
+          "chi2_stat": 119.26,
+          "df": 88,
+          "ratio": 1.36,
+          "p_value": 0.0149,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.36)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_chelsea_stego_medium.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 156.23,
+          "df": 89,
+          "ratio": 1.76,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.76)"
+        },
+        "red": {
+          "chi2_stat": 96.38,
+          "df": 104,
+          "ratio": 0.93,
+          "p_value": 0.6899,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.93)"
+        },
+        "green": {
+          "chi2_stat": 109.24,
+          "df": 86,
+          "ratio": 1.27,
+          "p_value": 0.0461,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.27)"
+        },
+        "blue": {
+          "chi2_stat": 107.46,
+          "df": 88,
+          "ratio": 1.22,
+          "p_value": 0.0778,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.22)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_chelsea_stego_high.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.8964,
+      "channels": {
+        "gray": {
+          "chi2_stat": 181.37,
+          "df": 89,
+          "ratio": 2.04,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.04)"
+        },
+        "red": {
+          "chi2_stat": 96.4,
+          "df": 104,
+          "ratio": 0.93,
+          "p_value": 0.6893,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.93)"
+        },
+        "green": {
+          "chi2_stat": 69.91,
+          "df": 86,
+          "ratio": 0.81,
+          "p_value": 0.8964,
+          "chi_square_indicator": 0.8964,
+          "probability_stego": 0.8964,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=89.64%, ratio=0.81)"
+        },
+        "blue": {
+          "chi2_stat": 84.93,
+          "df": 88,
+          "ratio": 0.97,
+          "p_value": 0.573,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.97)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_rocket_clean.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 320.55,
+          "df": 115,
+          "ratio": 2.79,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.79)"
+        },
+        "red": {
+          "chi2_stat": 242.43,
+          "df": 121,
+          "ratio": 2.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.00)"
+        },
+        "green": {
+          "chi2_stat": 333.88,
+          "df": 115,
+          "ratio": 2.9,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.90)"
+        },
+        "blue": {
+          "chi2_stat": 389.73,
+          "df": 105,
+          "ratio": 3.71,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.71)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_rocket_stego_low.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 367.69,
+          "df": 115,
+          "ratio": 3.2,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.20)"
+        },
+        "red": {
+          "chi2_stat": 202.0,
+          "df": 121,
+          "ratio": 1.67,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.67)"
+        },
+        "green": {
+          "chi2_stat": 317.43,
+          "df": 115,
+          "ratio": 2.76,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.76)"
+        },
+        "blue": {
+          "chi2_stat": 294.67,
+          "df": 105,
+          "ratio": 2.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.81)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_rocket_stego_medium.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 532.76,
+          "df": 115,
+          "ratio": 4.63,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.63)"
+        },
+        "red": {
+          "chi2_stat": 144.7,
+          "df": 121,
+          "ratio": 1.2,
+          "p_value": 0.0699,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.20)"
+        },
+        "green": {
+          "chi2_stat": 172.4,
+          "df": 115,
+          "ratio": 1.5,
+          "p_value": 0.0004,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.50)"
+        },
+        "blue": {
+          "chi2_stat": 167.71,
+          "df": 105,
+          "ratio": 1.6,
+          "p_value": 0.0001,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.60)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_rocket_stego_high.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 692.11,
+          "df": 113,
+          "ratio": 6.12,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=6.12)"
+        },
+        "red": {
+          "chi2_stat": 121.63,
+          "df": 121,
+          "ratio": 1.01,
+          "p_value": 0.4668,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.01)"
+        },
+        "green": {
+          "chi2_stat": 123.35,
+          "df": 115,
+          "ratio": 1.07,
+          "p_value": 0.2805,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.07)"
+        },
+        "blue": {
+          "chi2_stat": 119.98,
+          "df": 105,
+          "ratio": 1.14,
+          "p_value": 0.1507,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.14)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_page_clean.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 283.21,
+          "df": 127,
+          "ratio": 2.23,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.23)"
+        },
+        "red": {
+          "chi2_stat": 283.21,
+          "df": 127,
+          "ratio": 2.23,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.23)"
+        },
+        "green": {
+          "chi2_stat": 283.21,
+          "df": 127,
+          "ratio": 2.23,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.23)"
+        },
+        "blue": {
+          "chi2_stat": 283.21,
+          "df": 127,
+          "ratio": 2.23,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.23)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_page_stego_low.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 229.4,
+          "df": 127,
+          "ratio": 1.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.81)"
+        },
+        "red": {
+          "chi2_stat": 229.4,
+          "df": 127,
+          "ratio": 1.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.81)"
+        },
+        "green": {
+          "chi2_stat": 229.4,
+          "df": 127,
+          "ratio": 1.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.81)"
+        },
+        "blue": {
+          "chi2_stat": 229.4,
+          "df": 127,
+          "ratio": 1.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.81)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_page_stego_medium.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 156.44,
+          "df": 127,
+          "ratio": 1.23,
+          "p_value": 0.039,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.23)"
+        },
+        "red": {
+          "chi2_stat": 156.44,
+          "df": 127,
+          "ratio": 1.23,
+          "p_value": 0.039,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.23)"
+        },
+        "green": {
+          "chi2_stat": 156.44,
+          "df": 127,
+          "ratio": 1.23,
+          "p_value": 0.039,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.23)"
+        },
+        "blue": {
+          "chi2_stat": 156.44,
+          "df": 127,
+          "ratio": 1.23,
+          "p_value": 0.039,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.23)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_page_stego_high.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 115.88,
+          "df": 127,
+          "ratio": 0.91,
+          "p_value": 0.7509,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        },
+        "red": {
+          "chi2_stat": 115.88,
+          "df": 127,
+          "ratio": 0.91,
+          "p_value": 0.7509,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        },
+        "green": {
+          "chi2_stat": 115.88,
+          "df": 127,
+          "ratio": 0.91,
+          "p_value": 0.7509,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        },
+        "blue": {
+          "chi2_stat": 115.88,
+          "df": 127,
+          "ratio": 0.91,
+          "p_value": 0.7509,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_text_clean.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 162.26,
+          "df": 81,
+          "ratio": 2.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.00)"
+        },
+        "red": {
+          "chi2_stat": 162.26,
+          "df": 81,
+          "ratio": 2.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.00)"
+        },
+        "green": {
+          "chi2_stat": 162.26,
+          "df": 81,
+          "ratio": 2.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.00)"
+        },
+        "blue": {
+          "chi2_stat": 162.26,
+          "df": 81,
+          "ratio": 2.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.00)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_text_stego_low.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 158.47,
+          "df": 81,
+          "ratio": 1.96,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.96)"
+        },
+        "red": {
+          "chi2_stat": 158.47,
+          "df": 81,
+          "ratio": 1.96,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.96)"
+        },
+        "green": {
+          "chi2_stat": 158.47,
+          "df": 81,
+          "ratio": 1.96,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.96)"
+        },
+        "blue": {
+          "chi2_stat": 158.47,
+          "df": 81,
+          "ratio": 1.96,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.96)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_text_stego_medium.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 102.73,
+          "df": 81,
+          "ratio": 1.27,
+          "p_value": 0.0519,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.27)"
+        },
+        "red": {
+          "chi2_stat": 102.73,
+          "df": 81,
+          "ratio": 1.27,
+          "p_value": 0.0519,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.27)"
+        },
+        "green": {
+          "chi2_stat": 102.73,
+          "df": 81,
+          "ratio": 1.27,
+          "p_value": 0.0519,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.27)"
+        },
+        "blue": {
+          "chi2_stat": 102.73,
+          "df": 81,
+          "ratio": 1.27,
+          "p_value": 0.0519,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.27)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_text_stego_high.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 80.31,
+          "df": 81,
+          "ratio": 0.99,
+          "p_value": 0.5008,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "red": {
+          "chi2_stat": 80.31,
+          "df": 81,
+          "ratio": 0.99,
+          "p_value": 0.5008,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "green": {
+          "chi2_stat": 80.31,
+          "df": 81,
+          "ratio": 0.99,
+          "p_value": 0.5008,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "blue": {
+          "chi2_stat": 80.31,
+          "df": 81,
+          "ratio": 0.99,
+          "p_value": 0.5008,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_real_moon_clean.png",
+      "image_class": "grayscale_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 1030.76,
+          "df": 102,
+          "ratio": 10.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=10.11)"
+        },
+        "red": {
+          "chi2_stat": 1030.76,
+          "df": 102,
+          "ratio": 10.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=10.11)"
+        },
+        "green": {
+          "chi2_stat": 1030.76,
+          "df": 102,
+          "ratio": 10.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=10.11)"
+        },
+        "blue": {
+          "chi2_stat": 1030.76,
+          "df": 102,
+          "ratio": 10.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=10.11)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_real_moon_stego_low.png",
+      "image_class": "grayscale_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 816.08,
+          "df": 102,
+          "ratio": 8.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.00)"
+        },
+        "red": {
+          "chi2_stat": 816.08,
+          "df": 102,
+          "ratio": 8.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.00)"
+        },
+        "green": {
+          "chi2_stat": 816.08,
+          "df": 102,
+          "ratio": 8.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.00)"
+        },
+        "blue": {
+          "chi2_stat": 816.08,
+          "df": 102,
+          "ratio": 8.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.00)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_real_moon_stego_medium.png",
+      "image_class": "grayscale_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 327.03,
+          "df": 102,
+          "ratio": 3.21,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.21)"
+        },
+        "red": {
+          "chi2_stat": 327.03,
+          "df": 102,
+          "ratio": 3.21,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.21)"
+        },
+        "green": {
+          "chi2_stat": 327.03,
+          "df": 102,
+          "ratio": 3.21,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.21)"
+        },
+        "blue": {
+          "chi2_stat": 327.03,
+          "df": 102,
+          "ratio": 3.21,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.21)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_real_moon_stego_high.png",
+      "image_class": "grayscale_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 116.21,
+          "df": 102,
+          "ratio": 1.14,
+          "p_value": 0.1591,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.14)"
+        },
+        "red": {
+          "chi2_stat": 116.21,
+          "df": 102,
+          "ratio": 1.14,
+          "p_value": 0.1591,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.14)"
+        },
+        "green": {
+          "chi2_stat": 116.21,
+          "df": 102,
+          "ratio": 1.14,
+          "p_value": 0.1591,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.14)"
+        },
+        "blue": {
+          "chi2_stat": 116.21,
+          "df": 102,
+          "ratio": 1.14,
+          "p_value": 0.1591,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.14)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_colorwheel_clean.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 13171.39,
+          "df": 127,
+          "ratio": 103.71,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=103.71)"
+        },
+        "red": {
+          "chi2_stat": 27525.79,
+          "df": 127,
+          "ratio": 216.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=216.74)"
+        },
+        "green": {
+          "chi2_stat": 28068.7,
+          "df": 127,
+          "ratio": 221.01,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=221.01)"
+        },
+        "blue": {
+          "chi2_stat": 28011.49,
+          "df": 127,
+          "ratio": 220.56,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=220.56)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_colorwheel_stego_low.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 9445.28,
+          "df": 127,
+          "ratio": 74.37,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=74.37)"
+        },
+        "red": {
+          "chi2_stat": 20063.49,
+          "df": 127,
+          "ratio": 157.98,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=157.98)"
+        },
+        "green": {
+          "chi2_stat": 20231.57,
+          "df": 127,
+          "ratio": 159.3,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=159.30)"
+        },
+        "blue": {
+          "chi2_stat": 20246.31,
+          "df": 127,
+          "ratio": 159.42,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=159.42)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_colorwheel_stego_medium.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 3440.65,
+          "df": 127,
+          "ratio": 27.09,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=27.09)"
+        },
+        "red": {
+          "chi2_stat": 7153.23,
+          "df": 127,
+          "ratio": 56.32,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=56.32)"
+        },
+        "green": {
+          "chi2_stat": 7233.54,
+          "df": 127,
+          "ratio": 56.96,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=56.96)"
+        },
+        "blue": {
+          "chi2_stat": 7344.71,
+          "df": 127,
+          "ratio": 57.83,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=57.83)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_colorwheel_stego_high.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.9686,
+      "channels": {
+        "gray": {
+          "chi2_stat": 99.12,
+          "df": 127,
+          "ratio": 0.78,
+          "p_value": 0.9681,
+          "chi_square_indicator": 0.9681,
+          "probability_stego": 0.9681,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=96.81%, ratio=0.78)"
+        },
+        "red": {
+          "chi2_stat": 124.02,
+          "df": 127,
+          "ratio": 0.98,
+          "p_value": 0.5582,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.98)"
+        },
+        "green": {
+          "chi2_stat": 117.88,
+          "df": 127,
+          "ratio": 0.93,
+          "p_value": 0.7069,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.93)"
+        },
+        "blue": {
+          "chi2_stat": 99.04,
+          "df": 127,
+          "ratio": 0.78,
+          "p_value": 0.9686,
+          "chi_square_indicator": 0.9686,
+          "probability_stego": 0.9686,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=96.86%, ratio=0.78)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_checkerboard_clean.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 42292.19,
+          "df": 17,
+          "ratio": 2487.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2487.78)"
+        },
+        "red": {
+          "chi2_stat": 42292.19,
+          "df": 17,
+          "ratio": 2487.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2487.78)"
+        },
+        "green": {
+          "chi2_stat": 42292.19,
+          "df": 17,
+          "ratio": 2487.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2487.78)"
+        },
+        "blue": {
+          "chi2_stat": 42292.19,
+          "df": 17,
+          "ratio": 2487.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2487.78)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_checkerboard_stego_low.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 30518.09,
+          "df": 17,
+          "ratio": 1795.18,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1795.18)"
+        },
+        "red": {
+          "chi2_stat": 30518.09,
+          "df": 17,
+          "ratio": 1795.18,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1795.18)"
+        },
+        "green": {
+          "chi2_stat": 30518.09,
+          "df": 17,
+          "ratio": 1795.18,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1795.18)"
+        },
+        "blue": {
+          "chi2_stat": 30518.09,
+          "df": 17,
+          "ratio": 1795.18,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1795.18)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_checkerboard_stego_medium.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 10620.56,
+          "df": 17,
+          "ratio": 624.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=624.74)"
+        },
+        "red": {
+          "chi2_stat": 10620.56,
+          "df": 17,
+          "ratio": 624.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=624.74)"
+        },
+        "green": {
+          "chi2_stat": 10620.56,
+          "df": 17,
+          "ratio": 624.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=624.74)"
+        },
+        "blue": {
+          "chi2_stat": 10620.56,
+          "df": 17,
+          "ratio": 624.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=624.74)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_real_checkerboard_stego_high.png",
+      "image_class": "illustration_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 24.56,
+          "df": 17,
+          "ratio": 1.44,
+          "p_value": 0.1051,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.44)"
+        },
+        "red": {
+          "chi2_stat": 24.56,
+          "df": 17,
+          "ratio": 1.44,
+          "p_value": 0.1051,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.44)"
+        },
+        "green": {
+          "chi2_stat": 24.56,
+          "df": 17,
+          "ratio": 1.44,
+          "p_value": 0.1051,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.44)"
+        },
+        "blue": {
+          "chi2_stat": 24.56,
+          "df": 17,
+          "ratio": 1.44,
+          "p_value": 0.1051,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.44)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_real_logo_clean.png",
+      "image_class": "alpha_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 23839.97,
+          "df": 99,
+          "ratio": 240.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=240.81)"
+        },
+        "red": {
+          "chi2_stat": 40191.87,
+          "df": 104,
+          "ratio": 386.46,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=386.46)"
+        },
+        "green": {
+          "chi2_stat": 22998.98,
+          "df": 91,
+          "ratio": 252.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=252.74)"
+        },
+        "blue": {
+          "chi2_stat": 23980.27,
+          "df": 124,
+          "ratio": 193.39,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=193.39)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_real_logo_stego_low.png",
+      "image_class": "alpha_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 18517.39,
+          "df": 99,
+          "ratio": 187.04,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=187.04)"
+        },
+        "red": {
+          "chi2_stat": 28894.81,
+          "df": 104,
+          "ratio": 277.83,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=277.83)"
+        },
+        "green": {
+          "chi2_stat": 16600.93,
+          "df": 91,
+          "ratio": 182.43,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=182.43)"
+        },
+        "blue": {
+          "chi2_stat": 17346.82,
+          "df": 124,
+          "ratio": 139.89,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=139.89)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_real_logo_stego_medium.png",
+      "image_class": "alpha_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 10260.7,
+          "df": 101,
+          "ratio": 101.59,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=101.59)"
+        },
+        "red": {
+          "chi2_stat": 10466.48,
+          "df": 104,
+          "ratio": 100.64,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=100.64)"
+        },
+        "green": {
+          "chi2_stat": 5916.48,
+          "df": 91,
+          "ratio": 65.02,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=65.02)"
+        },
+        "blue": {
+          "chi2_stat": 5923.19,
+          "df": 124,
+          "ratio": 47.77,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=47.77)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_real_logo_stego_high.png",
+      "image_class": "alpha_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.9703,
+      "channels": {
+        "gray": {
+          "chi2_stat": 6786.42,
+          "df": 99,
+          "ratio": 68.55,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=68.55)"
+        },
+        "red": {
+          "chi2_stat": 106.82,
+          "df": 104,
+          "ratio": 1.03,
+          "p_value": 0.4052,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.03)"
+        },
+        "green": {
+          "chi2_stat": 79.27,
+          "df": 91,
+          "ratio": 0.87,
+          "p_value": 0.8051,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.87)"
+        },
+        "blue": {
+          "chi2_stat": 96.06,
+          "df": 124,
+          "ratio": 0.77,
+          "p_value": 0.9703,
+          "chi_square_indicator": 0.9703,
+          "probability_stego": 0.9703,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=97.03%, ratio=0.77)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_brick_clean.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "red": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "green": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "blue": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_brick_stego_low.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 582.96,
+          "df": 66,
+          "ratio": 8.83,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.83)"
+        },
+        "red": {
+          "chi2_stat": 582.96,
+          "df": 66,
+          "ratio": 8.83,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.83)"
+        },
+        "green": {
+          "chi2_stat": 582.96,
+          "df": 66,
+          "ratio": 8.83,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.83)"
+        },
+        "blue": {
+          "chi2_stat": 582.96,
+          "df": 66,
+          "ratio": 8.83,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.83)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_brick_stego_medium.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 297.74,
+          "df": 66,
+          "ratio": 4.51,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.51)"
+        },
+        "red": {
+          "chi2_stat": 297.74,
+          "df": 66,
+          "ratio": 4.51,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.51)"
+        },
+        "green": {
+          "chi2_stat": 297.74,
+          "df": 66,
+          "ratio": 4.51,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.51)"
+        },
+        "blue": {
+          "chi2_stat": 297.74,
+          "df": 66,
+          "ratio": 4.51,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.51)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_brick_stego_high.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 77.69,
+          "df": 66,
+          "ratio": 1.18,
+          "p_value": 0.1537,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.18)"
+        },
+        "red": {
+          "chi2_stat": 77.69,
+          "df": 66,
+          "ratio": 1.18,
+          "p_value": 0.1537,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.18)"
+        },
+        "green": {
+          "chi2_stat": 77.69,
+          "df": 66,
+          "ratio": 1.18,
+          "p_value": 0.1537,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.18)"
+        },
+        "blue": {
+          "chi2_stat": 77.69,
+          "df": 66,
+          "ratio": 1.18,
+          "p_value": 0.1537,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.18)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_grass_clean.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "red": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "green": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "blue": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_grass_stego_low.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.8694,
+      "channels": {
+        "gray": {
+          "chi2_stat": 88.94,
+          "df": 105,
+          "ratio": 0.85,
+          "p_value": 0.8694,
+          "chi_square_indicator": 0.8694,
+          "probability_stego": 0.8694,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=86.94%, ratio=0.85)"
+        },
+        "red": {
+          "chi2_stat": 88.94,
+          "df": 105,
+          "ratio": 0.85,
+          "p_value": 0.8694,
+          "chi_square_indicator": 0.8694,
+          "probability_stego": 0.8694,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=86.94%, ratio=0.85)"
+        },
+        "green": {
+          "chi2_stat": 88.94,
+          "df": 105,
+          "ratio": 0.85,
+          "p_value": 0.8694,
+          "chi_square_indicator": 0.8694,
+          "probability_stego": 0.8694,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=86.94%, ratio=0.85)"
+        },
+        "blue": {
+          "chi2_stat": 88.94,
+          "df": 105,
+          "ratio": 0.85,
+          "p_value": 0.8694,
+          "chi_square_indicator": 0.8694,
+          "probability_stego": 0.8694,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=86.94%, ratio=0.85)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_grass_stego_medium.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 104.62,
+          "df": 105,
+          "ratio": 1.0,
+          "p_value": 0.4921,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.00)"
+        },
+        "red": {
+          "chi2_stat": 104.62,
+          "df": 105,
+          "ratio": 1.0,
+          "p_value": 0.4921,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.00)"
+        },
+        "green": {
+          "chi2_stat": 104.62,
+          "df": 105,
+          "ratio": 1.0,
+          "p_value": 0.4921,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.00)"
+        },
+        "blue": {
+          "chi2_stat": 104.62,
+          "df": 105,
+          "ratio": 1.0,
+          "p_value": 0.4921,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.00)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_grass_stego_high.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 116.73,
+          "df": 105,
+          "ratio": 1.11,
+          "p_value": 0.2042,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.11)"
+        },
+        "red": {
+          "chi2_stat": 116.73,
+          "df": 105,
+          "ratio": 1.11,
+          "p_value": 0.2042,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.11)"
+        },
+        "green": {
+          "chi2_stat": 116.73,
+          "df": 105,
+          "ratio": 1.11,
+          "p_value": 0.2042,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.11)"
+        },
+        "blue": {
+          "chi2_stat": 116.73,
+          "df": 105,
+          "ratio": 1.11,
+          "p_value": 0.2042,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.11)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_gravel_clean.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "red": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "green": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "blue": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_gravel_stego_low.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 117.63,
+          "df": 113,
+          "ratio": 1.04,
+          "p_value": 0.3639,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.04)"
+        },
+        "red": {
+          "chi2_stat": 117.63,
+          "df": 113,
+          "ratio": 1.04,
+          "p_value": 0.3639,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.04)"
+        },
+        "green": {
+          "chi2_stat": 117.63,
+          "df": 113,
+          "ratio": 1.04,
+          "p_value": 0.3639,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.04)"
+        },
+        "blue": {
+          "chi2_stat": 117.63,
+          "df": 113,
+          "ratio": 1.04,
+          "p_value": 0.3639,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.04)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_gravel_stego_medium.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 121.72,
+          "df": 113,
+          "ratio": 1.08,
+          "p_value": 0.271,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "red": {
+          "chi2_stat": 121.72,
+          "df": 113,
+          "ratio": 1.08,
+          "p_value": 0.271,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "green": {
+          "chi2_stat": 121.72,
+          "df": 113,
+          "ratio": 1.08,
+          "p_value": 0.271,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "blue": {
+          "chi2_stat": 121.72,
+          "df": 113,
+          "ratio": 1.08,
+          "p_value": 0.271,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_texture_real_gravel_stego_high.png",
+      "image_class": "repeated_texture_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 102.94,
+          "df": 113,
+          "ratio": 0.91,
+          "p_value": 0.7406,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        },
+        "red": {
+          "chi2_stat": 102.94,
+          "df": 113,
+          "ratio": 0.91,
+          "p_value": 0.7406,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        },
+        "green": {
+          "chi2_stat": 102.94,
+          "df": 113,
+          "ratio": 0.91,
+          "p_value": 0.7406,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        },
+        "blue": {
+          "chi2_stat": 102.94,
+          "df": 113,
+          "ratio": 0.91,
+          "p_value": 0.7406,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.91)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_tamper_copymove_single.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 628.12,
+          "df": 126,
+          "ratio": 4.99,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.99)"
+        },
+        "red": {
+          "chi2_stat": 795.49,
+          "df": 124,
+          "ratio": 6.42,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=6.42)"
+        },
+        "green": {
+          "chi2_stat": 1274.66,
+          "df": 127,
+          "ratio": 10.04,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=10.04)"
+        },
+        "blue": {
+          "chi2_stat": 2617.54,
+          "df": 127,
+          "ratio": 20.61,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=20.61)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_rocket_tamper_copymove_multi.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 415.07,
+          "df": 115,
+          "ratio": 3.61,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.61)"
+        },
+        "red": {
+          "chi2_stat": 285.53,
+          "df": 121,
+          "ratio": 2.36,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.36)"
+        },
+        "green": {
+          "chi2_stat": 367.47,
+          "df": 115,
+          "ratio": 3.2,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.20)"
+        },
+        "blue": {
+          "chi2_stat": 469.34,
+          "df": 102,
+          "ratio": 4.6,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.60)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_chelsea_tamper_copymove_weak.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 139.8,
+          "df": 89,
+          "ratio": 1.57,
+          "p_value": 0.0005,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.57)"
+        },
+        "red": {
+          "chi2_stat": 127.34,
+          "df": 104,
+          "ratio": 1.22,
+          "p_value": 0.0598,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.22)"
+        },
+        "green": {
+          "chi2_stat": 125.67,
+          "df": 86,
+          "ratio": 1.46,
+          "p_value": 0.0034,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.46)"
+        },
+        "blue": {
+          "chi2_stat": 142.15,
+          "df": 88,
+          "ratio": 1.62,
+          "p_value": 0.0002,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.62)"
+        }
+      }
+    },
+    {
+      "filename": "document_real_page_tamper_splice.png",
+      "image_class": "document_real",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 288.28,
+          "df": 127,
+          "ratio": 2.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.27)"
+        },
+        "red": {
+          "chi2_stat": 426.77,
+          "df": 127,
+          "ratio": 3.36,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.36)"
+        },
+        "green": {
+          "chi2_stat": 406.43,
+          "df": 127,
+          "ratio": 3.2,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.20)"
+        },
+        "blue": {
+          "chi2_stat": 403.33,
+          "df": 127,
+          "ratio": 3.18,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.18)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_recompressed.jpg",
+      "image_class": "photograph_real",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 609.98,
+          "df": 126,
+          "ratio": 4.84,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4.84)"
+        },
+        "red": {
+          "chi2_stat": 1248.52,
+          "df": 124,
+          "ratio": 10.07,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=10.07)"
+        },
+        "green": {
+          "chi2_stat": 662.22,
+          "df": 127,
+          "ratio": 5.21,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5.21)"
+        },
+        "blue": {
+          "chi2_stat": 2212.28,
+          "df": 127,
+          "ratio": 17.42,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=17.42)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_tiny_32.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 32,
+      "height": 32,
+      "pixel_count": 1024,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 73.28,
+          "df": 83,
+          "ratio": 0.88,
+          "p_value": 0.7684,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.88)"
+        },
+        "red": {
+          "chi2_stat": 85.82,
+          "df": 85,
+          "ratio": 1.01,
+          "p_value": 0.4547,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.01)"
+        },
+        "green": {
+          "chi2_stat": 90.97,
+          "df": 71,
+          "ratio": 1.28,
+          "p_value": 0.0553,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.28)"
+        },
+        "blue": {
+          "chi2_stat": 50.76,
+          "df": 44,
+          "ratio": 1.15,
+          "p_value": 0.2244,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.15)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_real_coffee_large_1024.png",
+      "image_class": "photograph_real",
+      "format": "PNG",
+      "width": 1024,
+      "height": 1024,
+      "pixel_count": 1048576,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 7236.67,
+          "df": 127,
+          "ratio": 56.98,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=56.98)"
+        },
+        "red": {
+          "chi2_stat": 9501.08,
+          "df": 127,
+          "ratio": 74.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=74.81)"
+        },
+        "green": {
+          "chi2_stat": 15847.53,
+          "df": 127,
+          "ratio": 124.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=124.78)"
+        },
+        "blue": {
+          "chi2_stat": 37193.19,
+          "df": 127,
+          "ratio": 292.86,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=292.86)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_clean.png",
+      "image_class": "photograph_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 426.07,
+          "df": 23,
+          "ratio": 18.52,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=18.52)"
+        },
+        "red": {
+          "chi2_stat": 183.69,
+          "df": 35,
+          "ratio": 5.25,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5.25)"
+        },
+        "green": {
+          "chi2_stat": 263.93,
+          "df": 33,
+          "ratio": 8.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.00)"
+        },
+        "blue": {
+          "chi2_stat": 253.41,
+          "df": 29,
+          "ratio": 8.74,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.74)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_stego_low.png",
+      "image_class": "photograph_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 459.63,
+          "df": 24,
+          "ratio": 19.15,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=19.15)"
+        },
+        "red": {
+          "chi2_stat": 133.49,
+          "df": 35,
+          "ratio": 3.81,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.81)"
+        },
+        "green": {
+          "chi2_stat": 209.58,
+          "df": 33,
+          "ratio": 6.35,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=6.35)"
+        },
+        "blue": {
+          "chi2_stat": 175.57,
+          "df": 29,
+          "ratio": 6.05,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=6.05)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_stego_medium.png",
+      "image_class": "photograph_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 474.58,
+          "df": 23,
+          "ratio": 20.63,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=20.63)"
+        },
+        "red": {
+          "chi2_stat": 86.93,
+          "df": 35,
+          "ratio": 2.48,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.48)"
+        },
+        "green": {
+          "chi2_stat": 77.99,
+          "df": 33,
+          "ratio": 2.36,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.36)"
+        },
+        "blue": {
+          "chi2_stat": 76.52,
+          "df": 29,
+          "ratio": 2.64,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.64)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_stego_high.png",
+      "image_class": "photograph_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 511.14,
+          "df": 23,
+          "ratio": 22.22,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=22.22)"
+        },
+        "red": {
+          "chi2_stat": 41.62,
+          "df": 35,
+          "ratio": 1.19,
+          "p_value": 0.2047,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.19)"
+        },
+        "green": {
+          "chi2_stat": 50.45,
+          "df": 33,
+          "ratio": 1.53,
+          "p_value": 0.0265,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.53)"
+        },
+        "blue": {
+          "chi2_stat": 29.9,
+          "df": 29,
+          "ratio": 1.03,
+          "p_value": 0.4191,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.03)"
+        }
+      }
+    },
+    {
+      "filename": "screenshot_proxy_clean.png",
+      "image_class": "screenshot_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 65536.0,
+          "df": 9,
+          "ratio": 7281.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7281.78)"
+        },
+        "red": {
+          "chi2_stat": 65536.0,
+          "df": 9,
+          "ratio": 7281.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7281.78)"
+        },
+        "green": {
+          "chi2_stat": 65536.0,
+          "df": 8,
+          "ratio": 8192.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8192.00)"
+        },
+        "blue": {
+          "chi2_stat": 65536.0,
+          "df": 9,
+          "ratio": 7281.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7281.78)"
+        }
+      }
+    },
+    {
+      "filename": "screenshot_proxy_stego_low.png",
+      "image_class": "screenshot_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 51940.9,
+          "df": 10,
+          "ratio": 5194.09,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5194.09)"
+        },
+        "red": {
+          "chi2_stat": 47507.41,
+          "df": 9,
+          "ratio": 5278.6,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5278.60)"
+        },
+        "green": {
+          "chi2_stat": 47637.31,
+          "df": 8,
+          "ratio": 5954.66,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5954.66)"
+        },
+        "blue": {
+          "chi2_stat": 47230.66,
+          "df": 9,
+          "ratio": 5247.85,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5247.85)"
+        }
+      }
+    },
+    {
+      "filename": "screenshot_proxy_stego_medium.png",
+      "image_class": "screenshot_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 31946.63,
+          "df": 11,
+          "ratio": 2904.24,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2904.24)"
+        },
+        "red": {
+          "chi2_stat": 16224.49,
+          "df": 9,
+          "ratio": 1802.72,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1802.72)"
+        },
+        "green": {
+          "chi2_stat": 16456.59,
+          "df": 8,
+          "ratio": 2057.07,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2057.07)"
+        },
+        "blue": {
+          "chi2_stat": 16638.16,
+          "df": 9,
+          "ratio": 1848.68,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1848.68)"
+        }
+      }
+    },
+    {
+      "filename": "screenshot_proxy_stego_high.png",
+      "image_class": "screenshot_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 22338.41,
+          "df": 11,
+          "ratio": 2030.76,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2030.76)"
+        },
+        "red": {
+          "chi2_stat": 15.48,
+          "df": 9,
+          "ratio": 1.72,
+          "p_value": 0.0787,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.72)"
+        },
+        "green": {
+          "chi2_stat": 13.64,
+          "df": 8,
+          "ratio": 1.71,
+          "p_value": 0.0915,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.71)"
+        },
+        "blue": {
+          "chi2_stat": 12.93,
+          "df": 9,
+          "ratio": 1.44,
+          "p_value": 0.1657,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.44)"
+        }
+      }
+    },
+    {
+      "filename": "document_proxy_clean.png",
+      "image_class": "document_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "red": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "green": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "blue": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        }
+      }
+    },
+    {
+      "filename": "document_proxy_stego_low.png",
+      "image_class": "document_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 47517.36,
+          "df": 4,
+          "ratio": 11879.34,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11879.34)"
+        },
+        "red": {
+          "chi2_stat": 47473.42,
+          "df": 3,
+          "ratio": 15824.47,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15824.47)"
+        },
+        "green": {
+          "chi2_stat": 47184.43,
+          "df": 3,
+          "ratio": 15728.14,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15728.14)"
+        },
+        "blue": {
+          "chi2_stat": 47378.86,
+          "df": 3,
+          "ratio": 15792.95,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15792.95)"
+        }
+      }
+    },
+    {
+      "filename": "document_proxy_stego_medium.png",
+      "image_class": "document_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 16956.9,
+          "df": 4,
+          "ratio": 4239.22,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4239.22)"
+        },
+        "red": {
+          "chi2_stat": 16231.01,
+          "df": 3,
+          "ratio": 5410.34,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5410.34)"
+        },
+        "green": {
+          "chi2_stat": 16180.89,
+          "df": 3,
+          "ratio": 5393.63,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5393.63)"
+        },
+        "blue": {
+          "chi2_stat": 16481.53,
+          "df": 3,
+          "ratio": 5493.84,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5493.84)"
+        }
+      }
+    },
+    {
+      "filename": "document_proxy_stego_high.png",
+      "image_class": "document_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 1069.06,
+          "df": 4,
+          "ratio": 267.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=267.27)"
+        },
+        "red": {
+          "chi2_stat": 3.04,
+          "df": 3,
+          "ratio": 1.01,
+          "p_value": 0.3861,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.01)"
+        },
+        "green": {
+          "chi2_stat": 3.25,
+          "df": 3,
+          "ratio": 1.08,
+          "p_value": 0.3552,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "blue": {
+          "chi2_stat": 4.58,
+          "df": 3,
+          "ratio": 1.53,
+          "p_value": 0.2054,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.53)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_proxy_clean.png",
+      "image_class": "illustration_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        },
+        "red": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "green": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        },
+        "blue": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_proxy_stego_low.png",
+      "image_class": "illustration_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 57925.73,
+          "df": 6,
+          "ratio": 9654.29,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=9654.29)"
+        },
+        "red": {
+          "chi2_stat": 47419.51,
+          "df": 3,
+          "ratio": 15806.5,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15806.50)"
+        },
+        "green": {
+          "chi2_stat": 47135.19,
+          "df": 4,
+          "ratio": 11783.8,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11783.80)"
+        },
+        "blue": {
+          "chi2_stat": 46955.1,
+          "df": 4,
+          "ratio": 11738.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11738.78)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_proxy_stego_medium.png",
+      "image_class": "illustration_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 45442.03,
+          "df": 6,
+          "ratio": 7573.67,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7573.67)"
+        },
+        "red": {
+          "chi2_stat": 16478.88,
+          "df": 3,
+          "ratio": 5492.96,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5492.96)"
+        },
+        "green": {
+          "chi2_stat": 16267.54,
+          "df": 4,
+          "ratio": 4066.88,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4066.88)"
+        },
+        "blue": {
+          "chi2_stat": 16434.22,
+          "df": 4,
+          "ratio": 4108.56,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4108.56)"
+        }
+      }
+    },
+    {
+      "filename": "illustration_proxy_stego_high.png",
+      "image_class": "illustration_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.8907,
+      "channels": {
+        "gray": {
+          "chi2_stat": 29816.66,
+          "df": 6,
+          "ratio": 4969.44,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4969.44)"
+        },
+        "red": {
+          "chi2_stat": 0.63,
+          "df": 3,
+          "ratio": 0.21,
+          "p_value": 0.8907,
+          "chi_square_indicator": 0.8907,
+          "probability_stego": 0.8907,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=89.07%, ratio=0.21)"
+        },
+        "green": {
+          "chi2_stat": 7.42,
+          "df": 4,
+          "ratio": 1.86,
+          "p_value": 0.1153,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1.86)"
+        },
+        "blue": {
+          "chi2_stat": 5.78,
+          "df": 4,
+          "ratio": 1.45,
+          "p_value": 0.2161,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.45)"
+        }
+      }
+    },
+    {
+      "filename": "low_color_proxy_clean.png",
+      "image_class": "low_color_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        },
+        "red": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "green": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        },
+        "blue": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        }
+      }
+    },
+    {
+      "filename": "low_color_proxy_stego_low.png",
+      "image_class": "low_color_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 58128.16,
+          "df": 6,
+          "ratio": 9688.03,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=9688.03)"
+        },
+        "red": {
+          "chi2_stat": 47729.15,
+          "df": 3,
+          "ratio": 15909.72,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15909.72)"
+        },
+        "green": {
+          "chi2_stat": 47242.75,
+          "df": 4,
+          "ratio": 11810.69,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11810.69)"
+        },
+        "blue": {
+          "chi2_stat": 47602.23,
+          "df": 4,
+          "ratio": 11900.56,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11900.56)"
+        }
+      }
+    },
+    {
+      "filename": "low_color_proxy_stego_medium.png",
+      "image_class": "low_color_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 45578.17,
+          "df": 6,
+          "ratio": 7596.36,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7596.36)"
+        },
+        "red": {
+          "chi2_stat": 16153.9,
+          "df": 3,
+          "ratio": 5384.63,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5384.63)"
+        },
+        "green": {
+          "chi2_stat": 16734.34,
+          "df": 4,
+          "ratio": 4183.59,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4183.59)"
+        },
+        "blue": {
+          "chi2_stat": 16846.91,
+          "df": 4,
+          "ratio": 4211.73,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4211.73)"
+        }
+      }
+    },
+    {
+      "filename": "low_color_proxy_stego_high.png",
+      "image_class": "low_color_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 29640.55,
+          "df": 6,
+          "ratio": 4940.09,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4940.09)"
+        },
+        "red": {
+          "chi2_stat": 1.3,
+          "df": 3,
+          "ratio": 0.43,
+          "p_value": 0.7289,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.43)"
+        },
+        "green": {
+          "chi2_stat": 1.84,
+          "df": 4,
+          "ratio": 0.46,
+          "p_value": 0.7646,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.46)"
+        },
+        "blue": {
+          "chi2_stat": 1.39,
+          "df": 4,
+          "ratio": 0.35,
+          "p_value": 0.846,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.35)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_proxy_clean.png",
+      "image_class": "alpha_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        },
+        "red": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "green": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        },
+        "blue": {
+          "chi2_stat": 65536.0,
+          "df": 4,
+          "ratio": 16384.0,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=16384.00)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_proxy_stego_low.png",
+      "image_class": "alpha_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 58191.81,
+          "df": 6,
+          "ratio": 9698.64,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=9698.64)"
+        },
+        "red": {
+          "chi2_stat": 47106.83,
+          "df": 3,
+          "ratio": 15702.28,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=15702.28)"
+        },
+        "green": {
+          "chi2_stat": 47469.93,
+          "df": 4,
+          "ratio": 11867.48,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11867.48)"
+        },
+        "blue": {
+          "chi2_stat": 46802.58,
+          "df": 4,
+          "ratio": 11700.65,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11700.65)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_proxy_stego_medium.png",
+      "image_class": "alpha_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 45414.77,
+          "df": 6,
+          "ratio": 7569.13,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7569.13)"
+        },
+        "red": {
+          "chi2_stat": 16171.17,
+          "df": 3,
+          "ratio": 5390.39,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5390.39)"
+        },
+        "green": {
+          "chi2_stat": 16630.05,
+          "df": 4,
+          "ratio": 4157.51,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4157.51)"
+        },
+        "blue": {
+          "chi2_stat": 16104.07,
+          "df": 4,
+          "ratio": 4026.02,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4026.02)"
+        }
+      }
+    },
+    {
+      "filename": "alpha_proxy_stego_high.png",
+      "image_class": "alpha_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGBA",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 29904.21,
+          "df": 6,
+          "ratio": 4984.03,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=4984.03)"
+        },
+        "red": {
+          "chi2_stat": 2.67,
+          "df": 3,
+          "ratio": 0.89,
+          "p_value": 0.4451,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.89)"
+        },
+        "green": {
+          "chi2_stat": 3.78,
+          "df": 4,
+          "ratio": 0.95,
+          "p_value": 0.4362,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.95)"
+        },
+        "blue": {
+          "chi2_stat": 3.87,
+          "df": 4,
+          "ratio": 0.97,
+          "p_value": 0.4238,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.97)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_proxy_clean.png",
+      "image_class": "grayscale_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 109.97,
+          "df": 90,
+          "ratio": 1.22,
+          "p_value": 0.075,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.22)"
+        },
+        "red": {
+          "chi2_stat": 109.97,
+          "df": 90,
+          "ratio": 1.22,
+          "p_value": 0.075,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.22)"
+        },
+        "green": {
+          "chi2_stat": 109.97,
+          "df": 90,
+          "ratio": 1.22,
+          "p_value": 0.075,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.22)"
+        },
+        "blue": {
+          "chi2_stat": 109.97,
+          "df": 90,
+          "ratio": 1.22,
+          "p_value": 0.075,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.22)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_proxy_stego_low.png",
+      "image_class": "grayscale_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "low",
+      "gt_embedding_rate": 0.15,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.6,
+      "channels": {
+        "gray": {
+          "chi2_stat": 119.55,
+          "df": 90,
+          "ratio": 1.33,
+          "p_value": 0.0203,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.33)"
+        },
+        "red": {
+          "chi2_stat": 119.55,
+          "df": 90,
+          "ratio": 1.33,
+          "p_value": 0.0203,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.33)"
+        },
+        "green": {
+          "chi2_stat": 119.55,
+          "df": 90,
+          "ratio": 1.33,
+          "p_value": 0.0203,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.33)"
+        },
+        "blue": {
+          "chi2_stat": 119.55,
+          "df": 90,
+          "ratio": 1.33,
+          "p_value": 0.0203,
+          "chi_square_indicator": 0.6,
+          "probability_stego": 0.6,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=60.00%, ratio=1.33)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_proxy_stego_medium.png",
+      "image_class": "grayscale_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "medium",
+      "gt_embedding_rate": 0.5,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 85.33,
+          "df": 90,
+          "ratio": 0.95,
+          "p_value": 0.6196,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.95)"
+        },
+        "red": {
+          "chi2_stat": 85.33,
+          "df": 90,
+          "ratio": 0.95,
+          "p_value": 0.6196,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.95)"
+        },
+        "green": {
+          "chi2_stat": 85.33,
+          "df": 90,
+          "ratio": 0.95,
+          "p_value": 0.6196,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.95)"
+        },
+        "blue": {
+          "chi2_stat": 85.33,
+          "df": 90,
+          "ratio": 0.95,
+          "p_value": 0.6196,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.95)"
+        }
+      }
+    },
+    {
+      "filename": "grayscale_proxy_stego_high.png",
+      "image_class": "grayscale_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "L",
+      "gt_has_steganography": true,
+      "gt_payload_level": "high",
+      "gt_embedding_rate": 1.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.85,
+      "channels": {
+        "gray": {
+          "chi2_stat": 96.98,
+          "df": 90,
+          "ratio": 1.08,
+          "p_value": 0.2888,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "red": {
+          "chi2_stat": 96.98,
+          "df": 90,
+          "ratio": 1.08,
+          "p_value": 0.2888,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "green": {
+          "chi2_stat": 96.98,
+          "df": 90,
+          "ratio": 1.08,
+          "p_value": 0.2888,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        },
+        "blue": {
+          "chi2_stat": 96.98,
+          "df": 90,
+          "ratio": 1.08,
+          "p_value": 0.2888,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.08)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_clean.jpg",
+      "image_class": "photograph_proxy",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 489.15,
+          "df": 23,
+          "ratio": 21.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21.27)"
+        },
+        "red": {
+          "chi2_stat": 220.83,
+          "df": 31,
+          "ratio": 7.12,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7.12)"
+        },
+        "green": {
+          "chi2_stat": 272.48,
+          "df": 29,
+          "ratio": 9.4,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=9.40)"
+        },
+        "blue": {
+          "chi2_stat": 347.64,
+          "df": 26,
+          "ratio": 13.37,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=13.37)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_stego_appended_eof.jpg",
+      "image_class": "photograph_proxy",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "n/a",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 489.15,
+          "df": 23,
+          "ratio": 21.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21.27)"
+        },
+        "red": {
+          "chi2_stat": 220.83,
+          "df": 31,
+          "ratio": 7.12,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=7.12)"
+        },
+        "green": {
+          "chi2_stat": 272.48,
+          "df": 29,
+          "ratio": 9.4,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=9.40)"
+        },
+        "blue": {
+          "chi2_stat": 347.64,
+          "df": 26,
+          "ratio": 13.37,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=13.37)"
+        }
+      }
+    },
+    {
+      "filename": "screenshot_proxy_clean.jpg",
+      "image_class": "screenshot_proxy",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 45179.53,
+          "df": 42,
+          "ratio": 1075.7,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1075.70)"
+        },
+        "red": {
+          "chi2_stat": 47156.38,
+          "df": 54,
+          "ratio": 873.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=873.27)"
+        },
+        "green": {
+          "chi2_stat": 39700.54,
+          "df": 49,
+          "ratio": 810.22,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=810.22)"
+        },
+        "blue": {
+          "chi2_stat": 45798.33,
+          "df": 64,
+          "ratio": 715.6,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=715.60)"
+        }
+      }
+    },
+    {
+      "filename": "screenshot_proxy_stego_appended_eof.jpg",
+      "image_class": "screenshot_proxy",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": true,
+      "gt_payload_level": "n/a",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 45179.53,
+          "df": 42,
+          "ratio": 1075.7,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=1075.70)"
+        },
+        "red": {
+          "chi2_stat": 47156.38,
+          "df": 54,
+          "ratio": 873.27,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=873.27)"
+        },
+        "green": {
+          "chi2_stat": 39700.54,
+          "df": 49,
+          "ratio": 810.22,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=810.22)"
+        },
+        "blue": {
+          "chi2_stat": 45798.33,
+          "df": 64,
+          "ratio": 715.6,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=715.60)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_tamper_copymove.png",
+      "image_class": "photograph_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 442.23,
+          "df": 23,
+          "ratio": 19.23,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=19.23)"
+        },
+        "red": {
+          "chi2_stat": 183.35,
+          "df": 35,
+          "ratio": 5.24,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5.24)"
+        },
+        "green": {
+          "chi2_stat": 271.32,
+          "df": 33,
+          "ratio": 8.22,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.22)"
+        },
+        "blue": {
+          "chi2_stat": 258.55,
+          "df": 29,
+          "ratio": 8.92,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.92)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_tamper_splice.png",
+      "image_class": "photograph_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 444.79,
+          "df": 81,
+          "ratio": 5.49,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=5.49)"
+        },
+        "red": {
+          "chi2_stat": 245.23,
+          "df": 118,
+          "ratio": 2.08,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=2.08)"
+        },
+        "green": {
+          "chi2_stat": 351.13,
+          "df": 113,
+          "ratio": 3.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.11)"
+        },
+        "blue": {
+          "chi2_stat": 371.95,
+          "df": 108,
+          "ratio": 3.44,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=3.44)"
+        }
+      }
+    },
+    {
+      "filename": "document_proxy_tamper_splice.png",
+      "image_class": "document_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": true,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 62101.25,
+          "df": 71,
+          "ratio": 874.67,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=874.67)"
+        },
+        "red": {
+          "chi2_stat": 63634.15,
+          "df": 93,
+          "ratio": 684.24,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=684.24)"
+        },
+        "green": {
+          "chi2_stat": 63600.57,
+          "df": 92,
+          "ratio": 691.31,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=691.31)"
+        },
+        "blue": {
+          "chi2_stat": 63640.5,
+          "df": 87,
+          "ratio": 731.5,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=731.50)"
+        }
+      }
+    },
+    {
+      "filename": "repeated_structure_proxy_clean.png",
+      "image_class": "repeated_structure_proxy",
+      "format": "PNG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "red": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "green": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        },
+        "blue": {
+          "chi2_stat": 65536.0,
+          "df": 3,
+          "ratio": 21845.33,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=21845.33)"
+        }
+      }
+    },
+    {
+      "filename": "photograph_proxy_recompressed.jpg",
+      "image_class": "photograph_proxy",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "pixel_count": 65536,
+      "color_mode": "RGB",
+      "gt_has_steganography": false,
+      "gt_payload_level": "none",
+      "gt_embedding_rate": 0.0,
+      "gt_has_tampering": false,
+      "max_chi2_indicator": 0.0,
+      "channels": {
+        "gray": {
+          "chi2_stat": 654.17,
+          "df": 22,
+          "ratio": 29.73,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=29.73)"
+        },
+        "red": {
+          "chi2_stat": 275.33,
+          "df": 32,
+          "ratio": 8.6,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=8.60)"
+        },
+        "green": {
+          "chi2_stat": 341.68,
+          "df": 29,
+          "ratio": 11.78,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=11.78)"
+        },
+        "blue": {
+          "chi2_stat": 353.75,
+          "df": 27,
+          "ratio": 13.1,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=13.10)"
+        }
+      }
+    }
+  ]
+}

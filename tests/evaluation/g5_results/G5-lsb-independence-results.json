@@ -1,0 +1,251 @@
+{
+  "n_total_samples": 92,
+  "overall_correlation": {
+    "pearson": 0.9469,
+    "spearman": 0.8046,
+    "n": 92
+  },
+  "correlation_by_class": {
+    "photograph_real": {
+      "pearson": 0.9381,
+      "spearman": 0.3974,
+      "n": 18
+    },
+    "document_real": {
+      "pearson": 0.5746,
+      "spearman": 0.5477,
+      "n": 9
+    },
+    "grayscale_real": {
+      "pearson": null,
+      "spearman": null,
+      "n": 4
+    },
+    "illustration_real": {
+      "pearson": 0.9765,
+      "spearman": 0.8781,
+      "n": 8
+    },
+    "alpha_real": {
+      "pearson": 0.9636,
+      "spearman": 1.0,
+      "n": 4
+    },
+    "repeated_texture_real": {
+      "pearson": null,
+      "spearman": null,
+      "n": 12
+    },
+    "photograph_proxy": {
+      "pearson": null,
+      "spearman": null,
+      "n": 9
+    },
+    "screenshot_proxy": {
+      "pearson": 0.9663,
+      "spearman": 1.0,
+      "n": 6
+    },
+    "document_proxy": {
+      "pearson": 0.9674,
+      "spearman": 1.0,
+      "n": 5
+    },
+    "illustration_proxy": {
+      "pearson": 0.9635,
+      "spearman": 1.0,
+      "n": 4
+    },
+    "low_color_proxy": {
+      "pearson": 0.9638,
+      "spearman": 1.0,
+      "n": 4
+    },
+    "alpha_proxy": {
+      "pearson": 0.9648,
+      "spearman": 1.0,
+      "n": 4
+    },
+    "grayscale_proxy": {
+      "pearson": null,
+      "spearman": null,
+      "n": 4
+    },
+    "repeated_structure_proxy": {
+      "pearson": null,
+      "spearman": null,
+      "n": 1
+    }
+  },
+  "correlation_clean_only": {
+    "pearson": 0.9595,
+    "spearman": 0.8617,
+    "n": 33
+  },
+  "correlation_stego_only": {
+    "pearson": 0.9434,
+    "spearman": 0.7651,
+    "n": 59
+  },
+  "correlation_by_payload_level": {
+    "low": {
+      "pearson": 0.9498,
+      "spearman": 0.8655,
+      "n": 19
+    },
+    "medium": {
+      "pearson": 0.9553,
+      "spearman": 0.865,
+      "n": 19
+    },
+    "high": {
+      "pearson": null,
+      "spearman": null,
+      "n": 19
+    },
+    "n/a": {
+      "pearson": null,
+      "spearman": null,
+      "n": 2
+    }
+  },
+  "error_overlap_overall": {
+    "tp_both": 43,
+    "tp_entropy_only": 1,
+    "tp_balance_only": 0,
+    "tp_neither": 15,
+    "fp_both": 18,
+    "fp_entropy_only": 5,
+    "fp_balance_only": 0,
+    "fp_neither": 10
+  },
+  "error_overlap_by_class": {
+    "photograph_real": {
+      "tp_both": 9,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 5,
+      "fp_entropy_only": 4,
+      "fp_balance_only": 0,
+      "n": 18
+    },
+    "document_real": {
+      "tp_both": 6,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 2,
+      "fp_entropy_only": 1,
+      "fp_balance_only": 0,
+      "n": 9
+    },
+    "grayscale_real": {
+      "tp_both": 3,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 1,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 4
+    },
+    "illustration_real": {
+      "tp_both": 4,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 1,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 8
+    },
+    "alpha_real": {
+      "tp_both": 1,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 4
+    },
+    "repeated_texture_real": {
+      "tp_both": 9,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 3,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 12
+    },
+    "photograph_proxy": {
+      "tp_both": 4,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 5,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 9
+    },
+    "screenshot_proxy": {
+      "tp_both": 1,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 6
+    },
+    "document_proxy": {
+      "tp_both": 0,
+      "tp_entropy_only": 1,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 5
+    },
+    "illustration_proxy": {
+      "tp_both": 1,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 4
+    },
+    "low_color_proxy": {
+      "tp_both": 1,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 4
+    },
+    "alpha_proxy": {
+      "tp_both": 1,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 4
+    },
+    "grayscale_proxy": {
+      "tp_both": 3,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 1,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 4
+    },
+    "repeated_structure_proxy": {
+      "tp_both": 0,
+      "tp_entropy_only": 0,
+      "tp_balance_only": 0,
+      "fp_both": 0,
+      "fp_entropy_only": 0,
+      "fp_balance_only": 0,
+      "n": 1
+    }
+  },
+  "note": "visual balance delta is sign-inverted (negated) so that, like entropy, a higher value means more suspicious, for comparable correlation direction. 'flagged' uses each detector's own is_suspicious decision as computed by the unmodified production pipeline, independent of scoring.py's combined category logic."
+}
