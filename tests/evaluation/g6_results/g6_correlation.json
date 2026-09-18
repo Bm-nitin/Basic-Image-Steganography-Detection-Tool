@@ -1,0 +1,302 @@
+{
+  "n_samples": 92,
+  "pearson_matrix": {
+    "chi_square": {
+      "chi_square": 1.0,
+      "rs": 0.6709,
+      "spa": 0.2295,
+      "lsb_entropy": 0.352,
+      "visual_balance": 0.4503
+    },
+    "rs": {
+      "chi_square": 0.6709,
+      "rs": 1.0,
+      "spa": 0.2526,
+      "lsb_entropy": 0.3146,
+      "visual_balance": 0.3479
+    },
+    "spa": {
+      "chi_square": 0.2295,
+      "rs": 0.2526,
+      "spa": 1.0,
+      "lsb_entropy": 0.3841,
+      "visual_balance": 0.4034
+    },
+    "lsb_entropy": {
+      "chi_square": 0.352,
+      "rs": 0.3146,
+      "spa": 0.3841,
+      "lsb_entropy": 1.0,
+      "visual_balance": 0.9469
+    },
+    "visual_balance": {
+      "chi_square": 0.4503,
+      "rs": 0.3479,
+      "spa": 0.4034,
+      "lsb_entropy": 0.9469,
+      "visual_balance": 1.0
+    }
+  },
+  "spearman_matrix": {
+    "chi_square": {
+      "chi_square": 1.0,
+      "rs": 0.6309,
+      "spa": 0.2507,
+      "lsb_entropy": 0.5315,
+      "visual_balance": 0.3568
+    },
+    "rs": {
+      "chi_square": 0.6309,
+      "rs": 1.0,
+      "spa": 0.2969,
+      "lsb_entropy": 0.3799,
+      "visual_balance": 0.3087
+    },
+    "spa": {
+      "chi_square": 0.2507,
+      "rs": 0.2969,
+      "spa": 1.0,
+      "lsb_entropy": 0.4002,
+      "visual_balance": 0.3883
+    },
+    "lsb_entropy": {
+      "chi_square": 0.5315,
+      "rs": 0.3799,
+      "spa": 0.4002,
+      "lsb_entropy": 1.0,
+      "visual_balance": 0.8046
+    },
+    "visual_balance": {
+      "chi_square": 0.3568,
+      "rs": 0.3087,
+      "spa": 0.3883,
+      "lsb_entropy": 0.8046,
+      "visual_balance": 1.0
+    }
+  },
+  "pairwise_sorted_by_abs_pearson": [
+    {
+      "pair": [
+        "lsb_entropy",
+        "visual_balance"
+      ],
+      "pearson": 0.9469,
+      "spearman": 0.8046,
+      "n": 92
+    },
+    {
+      "pair": [
+        "chi_square",
+        "rs"
+      ],
+      "pearson": 0.6709,
+      "spearman": 0.6309,
+      "n": 92
+    },
+    {
+      "pair": [
+        "chi_square",
+        "visual_balance"
+      ],
+      "pearson": 0.4503,
+      "spearman": 0.3568,
+      "n": 92
+    },
+    {
+      "pair": [
+        "spa",
+        "visual_balance"
+      ],
+      "pearson": 0.4034,
+      "spearman": 0.3883,
+      "n": 92
+    },
+    {
+      "pair": [
+        "spa",
+        "lsb_entropy"
+      ],
+      "pearson": 0.3841,
+      "spearman": 0.4002,
+      "n": 92
+    },
+    {
+      "pair": [
+        "chi_square",
+        "lsb_entropy"
+      ],
+      "pearson": 0.352,
+      "spearman": 0.5315,
+      "n": 92
+    },
+    {
+      "pair": [
+        "rs",
+        "visual_balance"
+      ],
+      "pearson": 0.3479,
+      "spearman": 0.3087,
+      "n": 92
+    },
+    {
+      "pair": [
+        "rs",
+        "lsb_entropy"
+      ],
+      "pearson": 0.3146,
+      "spearman": 0.3799,
+      "n": 92
+    },
+    {
+      "pair": [
+        "rs",
+        "spa"
+      ],
+      "pearson": 0.2526,
+      "spearman": 0.2969,
+      "n": 92
+    },
+    {
+      "pair": [
+        "chi_square",
+        "spa"
+      ],
+      "pearson": 0.2295,
+      "spearman": 0.2507,
+      "n": 92
+    }
+  ],
+  "decision_level_per_detector": {
+    "chi_square": {
+      "tp": 25,
+      "fp": 3,
+      "tn": 30,
+      "fn": 34,
+      "sensitivity": 0.4237,
+      "specificity": 0.9091,
+      "fpr": 0.0909,
+      "precision": 0.8929
+    },
+    "rs": {
+      "tp": 33,
+      "fp": 1,
+      "tn": 32,
+      "fn": 26,
+      "sensitivity": 0.5593,
+      "specificity": 0.9697,
+      "fpr": 0.0303,
+      "precision": 0.9706
+    },
+    "spa": {
+      "tp": 43,
+      "fp": 21,
+      "tn": 12,
+      "fn": 16,
+      "sensitivity": 0.7288,
+      "specificity": 0.3636,
+      "fpr": 0.6364,
+      "precision": 0.6719
+    },
+    "lsb_entropy": {
+      "tp": 44,
+      "fp": 23,
+      "tn": 10,
+      "fn": 15,
+      "sensitivity": 0.7458,
+      "specificity": 0.303,
+      "fpr": 0.697,
+      "precision": 0.6567
+    },
+    "visual_balance": {
+      "tp": 43,
+      "fp": 18,
+      "tn": 15,
+      "fn": 16,
+      "sensitivity": 0.7288,
+      "specificity": 0.4545,
+      "fpr": 0.5455,
+      "precision": 0.7049
+    }
+  },
+  "unique_contribution": {
+    "chi_square": {
+      "unique_tp": 0,
+      "unique_fp": 0,
+      "tp_also_flagged_by": {
+        "rs": 20,
+        "spa": 19,
+        "lsb_entropy": 25,
+        "visual_balance": 24
+      },
+      "fp_also_flagged_by": {
+        "spa": 2,
+        "lsb_entropy": 3,
+        "visual_balance": 2,
+        "rs": 1
+      }
+    },
+    "rs": {
+      "unique_tp": 3,
+      "unique_fp": 0,
+      "tp_also_flagged_by": {
+        "spa": 26,
+        "lsb_entropy": 28,
+        "visual_balance": 27,
+        "chi_square": 20
+      },
+      "fp_also_flagged_by": {
+        "chi_square": 1,
+        "spa": 1,
+        "lsb_entropy": 1
+      }
+    },
+    "spa": {
+      "unique_tp": 4,
+      "unique_fp": 2,
+      "tp_also_flagged_by": {
+        "lsb_entropy": 37,
+        "visual_balance": 36,
+        "rs": 26,
+        "chi_square": 19
+      },
+      "fp_also_flagged_by": {
+        "lsb_entropy": 19,
+        "visual_balance": 14,
+        "chi_square": 2,
+        "rs": 1
+      }
+    },
+    "lsb_entropy": {
+      "unique_tp": 0,
+      "unique_fp": 0,
+      "tp_also_flagged_by": {
+        "spa": 37,
+        "visual_balance": 43,
+        "rs": 28,
+        "chi_square": 25
+      },
+      "fp_also_flagged_by": {
+        "spa": 19,
+        "visual_balance": 18,
+        "chi_square": 3,
+        "rs": 1
+      }
+    },
+    "visual_balance": {
+      "unique_tp": 0,
+      "unique_fp": 0,
+      "tp_also_flagged_by": {
+        "spa": 36,
+        "lsb_entropy": 43,
+        "rs": 27,
+        "chi_square": 24
+      },
+      "fp_also_flagged_by": {
+        "spa": 14,
+        "lsb_entropy": 18,
+        "chi_square": 2
+      }
+    }
+  },
+  "note": "visual_balance uses -min_balance_delta (sign-inverted) so higher = more suspicious, matching the other four signals' direction. 'rs' uses rs_estimated_rate (embedding evidence only, per the G4 applicability/evidence separation) -- rs_applicability_diagnostic is intentionally excluded from this cluster, since G4 established it is not embedding evidence."
+}

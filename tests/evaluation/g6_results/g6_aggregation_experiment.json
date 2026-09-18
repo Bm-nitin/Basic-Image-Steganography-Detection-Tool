@@ -1,0 +1,130 @@
+{
+  "CURRENT_production": {
+    "formula": "existing tiered thresholds, independently summed, capped at 50.0",
+    "confusion": {
+      "tp": 51,
+      "fp": 22,
+      "tn": 11,
+      "fn": 8,
+      "sensitivity": 0.8644,
+      "specificity": 0.3333,
+      "fpr": 0.6667,
+      "precision": 0.6986
+    }
+  },
+  "A_arithmetic_mean": {
+    "formula": "mean(chi2, rs, spa, entropy) * 50",
+    "confusion": {
+      "tp": 54,
+      "fp": 25,
+      "tn": 8,
+      "fn": 5,
+      "sensitivity": 0.9153,
+      "specificity": 0.2424,
+      "fpr": 0.7576,
+      "precision": 0.6835
+    },
+    "classification_changes_vs_current": 6,
+    "unique_tps_lost_vs_current": 0,
+    "fps_fixed_vs_current": 0
+  },
+  "B_median": {
+    "formula": "median(chi2, rs, spa, entropy) * 50",
+    "confusion": {
+      "tp": 53,
+      "fp": 23,
+      "tn": 10,
+      "fn": 6,
+      "sensitivity": 0.8983,
+      "specificity": 0.303,
+      "fpr": 0.697,
+      "precision": 0.6974
+    },
+    "classification_changes_vs_current": 5,
+    "unique_tps_lost_vs_current": 0,
+    "fps_fixed_vs_current": 1
+  },
+  "C_trimmed_mean": {
+    "formula": "mean(2 middle values of sorted [chi2, rs, spa, entropy]) * 50",
+    "confusion": {
+      "tp": 53,
+      "fp": 23,
+      "tn": 10,
+      "fn": 6,
+      "sensitivity": 0.8983,
+      "specificity": 0.303,
+      "fpr": 0.697,
+      "precision": 0.6974
+    },
+    "classification_changes_vs_current": 5,
+    "unique_tps_lost_vs_current": 0,
+    "fps_fixed_vs_current": 1
+  },
+  "D_maximum": {
+    "formula": "max(chi2, rs, spa, entropy) * 50",
+    "confusion": {
+      "tp": 59,
+      "fp": 33,
+      "tn": 0,
+      "fn": 0,
+      "sensitivity": 1.0,
+      "specificity": 0.0,
+      "fpr": 1.0,
+      "precision": 0.6413
+    },
+    "classification_changes_vs_current": 19,
+    "unique_tps_lost_vs_current": 0,
+    "fps_fixed_vs_current": 0
+  },
+  "E_agreement_weighted_mean": {
+    "formula": "mean(vals) * fraction(vals > 0.30) * 50",
+    "confusion": {
+      "tp": 48,
+      "fp": 20,
+      "tn": 13,
+      "fn": 11,
+      "sensitivity": 0.8136,
+      "specificity": 0.3939,
+      "fpr": 0.6061,
+      "precision": 0.7059
+    },
+    "classification_changes_vs_current": 5,
+    "unique_tps_lost_vs_current": 3,
+    "fps_fixed_vs_current": 2
+  },
+  "EXPLORATORY_ONLY_full_5_detector_merge": {
+    "warning": "NOT PROPOSED. This merges chi2/RS/SPA/entropy (Statistical, 50 pts) with visual-balance (Visual, 20 pts) into one 70-point aggregate, crossing the existing category boundary -- a broader architectural change than this phase's 'narrowly scoped' mandate permits. Shown for completeness only, since the spec named visual-balance as a cluster member.",
+    "results": {
+      "mean": {
+        "tp": 54,
+        "fp": 25,
+        "tn": 8,
+        "fn": 5,
+        "sensitivity": 0.9153,
+        "specificity": 0.2424,
+        "fpr": 0.7576,
+        "precision": 0.6835
+      },
+      "median": {
+        "tp": 52,
+        "fp": 19,
+        "tn": 14,
+        "fn": 7,
+        "sensitivity": 0.8814,
+        "specificity": 0.4242,
+        "fpr": 0.5758,
+        "precision": 0.7324
+      },
+      "max": {
+        "tp": 59,
+        "fp": 33,
+        "tn": 0,
+        "fn": 0,
+        "sensitivity": 1.0,
+        "specificity": 0.0,
+        "fpr": 1.0,
+        "precision": 0.6413
+      }
+    }
+  }
+}
