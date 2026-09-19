@@ -1,0 +1,291 @@
+{
+  "note": "Clean (non-stego, non-tampered) samples scored Medium or High. 'associated_signals' describes which detector categories were elevated for that sample -- this is an association, not a demonstrated causal claim, per the phase's wording rule.",
+  "count": 16,
+  "total_clean_samples": 26,
+  "false_positive_rate_medium_or_high": 0.6154,
+  "associated_signal_frequency": {
+    "statistical_detector_interaction": 16,
+    "high_LSB_entropy": 16,
+    "high_LSB_balance_anomaly": 14,
+    "SPA_signal": 12,
+    "chi_square_signal": 3,
+    "document_structure": 2,
+    "low_color_carrier": 1,
+    "RS_signal": 1
+  },
+  "details": [
+    {
+      "filename": "photograph_real_coffee_clean.png",
+      "image_class": "photograph_real",
+      "taxonomy_class": "Natural photograph",
+      "final_score": 35.9,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 15.9,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "photograph_real_chelsea_clean.png",
+      "image_class": "photograph_real",
+      "taxonomy_class": "Natural photograph",
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "photograph_real_rocket_clean.png",
+      "image_class": "photograph_real",
+      "taxonomy_class": "Natural photograph",
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "document_real_page_clean.png",
+      "image_class": "document_real",
+      "taxonomy_class": "Scanned document",
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly",
+        "document_structure"
+      ]
+    },
+    {
+      "filename": "document_real_text_clean.png",
+      "image_class": "document_real",
+      "taxonomy_class": "Scanned document",
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly",
+        "document_structure"
+      ]
+    },
+    {
+      "filename": "grayscale_real_moon_clean.png",
+      "image_class": "grayscale_real",
+      "taxonomy_class": "Grayscale",
+      "final_score": 35.9,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 15.9,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "illustration_real_checkerboard_clean.png",
+      "image_class": "illustration_real",
+      "taxonomy_class": "Synthetic illustration / flat graphic",
+      "final_score": 28.8,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 8.8,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "high_LSB_balance_anomaly",
+        "low_color_carrier"
+      ]
+    },
+    {
+      "filename": "repeated_texture_real_brick_clean.png",
+      "image_class": "repeated_texture_real",
+      "taxonomy_class": "Other (repeated/self-similar natural texture)",
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "repeated_texture_real_grass_clean.png",
+      "image_class": "repeated_texture_real",
+      "taxonomy_class": "Other (repeated/self-similar natural texture)",
+      "final_score": 55.3,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 35.3,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "chi_square_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "repeated_texture_real_gravel_clean.png",
+      "image_class": "repeated_texture_real",
+      "taxonomy_class": "Other (repeated/self-similar natural texture)",
+      "final_score": 43.5,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 23.5,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "chi_square_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "photograph_real_coffee_tiny_32.png",
+      "image_class": "photograph_real",
+      "taxonomy_class": "Natural photograph",
+      "final_score": 39.4,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 39.4,
+      "visual_score": 0.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "RS_signal",
+        "SPA_signal",
+        "chi_square_signal"
+      ]
+    },
+    {
+      "filename": "photograph_real_coffee_large_1024.png",
+      "image_class": "photograph_real",
+      "taxonomy_class": "Natural photograph",
+      "final_score": 20.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 0.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal"
+      ]
+    },
+    {
+      "filename": "photograph_proxy_clean.png",
+      "image_class": "photograph_proxy",
+      "taxonomy_class": "Natural photograph (synthetic proxy)",
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 20.6,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "grayscale_proxy_clean.png",
+      "image_class": "grayscale_proxy",
+      "taxonomy_class": "Grayscale (synthetic proxy)",
+      "final_score": 28.8,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 8.8,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "photograph_proxy_clean.jpg",
+      "image_class": "photograph_proxy",
+      "taxonomy_class": "Natural photograph (synthetic proxy)",
+      "final_score": 27.5,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 7.5,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "high_LSB_balance_anomaly"
+      ]
+    },
+    {
+      "filename": "photograph_proxy_recompressed.jpg",
+      "image_class": "photograph_proxy",
+      "taxonomy_class": "Natural photograph (synthetic proxy)",
+      "final_score": 37.5,
+      "risk_level": "Medium",
+      "structural_score": 0.0,
+      "metadata_score": 0.0,
+      "statistical_score": 17.5,
+      "visual_score": 20.0,
+      "associated_signals": [
+        "statistical_detector_interaction",
+        "high_LSB_entropy",
+        "SPA_signal",
+        "high_LSB_balance_anomaly"
+      ]
+    }
+  ]
+}

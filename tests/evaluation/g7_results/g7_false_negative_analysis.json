@@ -1,0 +1,133 @@
+{
+  "note": "Stego samples (ground truth) scored Low. 'non_responding_detectors' lists detectors whose own is_suspicious flag did not fire; whether this reflects a defect, an inherent applicability limit (as established for several detectors in G3-G6), or expected behavior at low payload is [INFERRED] per-case in the report, not asserted here.",
+  "count": 8,
+  "total_stego_samples": 59,
+  "false_negative_rate_at_low_risk": 0.1356,
+  "details": [
+    {
+      "filename": "illustration_real_colorwheel_stego_low.png",
+      "image_class": "illustration_real",
+      "taxonomy_class": "Synthetic illustration / flat graphic",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 11.8,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "illustration_real_colorwheel_stego_medium.png",
+      "image_class": "illustration_real",
+      "taxonomy_class": "Synthetic illustration / flat graphic",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "medium",
+      "final_score": 15.9,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "alpha_real_logo_stego_low.png",
+      "image_class": "alpha_real",
+      "taxonomy_class": "Alpha-channel PNG",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 11.8,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "screenshot_proxy_stego_low.png",
+      "image_class": "screenshot_proxy",
+      "taxonomy_class": "Screenshot / UI",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 0.0,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "spa",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "document_proxy_stego_low.png",
+      "image_class": "document_proxy",
+      "taxonomy_class": "Marksheet/document-like (synthetic)",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 0.0,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "spa",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "illustration_proxy_stego_low.png",
+      "image_class": "illustration_proxy",
+      "taxonomy_class": "Synthetic illustration / flat graphic (synthetic proxy)",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 0.0,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "spa",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "low_color_proxy_stego_low.png",
+      "image_class": "low_color_proxy",
+      "taxonomy_class": "Low-color PNG",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 0.0,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "spa",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    },
+    {
+      "filename": "alpha_proxy_stego_low.png",
+      "image_class": "alpha_proxy",
+      "taxonomy_class": "Alpha-channel PNG (synthetic proxy)",
+      "embedding_method": "spatial_lsb",
+      "payload_level": "low",
+      "final_score": 0.0,
+      "risk_level": "Low",
+      "non_responding_detectors": [
+        "chi_square",
+        "rs",
+        "spa",
+        "lsb_entropy",
+        "visual_balance"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "freshness_check": [
+    {
+      "filename": "repeated_texture_real_grass_stego_low.png",
+      "stored": 64.1,
+      "fresh": 64.1,
+      "match": true
+    },
+    {
+      "filename": "document_real_text_stego_high.png",
+      "stored": 70.0,
+      "fresh": 70.0,
+      "match": true
+    },
+    {
+      "filename": "photograph_real_chelsea_tamper_copymove_weak.png",
+      "stored": 20.6,
+      "fresh": 20.6,
+      "match": true
+    }
+  ],
+  "corpus_total": 92,
+  "clean_of_both_count": 26,
+  "stego_count": 59,
+  "overall_metrics_at_threshold_20": {
+    "tp": 51,
+    "fp": 16,
+    "tn": 10,
+    "fn": 8,
+    "sensitivity": 0.8644,
+    "specificity": 0.3846,
+    "fpr": 0.6154,
+    "fnr": 0.1356,
+    "precision": 0.7612,
+    "balanced_accuracy": 0.6245
+  },
+  "independent_validation_set_available": false,
+  "independent_validation_note": "No independent held-out validation set exists in this corpus. The G3 calibration/validation split (g3_calibration_split.json) was explicitly marked inadequate for this purpose at generation time (see G3 report) and no threshold or parameter has ever been tuned against a held-out portion of this corpus in any phase -- so while no split-based independent validation exists, no result reported here has been circularly validated against a tuning set either."
+}

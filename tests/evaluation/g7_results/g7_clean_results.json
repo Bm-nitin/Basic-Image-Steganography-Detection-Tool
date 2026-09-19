@@ -1,0 +1,845 @@
+{
+  "note": "Clean (non-stego, non-tampered) samples only, grouped by actual corpus image_class.",
+  "per_class": {
+    "alpha_proxy": {
+      "taxonomy_class": "Alpha-channel PNG (synthetic proxy)",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 85.0,
+        "median": 85.0,
+        "stdev": 0.0,
+        "min": 85.0,
+        "max": 85.0
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 1
+      },
+      "samples": [
+        "alpha_proxy_clean.png"
+      ]
+    },
+    "alpha_real": {
+      "taxonomy_class": "Alpha-channel PNG",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 11.8,
+        "median": 11.8,
+        "stdev": 0.0,
+        "min": 11.8,
+        "max": 11.8
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 11.8,
+        "median": 11.8,
+        "stdev": 0.0,
+        "min": 11.8,
+        "max": 11.8
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 12.8,
+        "median": 12.8,
+        "stdev": 0.0,
+        "min": 12.8,
+        "max": 12.8
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 1
+      },
+      "samples": [
+        "alpha_real_logo_clean.png"
+      ]
+    },
+    "document_proxy": {
+      "taxonomy_class": "Marksheet/document-like (synthetic)",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 1.2,
+        "median": 1.2,
+        "stdev": 0.0,
+        "min": 1.2,
+        "max": 1.2
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 1
+      },
+      "samples": [
+        "document_proxy_clean.png"
+      ]
+    },
+    "document_real": {
+      "taxonomy_class": "Scanned document",
+      "n": 2,
+      "suspicion_score_stats": {
+        "n": 2,
+        "mean": 40.6,
+        "median": 40.6,
+        "stdev": 0.0,
+        "min": 40.6,
+        "max": 40.6
+      },
+      "structural_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 2,
+        "mean": 20.6,
+        "median": 20.6,
+        "stdev": 0.0,
+        "min": 20.6,
+        "max": 20.6
+      },
+      "visual_score_stats": {
+        "n": 2,
+        "mean": 20.0,
+        "median": 20.0,
+        "stdev": 0.0,
+        "min": 20.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 2,
+        "mean": 7.35,
+        "median": 7.35,
+        "stdev": 3.323,
+        "min": 5.0,
+        "max": 9.7
+      },
+      "false_positive_rate_at_20": 1.0,
+      "risk_level_distribution": {
+        "Medium": 2
+      },
+      "samples": [
+        "document_real_page_clean.png",
+        "document_real_text_clean.png"
+      ]
+    },
+    "grayscale_proxy": {
+      "taxonomy_class": "Grayscale (synthetic proxy)",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 28.8,
+        "median": 28.8,
+        "stdev": 0.0,
+        "min": 28.8,
+        "max": 28.8
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 8.8,
+        "median": 8.8,
+        "stdev": 0.0,
+        "min": 8.8,
+        "max": 8.8
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 20.0,
+        "median": 20.0,
+        "stdev": 0.0,
+        "min": 20.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 1.2,
+        "median": 1.2,
+        "stdev": 0.0,
+        "min": 1.2,
+        "max": 1.2
+      },
+      "false_positive_rate_at_20": 1.0,
+      "risk_level_distribution": {
+        "Medium": 1
+      },
+      "samples": [
+        "grayscale_proxy_clean.png"
+      ]
+    },
+    "grayscale_real": {
+      "taxonomy_class": "Grayscale",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 35.9,
+        "median": 35.9,
+        "stdev": 0.0,
+        "min": 35.9,
+        "max": 35.9
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 15.9,
+        "median": 15.9,
+        "stdev": 0.0,
+        "min": 15.9,
+        "max": 15.9
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 20.0,
+        "median": 20.0,
+        "stdev": 0.0,
+        "min": 20.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 12.9,
+        "median": 12.9,
+        "stdev": 0.0,
+        "min": 12.9,
+        "max": 12.9
+      },
+      "false_positive_rate_at_20": 1.0,
+      "risk_level_distribution": {
+        "Medium": 1
+      },
+      "samples": [
+        "grayscale_real_moon_clean.png"
+      ]
+    },
+    "illustration_proxy": {
+      "taxonomy_class": "Synthetic illustration / flat graphic (synthetic proxy)",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 85.0,
+        "median": 85.0,
+        "stdev": 0.0,
+        "min": 85.0,
+        "max": 85.0
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 1
+      },
+      "samples": [
+        "illustration_proxy_clean.png"
+      ]
+    },
+    "illustration_real": {
+      "taxonomy_class": "Synthetic illustration / flat graphic",
+      "n": 2,
+      "suspicion_score_stats": {
+        "n": 2,
+        "mean": 20.3,
+        "median": 20.3,
+        "stdev": 12.021,
+        "min": 11.8,
+        "max": 28.8
+      },
+      "structural_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 2,
+        "mean": 10.3,
+        "median": 10.3,
+        "stdev": 2.121,
+        "min": 8.8,
+        "max": 11.8
+      },
+      "visual_score_stats": {
+        "n": 2,
+        "mean": 10.0,
+        "median": 10.0,
+        "stdev": 14.142,
+        "min": 0.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 2,
+        "mean": 42.65,
+        "median": 42.65,
+        "stdev": 59.892,
+        "min": 0.3,
+        "max": 85.0
+      },
+      "false_positive_rate_at_20": 0.5,
+      "risk_level_distribution": {
+        "Low": 1,
+        "Medium": 1
+      },
+      "samples": [
+        "illustration_real_colorwheel_clean.png",
+        "illustration_real_checkerboard_clean.png"
+      ]
+    },
+    "low_color_proxy": {
+      "taxonomy_class": "Low-color PNG",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 85.0,
+        "median": 85.0,
+        "stdev": 0.0,
+        "min": 85.0,
+        "max": 85.0
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 1
+      },
+      "samples": [
+        "low_color_proxy_clean.png"
+      ]
+    },
+    "photograph_proxy": {
+      "taxonomy_class": "Natural photograph (synthetic proxy)",
+      "n": 3,
+      "suspicion_score_stats": {
+        "n": 3,
+        "mean": 35.2,
+        "median": 37.5,
+        "stdev": 6.846,
+        "min": 27.5,
+        "max": 40.6
+      },
+      "structural_score_stats": {
+        "n": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 3,
+        "mean": 15.2,
+        "median": 17.5,
+        "stdev": 6.846,
+        "min": 7.5,
+        "max": 20.6
+      },
+      "visual_score_stats": {
+        "n": 3,
+        "mean": 20.0,
+        "median": 20.0,
+        "stdev": 0.0,
+        "min": 20.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 3,
+        "mean": 0.567,
+        "median": 0.5,
+        "stdev": 0.115,
+        "min": 0.5,
+        "max": 0.7
+      },
+      "false_positive_rate_at_20": 1.0,
+      "risk_level_distribution": {
+        "Medium": 3
+      },
+      "samples": [
+        "photograph_proxy_clean.png",
+        "photograph_proxy_clean.jpg",
+        "photograph_proxy_recompressed.jpg"
+      ]
+    },
+    "photograph_real": {
+      "taxonomy_class": "Natural photograph",
+      "n": 6,
+      "suspicion_score_stats": {
+        "n": 6,
+        "mean": 32.433,
+        "median": 37.65,
+        "stdev": 10.554,
+        "min": 17.5,
+        "max": 40.6
+      },
+      "structural_score_stats": {
+        "n": 6,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 6,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 6,
+        "mean": 22.433,
+        "median": 20.6,
+        "stdev": 8.544,
+        "min": 15.9,
+        "max": 39.4
+      },
+      "visual_score_stats": {
+        "n": 6,
+        "mean": 10.0,
+        "median": 10.0,
+        "stdev": 10.954,
+        "min": 0.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 6,
+        "mean": 9.9,
+        "median": 7.4,
+        "stdev": 8.912,
+        "min": 3.1,
+        "max": 27.6
+      },
+      "false_positive_rate_at_20": 0.8333,
+      "risk_level_distribution": {
+        "Medium": 5,
+        "Low": 1
+      },
+      "samples": [
+        "photograph_real_coffee_clean.png",
+        "photograph_real_chelsea_clean.png",
+        "photograph_real_rocket_clean.png",
+        "photograph_real_coffee_recompressed.jpg",
+        "photograph_real_coffee_tiny_32.png",
+        "photograph_real_coffee_large_1024.png"
+      ]
+    },
+    "repeated_structure_proxy": {
+      "taxonomy_class": "Other (repeated/self-similar synthetic structure)",
+      "n": 1,
+      "suspicion_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "structural_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "visual_score_stats": {
+        "n": 1,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 1,
+        "mean": 70.8,
+        "median": 70.8,
+        "stdev": 0.0,
+        "min": 70.8,
+        "max": 70.8
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 1
+      },
+      "samples": [
+        "repeated_structure_proxy_clean.png"
+      ]
+    },
+    "repeated_texture_real": {
+      "taxonomy_class": "Other (repeated/self-similar natural texture)",
+      "n": 3,
+      "suspicion_score_stats": {
+        "n": 3,
+        "mean": 46.467,
+        "median": 43.5,
+        "stdev": 7.786,
+        "min": 40.6,
+        "max": 55.3
+      },
+      "structural_score_stats": {
+        "n": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 3,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 3,
+        "mean": 26.467,
+        "median": 23.5,
+        "stdev": 7.786,
+        "min": 20.6,
+        "max": 35.3
+      },
+      "visual_score_stats": {
+        "n": 3,
+        "mean": 20.0,
+        "median": 20.0,
+        "stdev": 0.0,
+        "min": 20.0,
+        "max": 20.0
+      },
+      "tampering_score_stats": {
+        "n": 3,
+        "mean": 2.7,
+        "median": 2.2,
+        "stdev": 1.229,
+        "min": 1.8,
+        "max": 4.1
+      },
+      "false_positive_rate_at_20": 1.0,
+      "risk_level_distribution": {
+        "Medium": 3
+      },
+      "samples": [
+        "repeated_texture_real_brick_clean.png",
+        "repeated_texture_real_grass_clean.png",
+        "repeated_texture_real_gravel_clean.png"
+      ]
+    },
+    "screenshot_proxy": {
+      "taxonomy_class": "Screenshot / UI",
+      "n": 2,
+      "suspicion_score_stats": {
+        "n": 2,
+        "mean": 2.25,
+        "median": 2.25,
+        "stdev": 3.182,
+        "min": 0.0,
+        "max": 4.5
+      },
+      "structural_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "metadata_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "statistical_score_stats": {
+        "n": 2,
+        "mean": 2.25,
+        "median": 2.25,
+        "stdev": 3.182,
+        "min": 0.0,
+        "max": 4.5
+      },
+      "visual_score_stats": {
+        "n": 2,
+        "mean": 0.0,
+        "median": 0.0,
+        "stdev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tampering_score_stats": {
+        "n": 2,
+        "mean": 1.7,
+        "median": 1.7,
+        "stdev": 0.141,
+        "min": 1.6,
+        "max": 1.8
+      },
+      "false_positive_rate_at_20": 0.0,
+      "risk_level_distribution": {
+        "Low": 2
+      },
+      "samples": [
+        "screenshot_proxy_clean.png",
+        "screenshot_proxy_clean.jpg"
+      ]
+    }
+  }
+}

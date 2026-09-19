@@ -1,0 +1,642 @@
+{
+  "note": "Stego samples only, grouped by actual corpus image_class and payload level.",
+  "per_class": {
+    "alpha_proxy": {
+      "taxonomy_class": "Alpha-channel PNG (synthetic proxy)",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 0.6667,
+      "overall_false_negative_rate_at_20": 0.3333,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 0.0,
+            "median": 0.0,
+            "stdev": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "detection_rate_at_20": 0.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 27.1,
+            "median": 27.1,
+            "stdev": 0.0,
+            "min": 27.1,
+            "max": 27.1
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "alpha_real": {
+      "taxonomy_class": "Alpha-channel PNG",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 0.6667,
+      "overall_false_negative_rate_at_20": 0.3333,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 11.8,
+            "median": 11.8,
+            "stdev": 0.0,
+            "min": 11.8,
+            "max": 11.8
+          },
+          "detection_rate_at_20": 0.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 20.6,
+            "median": 20.6,
+            "stdev": 0.0,
+            "min": 20.6,
+            "max": 20.6
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "document_proxy": {
+      "taxonomy_class": "Marksheet/document-like (synthetic)",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 0.6667,
+      "overall_false_negative_rate_at_20": 0.3333,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 50.0,
+            "median": 50.0,
+            "stdev": 0.0,
+            "min": 50.0,
+            "max": 50.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 0.0,
+            "median": 0.0,
+            "stdev": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "detection_rate_at_20": 0.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 20.6,
+            "median": 20.6,
+            "stdev": 0.0,
+            "min": 20.6,
+            "max": 20.6
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "document_real": {
+      "taxonomy_class": "Scanned document",
+      "n": 6,
+      "embedding_methods": {
+        "spatial_lsb": 6
+      },
+      "overall_detection_rate_at_20": 1.0,
+      "overall_false_negative_rate_at_20": 0.0,
+      "by_payload_level": {
+        "high": {
+          "n": 2,
+          "score_stats": {
+            "n": 2,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 2,
+          "score_stats": {
+            "n": 2,
+            "mean": 40.6,
+            "median": 40.6,
+            "stdev": 0.0,
+            "min": 40.6,
+            "max": 40.6
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "medium": {
+          "n": 2,
+          "score_stats": {
+            "n": 2,
+            "mean": 52.35,
+            "median": 52.35,
+            "stdev": 4.172,
+            "min": 49.4,
+            "max": 55.3
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "grayscale_proxy": {
+      "taxonomy_class": "Grayscale (synthetic proxy)",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 1.0,
+      "overall_false_negative_rate_at_20": 0.0,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 40.6,
+            "median": 40.6,
+            "stdev": 0.0,
+            "min": 40.6,
+            "max": 40.6
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "grayscale_real": {
+      "taxonomy_class": "Grayscale",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 1.0,
+      "overall_false_negative_rate_at_20": 0.0,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 43.5,
+            "median": 43.5,
+            "stdev": 0.0,
+            "min": 43.5,
+            "max": 43.5
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 35.9,
+            "median": 35.9,
+            "stdev": 0.0,
+            "min": 35.9,
+            "max": 35.9
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 55.3,
+            "median": 55.3,
+            "stdev": 0.0,
+            "min": 55.3,
+            "max": 55.3
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "illustration_proxy": {
+      "taxonomy_class": "Synthetic illustration / flat graphic (synthetic proxy)",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 0.6667,
+      "overall_false_negative_rate_at_20": 0.3333,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 0.0,
+            "median": 0.0,
+            "stdev": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "detection_rate_at_20": 0.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 27.1,
+            "median": 27.1,
+            "stdev": 0.0,
+            "min": 27.1,
+            "max": 27.1
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "illustration_real": {
+      "taxonomy_class": "Synthetic illustration / flat graphic",
+      "n": 6,
+      "embedding_methods": {
+        "spatial_lsb": 6
+      },
+      "overall_detection_rate_at_20": 0.6667,
+      "overall_false_negative_rate_at_20": 0.3333,
+      "by_payload_level": {
+        "high": {
+          "n": 2,
+          "score_stats": {
+            "n": 2,
+            "mean": 56.75,
+            "median": 56.75,
+            "stdev": 2.051,
+            "min": 55.3,
+            "max": 58.2
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 2,
+          "score_stats": {
+            "n": 2,
+            "mean": 23.85,
+            "median": 23.85,
+            "stdev": 17.041,
+            "min": 11.8,
+            "max": 35.9
+          },
+          "detection_rate_at_20": 0.5
+        },
+        "medium": {
+          "n": 2,
+          "score_stats": {
+            "n": 2,
+            "mean": 32.65,
+            "median": 32.65,
+            "stdev": 23.688,
+            "min": 15.9,
+            "max": 49.4
+          },
+          "detection_rate_at_20": 0.5
+        }
+      }
+    },
+    "low_color_proxy": {
+      "taxonomy_class": "Low-color PNG",
+      "n": 3,
+      "embedding_methods": {
+        "spatial_lsb": 3
+      },
+      "overall_detection_rate_at_20": 0.6667,
+      "overall_false_negative_rate_at_20": 0.3333,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 0.0,
+            "median": 0.0,
+            "stdev": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "detection_rate_at_20": 0.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 27.1,
+            "median": 27.1,
+            "stdev": 0.0,
+            "min": 27.1,
+            "max": 27.1
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "photograph_proxy": {
+      "taxonomy_class": "Natural photograph (synthetic proxy)",
+      "n": 4,
+      "embedding_methods": {
+        "spatial_lsb": 3,
+        "appended_eof": 1
+      },
+      "overall_detection_rate_at_20": 1.0,
+      "overall_false_negative_rate_at_20": 0.0,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 70.0,
+            "median": 70.0,
+            "stdev": 0.0,
+            "min": 70.0,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 40.6,
+            "median": 40.6,
+            "stdev": 0.0,
+            "min": 40.6,
+            "max": 40.6
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 55.3,
+            "median": 55.3,
+            "stdev": 0.0,
+            "min": 55.3,
+            "max": 55.3
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "n/a": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 47.5,
+            "median": 47.5,
+            "stdev": 0.0,
+            "min": 47.5,
+            "max": 47.5
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "photograph_real": {
+      "taxonomy_class": "Natural photograph",
+      "n": 9,
+      "embedding_methods": {
+        "spatial_lsb": 9
+      },
+      "overall_detection_rate_at_20": 1.0,
+      "overall_false_negative_rate_at_20": 0.0,
+      "by_payload_level": {
+        "high": {
+          "n": 3,
+          "score_stats": {
+            "n": 3,
+            "mean": 66.867,
+            "median": 65.3,
+            "stdev": 2.714,
+            "min": 65.3,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 3,
+          "score_stats": {
+            "n": 3,
+            "mean": 46.867,
+            "median": 40.6,
+            "stdev": 15.108,
+            "min": 35.9,
+            "max": 64.1
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "medium": {
+          "n": 3,
+          "score_stats": {
+            "n": 3,
+            "mean": 61.567,
+            "median": 64.1,
+            "stdev": 9.945,
+            "min": 50.6,
+            "max": 70.0
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "repeated_texture_real": {
+      "taxonomy_class": "Other (repeated/self-similar natural texture)",
+      "n": 9,
+      "embedding_methods": {
+        "spatial_lsb": 9
+      },
+      "overall_detection_rate_at_20": 1.0,
+      "overall_false_negative_rate_at_20": 0.0,
+      "by_payload_level": {
+        "high": {
+          "n": 3,
+          "score_stats": {
+            "n": 3,
+            "mean": 60.167,
+            "median": 58.2,
+            "stdev": 3.406,
+            "min": 58.2,
+            "max": 64.1
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 3,
+          "score_stats": {
+            "n": 3,
+            "mean": 47.833,
+            "median": 43.5,
+            "stdev": 14.591,
+            "min": 35.9,
+            "max": 64.1
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "medium": {
+          "n": 3,
+          "score_stats": {
+            "n": 3,
+            "mean": 59.2,
+            "median": 58.2,
+            "stdev": 4.484,
+            "min": 55.3,
+            "max": 64.1
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    },
+    "screenshot_proxy": {
+      "taxonomy_class": "Screenshot / UI",
+      "n": 4,
+      "embedding_methods": {
+        "spatial_lsb": 3,
+        "appended_eof": 1
+      },
+      "overall_detection_rate_at_20": 0.75,
+      "overall_false_negative_rate_at_20": 0.25,
+      "by_payload_level": {
+        "high": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 55.3,
+            "median": 55.3,
+            "stdev": 0.0,
+            "min": 55.3,
+            "max": 55.3
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "low": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 0.0,
+            "median": 0.0,
+            "stdev": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "detection_rate_at_20": 0.0
+        },
+        "medium": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 20.6,
+            "median": 20.6,
+            "stdev": 0.0,
+            "min": 20.6,
+            "max": 20.6
+          },
+          "detection_rate_at_20": 1.0
+        },
+        "n/a": {
+          "n": 1,
+          "score_stats": {
+            "n": 1,
+            "mean": 24.5,
+            "median": 24.5,
+            "stdev": 0.0,
+            "min": 24.5,
+            "max": 24.5
+          },
+          "detection_rate_at_20": 1.0
+        }
+      }
+    }
+  }
+}
