@@ -1,0 +1,740 @@
+{
+  "note": "G7 false-positive reproduction with full detector detail. Class labels and ground truth verified against g7_corpus_inventory.json, not inferred from filenames.",
+  "samples": [
+    {
+      "filename": "repeated_texture_real_brick_clean.png",
+      "verified_image_class": "repeated_texture_real",
+      "verified_actual_color_mode": "L",
+      "verified_ground_truth": {
+        "has_steganography": false,
+        "has_tampering": false
+      },
+      "final_score": 40.6,
+      "risk_level": "Medium",
+      "category_scores": {
+        "structural": 0.0,
+        "metadata": 0.0,
+        "statistical": 20.6,
+        "visual": 20.0,
+        "tampering": 1.8
+      },
+      "tampering_score": 1.8,
+      "chi_square": {
+        "gray": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "red": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "green": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "blue": {
+          "chi2_stat": 799.43,
+          "df": 66,
+          "ratio": 12.11,
+          "p_value": 0.0,
+          "chi_square_indicator": 0.0,
+          "probability_stego": 0.0,
+          "is_suspicious": false,
+          "details": "Natural variation between adjacent values (ratio=12.11)"
+        },
+        "max_indicator": 0.0
+      },
+      "rs_analysis": {
+        "estimated_embedding_rate": 0.0,
+        "suspicion_indicator": 0.0,
+        "rs_applicability_diagnostic": 0.0286,
+        "sym_diff": 0.00714,
+        "is_suspicious": false,
+        "channel_breakdown": {
+          "red": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.48828,
+            "singular": 0.19678,
+            "negative_regular": 0.48395,
+            "negative_singular": 0.19958,
+            "discrimination_regular": 0.2915,
+            "discrimination_singular": 0.28436,
+            "estimated_embedding_rate": 0.0,
+            "suspicion_indicator": 0.0,
+            "sym_diff": 0.00714,
+            "rs_applicability_diagnostic": 0.0286,
+            "is_suspicious": false
+          },
+          "green": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.48828,
+            "singular": 0.19678,
+            "negative_regular": 0.48395,
+            "negative_singular": 0.19958,
+            "discrimination_regular": 0.2915,
+            "discrimination_singular": 0.28436,
+            "estimated_embedding_rate": 0.0,
+            "suspicion_indicator": 0.0,
+            "sym_diff": 0.00714,
+            "rs_applicability_diagnostic": 0.0286,
+            "is_suspicious": false
+          },
+          "blue": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.48828,
+            "singular": 0.19678,
+            "negative_regular": 0.48395,
+            "negative_singular": 0.19958,
+            "discrimination_regular": 0.2915,
+            "discrimination_singular": 0.28436,
+            "estimated_embedding_rate": 0.0,
+            "suspicion_indicator": 0.0,
+            "sym_diff": 0.00714,
+            "rs_applicability_diagnostic": 0.0286,
+            "is_suspicious": false
+          }
+        }
+      },
+      "spa_analysis": {
+        "estimated_embedding_rate": 0.6252,
+        "suspicion_indicator": 0.6252,
+        "is_suspicious": true
+      },
+      "entropy": {
+        "global_entropy": 5.1116,
+        "channel_entropy": {
+          "red": 5.4892,
+          "green": 5.4892,
+          "blue": 5.4892
+        },
+        "lsb_entropy": {
+          "gray": 0.9981,
+          "red": 1.0,
+          "green": 1.0,
+          "blue": 1.0,
+          "max": 1.0
+        },
+        "is_suspicious": true,
+        "summary": "Elevated LSB entropy detected (near 1.0 bit/pixel)"
+      },
+      "visual": {
+        "stats": {
+          "gray_lsb_mean": 0.4996185302734375,
+          "red_lsb_mean": 0.4996185302734375,
+          "green_lsb_mean": 0.4996185302734375,
+          "blue_lsb_mean": 0.4996185302734375
+        },
+        "min_balance_delta": 0.0003814697265625,
+        "min_balance_channel": "gray",
+        "tested_channels": [
+          "gray"
+        ],
+        "channel_count": 1,
+        "effective_threshold": 0.005,
+        "is_visual_suspicious": true,
+        "is_effectively_grayscale": true
+      },
+      "evidence_items": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "indicator": 1.0,
+          "observed_value": "1.0000 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (1.0000 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload.",
+          "supporting_details": {
+            "max_lsb_entropy": 1.0
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "anomaly",
+          "indicator": 0.6252,
+          "observed_value": "62.52% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "Dumitrescu-Wu-Wang SPA model estimates a high-capacity spatial LSB payload (62.52%).",
+          "supporting_details": {
+            "embedding_rate": 0.6252
+          }
+        },
+        {
+          "category": "visual",
+          "detector": "LSB Parity Distribution",
+          "severity": "suspicious",
+          "indicator": 1.0,
+          "observed_value": "Delta = 0.0004 (near 50.0/50.0)",
+          "threshold": "Delta >= 0.00500 (natural photographic bias)",
+          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0004), typical of pseudorandom or encrypted keystreams.",
+          "supporting_details": {
+            "min_delta": 0.00038
+          }
+        },
+        {
+          "category": "structural",
+          "detector": "Appended Trailing Data",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "0 bytes past EOF",
+          "threshold": "0 bytes (Standard format termination)",
+          "explanation": "File structure strictly conforms to standard format termination specifications without appended trailing bytes.",
+          "supporting_details": {
+            "trailing_bytes": 0
+          }
+        },
+        {
+          "category": "metadata",
+          "detector": "Steganography Application Markers",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "None detected",
+          "threshold": "No known stego software markers",
+          "explanation": "No recognized steganography tool markers or suspicious metadata tags found in file headers.",
+          "supporting_details": {
+            "signatures": []
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "Chi-Square Attack (PoVs)",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "0.0% stego probability",
+          "threshold": "< 60.0% probability (Natural variation)",
+          "explanation": "Natural frequency distribution preserved between adjacent pixel pairs without artificial equalization.",
+          "supporting_details": {
+            "max_probability": 0.0
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "0.0% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "RS steganalysis regular/singular group counts preserve clean photographic symmetry.",
+          "supporting_details": {
+            "embedding_rate": 0.0,
+            "indicator": 0.0
+          }
+        }
+      ]
+    },
+    {
+      "filename": "repeated_texture_real_grass_clean.png",
+      "verified_image_class": "repeated_texture_real",
+      "verified_actual_color_mode": "L",
+      "verified_ground_truth": {
+        "has_steganography": false,
+        "has_tampering": false
+      },
+      "final_score": 55.3,
+      "risk_level": "Medium",
+      "category_scores": {
+        "structural": 0.0,
+        "metadata": 0.0,
+        "statistical": 35.3,
+        "visual": 20.0,
+        "tampering": 4.1
+      },
+      "tampering_score": 4.1,
+      "chi_square": {
+        "gray": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "red": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "green": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "blue": {
+          "chi2_stat": 104.16,
+          "df": 105,
+          "ratio": 0.99,
+          "p_value": 0.5048,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=0.99)"
+        },
+        "max_indicator": 0.85
+      },
+      "rs_analysis": {
+        "estimated_embedding_rate": 0.1737,
+        "suspicion_indicator": 0.1737,
+        "rs_applicability_diagnostic": 0.0405,
+        "sym_diff": 0.01013,
+        "is_suspicious": false,
+        "channel_breakdown": {
+          "red": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.36011,
+            "singular": 0.336,
+            "negative_regular": 0.36591,
+            "negative_singular": 0.33167,
+            "discrimination_regular": 0.02411,
+            "discrimination_singular": 0.03424,
+            "estimated_embedding_rate": 0.1737,
+            "suspicion_indicator": 0.1737,
+            "sym_diff": 0.01013,
+            "rs_applicability_diagnostic": 0.0405,
+            "is_suspicious": false
+          },
+          "green": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.36011,
+            "singular": 0.336,
+            "negative_regular": 0.36591,
+            "negative_singular": 0.33167,
+            "discrimination_regular": 0.02411,
+            "discrimination_singular": 0.03424,
+            "estimated_embedding_rate": 0.1737,
+            "suspicion_indicator": 0.1737,
+            "sym_diff": 0.01013,
+            "rs_applicability_diagnostic": 0.0405,
+            "is_suspicious": false
+          },
+          "blue": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.36011,
+            "singular": 0.336,
+            "negative_regular": 0.36591,
+            "negative_singular": 0.33167,
+            "discrimination_regular": 0.02411,
+            "discrimination_singular": 0.03424,
+            "estimated_embedding_rate": 0.1737,
+            "suspicion_indicator": 0.1737,
+            "sym_diff": 0.01013,
+            "rs_applicability_diagnostic": 0.0405,
+            "is_suspicious": false
+          }
+        }
+      },
+      "spa_analysis": {
+        "estimated_embedding_rate": 0.9809,
+        "suspicion_indicator": 0.9809,
+        "is_suspicious": true
+      },
+      "entropy": {
+        "global_entropy": 6.7971,
+        "channel_entropy": {
+          "red": 7.1398,
+          "green": 7.1398,
+          "blue": 7.1398
+        },
+        "lsb_entropy": {
+          "gray": 0.9994,
+          "red": 1.0,
+          "green": 1.0,
+          "blue": 1.0,
+          "max": 1.0
+        },
+        "is_suspicious": true,
+        "summary": "Elevated LSB entropy detected (near 1.0 bit/pixel)"
+      },
+      "visual": {
+        "stats": {
+          "gray_lsb_mean": 0.4976043701171875,
+          "red_lsb_mean": 0.4976043701171875,
+          "green_lsb_mean": 0.4976043701171875,
+          "blue_lsb_mean": 0.4976043701171875
+        },
+        "min_balance_delta": 0.0023956298828125,
+        "min_balance_channel": "gray",
+        "tested_channels": [
+          "gray"
+        ],
+        "channel_count": 1,
+        "effective_threshold": 0.005,
+        "is_visual_suspicious": true,
+        "is_effectively_grayscale": true
+      },
+      "evidence_items": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "indicator": 1.0,
+          "observed_value": "1.0000 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (1.0000 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload.",
+          "supporting_details": {
+            "max_lsb_entropy": 1.0
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "anomaly",
+          "indicator": 0.9809,
+          "observed_value": "98.09% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "Dumitrescu-Wu-Wang SPA model estimates a high-capacity spatial LSB payload (98.09%).",
+          "supporting_details": {
+            "embedding_rate": 0.9809
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "Chi-Square Attack (PoVs)",
+          "severity": "anomaly",
+          "indicator": 0.85,
+          "observed_value": "85.0% stego probability",
+          "threshold": "< 60.0% probability (Natural variation)",
+          "explanation": "Strong equalization of adjacent Pairs of Values (85.0%), consistent with sequential spatial LSB replacement.",
+          "supporting_details": {
+            "max_probability": 0.85
+          }
+        },
+        {
+          "category": "visual",
+          "detector": "LSB Parity Distribution",
+          "severity": "suspicious",
+          "indicator": 1.0,
+          "observed_value": "Delta = 0.0024 (near 50.0/50.0)",
+          "threshold": "Delta >= 0.00500 (natural photographic bias)",
+          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0024), typical of pseudorandom or encrypted keystreams.",
+          "supporting_details": {
+            "min_delta": 0.0024
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "clean",
+          "indicator": 0.1737,
+          "observed_value": "17.37% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "RS steganalysis regular/singular group counts preserve clean photographic symmetry.",
+          "supporting_details": {
+            "embedding_rate": 0.1737,
+            "indicator": 0.1737
+          }
+        },
+        {
+          "category": "structural",
+          "detector": "Appended Trailing Data",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "0 bytes past EOF",
+          "threshold": "0 bytes (Standard format termination)",
+          "explanation": "File structure strictly conforms to standard format termination specifications without appended trailing bytes.",
+          "supporting_details": {
+            "trailing_bytes": 0
+          }
+        },
+        {
+          "category": "metadata",
+          "detector": "Steganography Application Markers",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "None detected",
+          "threshold": "No known stego software markers",
+          "explanation": "No recognized steganography tool markers or suspicious metadata tags found in file headers.",
+          "supporting_details": {
+            "signatures": []
+          }
+        }
+      ]
+    },
+    {
+      "filename": "repeated_texture_real_gravel_clean.png",
+      "verified_image_class": "repeated_texture_real",
+      "verified_actual_color_mode": "L",
+      "verified_ground_truth": {
+        "has_steganography": false,
+        "has_tampering": false
+      },
+      "final_score": 43.5,
+      "risk_level": "Medium",
+      "category_scores": {
+        "structural": 0.0,
+        "metadata": 0.0,
+        "statistical": 23.5,
+        "visual": 20.0,
+        "tampering": 2.2
+      },
+      "tampering_score": 2.2,
+      "chi_square": {
+        "gray": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "red": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "green": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "blue": {
+          "chi2_stat": 115.64,
+          "df": 113,
+          "ratio": 1.02,
+          "p_value": 0.4134,
+          "chi_square_indicator": 0.85,
+          "probability_stego": 0.85,
+          "is_suspicious": true,
+          "details": "Equalized PoV distribution (Indicator=85.00%, ratio=1.02)"
+        },
+        "max_indicator": 0.85
+      },
+      "rs_analysis": {
+        "estimated_embedding_rate": 0.0,
+        "suspicion_indicator": 0.0,
+        "rs_applicability_diagnostic": 0.0596,
+        "sym_diff": 0.01489,
+        "is_suspicious": false,
+        "channel_breakdown": {
+          "red": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.34589,
+            "singular": 0.30389,
+            "negative_regular": 0.33807,
+            "negative_singular": 0.31097,
+            "discrimination_regular": 0.04199,
+            "discrimination_singular": 0.0271,
+            "estimated_embedding_rate": 0.0,
+            "suspicion_indicator": 0.0,
+            "sym_diff": 0.01489,
+            "rs_applicability_diagnostic": 0.0596,
+            "is_suspicious": false
+          },
+          "green": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.34589,
+            "singular": 0.30389,
+            "negative_regular": 0.33807,
+            "negative_singular": 0.31097,
+            "discrimination_regular": 0.04199,
+            "discrimination_singular": 0.0271,
+            "estimated_embedding_rate": 0.0,
+            "suspicion_indicator": 0.0,
+            "sym_diff": 0.01489,
+            "rs_applicability_diagnostic": 0.0596,
+            "is_suspicious": false
+          },
+          "blue": {
+            "available": true,
+            "group_size": 4,
+            "group_count": 16384,
+            "regular": 0.34589,
+            "singular": 0.30389,
+            "negative_regular": 0.33807,
+            "negative_singular": 0.31097,
+            "discrimination_regular": 0.04199,
+            "discrimination_singular": 0.0271,
+            "estimated_embedding_rate": 0.0,
+            "suspicion_indicator": 0.0,
+            "sym_diff": 0.01489,
+            "rs_applicability_diagnostic": 0.0596,
+            "is_suspicious": false
+          }
+        }
+      },
+      "spa_analysis": {
+        "estimated_embedding_rate": 0.2386,
+        "suspicion_indicator": 0.2386,
+        "is_suspicious": false
+      },
+      "entropy": {
+        "global_entropy": 6.8823,
+        "channel_entropy": {
+          "red": 7.2136,
+          "green": 7.2136,
+          "blue": 7.2136
+        },
+        "lsb_entropy": {
+          "gray": 1.0,
+          "red": 1.0,
+          "green": 1.0,
+          "blue": 1.0,
+          "max": 1.0
+        },
+        "is_suspicious": true,
+        "summary": "Elevated LSB entropy detected (near 1.0 bit/pixel)"
+      },
+      "visual": {
+        "stats": {
+          "gray_lsb_mean": 0.4972991943359375,
+          "red_lsb_mean": 0.4972991943359375,
+          "green_lsb_mean": 0.4972991943359375,
+          "blue_lsb_mean": 0.4972991943359375
+        },
+        "min_balance_delta": 0.0027008056640625,
+        "min_balance_channel": "gray",
+        "tested_channels": [
+          "gray"
+        ],
+        "channel_count": 1,
+        "effective_threshold": 0.005,
+        "is_visual_suspicious": true,
+        "is_effectively_grayscale": true
+      },
+      "evidence_items": [
+        {
+          "category": "statistical",
+          "detector": "Shannon Entropy (LSB Plane)",
+          "severity": "anomaly",
+          "indicator": 1.0,
+          "observed_value": "1.0000 bits/pixel",
+          "threshold": "< 0.9900 bits/pixel (Natural sensor noise)",
+          "explanation": "Extreme LSB entropy (1.0000 bits/px) approaching theoretical limit (1.0000), consistent with compressed/encrypted payload.",
+          "supporting_details": {
+            "max_lsb_entropy": 1.0
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "Chi-Square Attack (PoVs)",
+          "severity": "anomaly",
+          "indicator": 0.85,
+          "observed_value": "85.0% stego probability",
+          "threshold": "< 60.0% probability (Natural variation)",
+          "explanation": "Strong equalization of adjacent Pairs of Values (85.0%), consistent with sequential spatial LSB replacement.",
+          "supporting_details": {
+            "max_probability": 0.85
+          }
+        },
+        {
+          "category": "visual",
+          "detector": "LSB Parity Distribution",
+          "severity": "suspicious",
+          "indicator": 1.0,
+          "observed_value": "Delta = 0.0027 (near 50.0/50.0)",
+          "threshold": "Delta >= 0.00500 (natural photographic bias)",
+          "explanation": "Near-perfect 50/50 parity balance in LSB plane (delta = 0.0027), typical of pseudorandom or encrypted keystreams.",
+          "supporting_details": {
+            "min_delta": 0.0027
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "Sample Pair Analysis (SPA)",
+          "severity": "clean",
+          "indicator": 0.2386,
+          "observed_value": "23.86% estimated capacity",
+          "threshold": "< 30.0% estimated capacity",
+          "explanation": "SPA indicates negligible spatial LSB modification conforming to clean carrier baselines.",
+          "supporting_details": {
+            "embedding_rate": 0.2386
+          }
+        },
+        {
+          "category": "structural",
+          "detector": "Appended Trailing Data",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "0 bytes past EOF",
+          "threshold": "0 bytes (Standard format termination)",
+          "explanation": "File structure strictly conforms to standard format termination specifications without appended trailing bytes.",
+          "supporting_details": {
+            "trailing_bytes": 0
+          }
+        },
+        {
+          "category": "metadata",
+          "detector": "Steganography Application Markers",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "None detected",
+          "threshold": "No known stego software markers",
+          "explanation": "No recognized steganography tool markers or suspicious metadata tags found in file headers.",
+          "supporting_details": {
+            "signatures": []
+          }
+        },
+        {
+          "category": "statistical",
+          "detector": "RS Steganalysis (Regular-Singular)",
+          "severity": "clean",
+          "indicator": 0.0,
+          "observed_value": "0.0% estimated capacity",
+          "threshold": "< 25.0% estimated capacity",
+          "explanation": "RS steganalysis regular/singular group counts preserve clean photographic symmetry.",
+          "supporting_details": {
+            "embedding_rate": 0.0,
+            "indicator": 0.0
+          }
+        }
+      ]
+    }
+  ]
+}

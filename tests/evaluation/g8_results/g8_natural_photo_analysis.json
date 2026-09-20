@@ -1,0 +1,418 @@
+{
+  "false_positive_targets": [
+    {
+      "filename": "repeated_texture_real_brick_clean.png",
+      "image_class": "repeated_texture_real",
+      "actual_color_mode": "L",
+      "is_genuinely_grayscale_source": true,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.0003814697265625,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 0.0286,
+      "spa_estimated_rate": 0.6252,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 670.755,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.4042,
+        "mean_gradient": 83.64
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.4996,
+        "block_density_stdev": 0.0189,
+        "block_density_min": 0.459,
+        "block_density_max": 0.5371,
+        "global_lsb_density": 0.4996,
+        "fraction_of_blocks_near_0.5": 1.0
+      }
+    },
+    {
+      "filename": "repeated_texture_real_grass_clean.png",
+      "image_class": "repeated_texture_real",
+      "actual_color_mode": "L",
+      "is_genuinely_grayscale_source": true,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.0023956298828125,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.85,
+      "rs_estimated_rate": 0.1737,
+      "rs_applicability_diagnostic": 0.0405,
+      "spa_estimated_rate": 0.9809,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 1202.47,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.9599,
+        "mean_gradient": 165.4
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.4976,
+        "block_density_stdev": 0.0175,
+        "block_density_min": 0.4482,
+        "block_density_max": 0.5459,
+        "global_lsb_density": 0.4976,
+        "fraction_of_blocks_near_0.5": 0.9844
+      }
+    },
+    {
+      "filename": "repeated_texture_real_gravel_clean.png",
+      "image_class": "repeated_texture_real",
+      "actual_color_mode": "L",
+      "is_genuinely_grayscale_source": true,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.0027008056640625,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.85,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 0.0596,
+      "spa_estimated_rate": 0.2386,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 1399.821,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.9446,
+        "mean_gradient": 171.13
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.4973,
+        "block_density_stdev": 0.0146,
+        "block_density_min": 0.458,
+        "block_density_max": 0.5303,
+        "global_lsb_density": 0.4973,
+        "fraction_of_blocks_near_0.5": 1.0
+      }
+    }
+  ],
+  "other_natural_photographs": [
+    {
+      "filename": "photograph_real_coffee_clean.png",
+      "image_class": "photograph_real",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.00030517578125,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0213,
+      "rs_applicability_diagnostic": 0.0676,
+      "spa_estimated_rate": 0.4852,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 3853.749,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.4265,
+        "mean_gradient": 59.49
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.4998,
+        "block_density_stdev": 0.018,
+        "block_density_min": 0.4561,
+        "block_density_max": 0.541,
+        "global_lsb_density": 0.4998,
+        "fraction_of_blocks_near_0.5": 1.0
+      }
+    },
+    {
+      "filename": "photograph_real_chelsea_clean.png",
+      "image_class": "photograph_real",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.001617431640625,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.6,
+      "rs_estimated_rate": 0.0753,
+      "rs_applicability_diagnostic": 0.064,
+      "spa_estimated_rate": 0.9448,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 980.843,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.6854,
+        "mean_gradient": 62.24
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.5009,
+        "block_density_stdev": 0.0153,
+        "block_density_min": 0.4561,
+        "block_density_max": 0.5283,
+        "global_lsb_density": 0.5009,
+        "fraction_of_blocks_near_0.5": 1.0
+      }
+    },
+    {
+      "filename": "photograph_real_rocket_clean.png",
+      "image_class": "photograph_real",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.0013580322265625,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 0.0337,
+      "spa_estimated_rate": 0.7336,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 941.628,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.1579,
+        "mean_gradient": 23.93
+      },
+      "noise": {
+        "is_suspicious": true,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.5031,
+        "block_density_stdev": 0.0178,
+        "block_density_min": 0.4609,
+        "block_density_max": 0.5371,
+        "global_lsb_density": 0.5031,
+        "fraction_of_blocks_near_0.5": 1.0
+      }
+    },
+    {
+      "filename": "photograph_proxy_clean.png",
+      "image_class": "photograph_proxy",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 1.52587890625e-05,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 0.0425,
+      "spa_estimated_rate": 0.9788,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 38.897,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.0122,
+        "mean_gradient": 12.64
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.4972,
+        "block_density_stdev": 0.0133,
+        "block_density_min": 0.46,
+        "block_density_max": 0.5254,
+        "global_lsb_density": 0.4972,
+        "fraction_of_blocks_near_0.5": 1.0
+      }
+    }
+  ],
+  "non_photograph_comparisons": [
+    {
+      "filename": "document_real_page_clean.png",
+      "image_class": "document_real",
+      "actual_color_mode": "L",
+      "is_genuinely_grayscale_source": true,
+      "global_lsb_entropy_max": 1.0,
+      "visual_min_balance_delta": 0.00360107421875,
+      "visual_is_suspicious": true,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 0.0669,
+      "spa_estimated_rate": 0.664,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 2352.534,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.4834,
+        "mean_gradient": 124.65
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.5036,
+        "block_density_stdev": 0.0264,
+        "block_density_min": 0.4297,
+        "block_density_max": 0.5977,
+        "global_lsb_density": 0.5036,
+        "fraction_of_blocks_near_0.5": 0.9531
+      }
+    },
+    {
+      "filename": "document_proxy_clean.png",
+      "image_class": "document_proxy",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 0.7662,
+      "visual_min_balance_delta": 0.27667236328125,
+      "visual_is_suspicious": false,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 1.0,
+      "spa_estimated_rate": 0.0,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 9272.828,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.1718,
+        "mean_gradient": 139.28
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.7929,
+        "block_density_stdev": 0.1585,
+        "block_density_min": 0.5449,
+        "block_density_max": 1.0,
+        "global_lsb_density": 0.7929,
+        "fraction_of_blocks_near_0.5": 0.0469
+      }
+    },
+    {
+      "filename": "screenshot_proxy_clean.png",
+      "image_class": "screenshot_proxy",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 0.8442,
+      "visual_min_balance_delta": 0.228118896484375,
+      "visual_is_suspicious": false,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 0.6357,
+      "spa_estimated_rate": 0.0,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 4007.918,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.092,
+        "mean_gradient": 26.37
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.3392,
+        "block_density_stdev": 0.3688,
+        "block_density_min": 0.0,
+        "block_density_max": 1.0,
+        "global_lsb_density": 0.3392,
+        "fraction_of_blocks_near_0.5": 0.0312
+      }
+    },
+    {
+      "filename": "illustration_real_colorwheel_clean.png",
+      "image_class": "illustration_real",
+      "actual_color_mode": "RGB",
+      "is_genuinely_grayscale_source": false,
+      "global_lsb_entropy_max": 0.9202,
+      "visual_min_balance_delta": 0.1647491455078125,
+      "visual_is_suspicious": false,
+      "chi_square_max_indicator": 0.0,
+      "rs_estimated_rate": 0.0,
+      "rs_applicability_diagnostic": 1.0,
+      "spa_estimated_rate": 0.9625,
+      "local_variance": {
+        "is_suspicious": false,
+        "global_variance": 5180.465,
+        "outlier_fraction": null
+      },
+      "edge": {
+        "is_suspicious": false,
+        "edge_density": 0.0263,
+        "mean_gradient": 14.66
+      },
+      "noise": {
+        "is_suspicious": false,
+        "mad": null
+      },
+      "local_lsb_block_stats": {
+        "n_blocks": 64,
+        "block_density_mean": 0.3988,
+        "block_density_stdev": 0.1686,
+        "block_density_min": 0.0,
+        "block_density_max": 0.5205,
+        "global_lsb_density": 0.3988,
+        "fraction_of_blocks_near_0.5": 0.6875
+      }
+    }
+  ],
+  "summary": {
+    "question": "Are the false-positive natural-texture photos genuinely distinct from other clean natural photographs in this corpus?",
+    "all_natural_photo_lsb_entropy_values": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "all_maxed_near_1.0": true,
+    "finding": "MEASURED: every genuine clean natural photograph sample in this corpus (the 3 flagged textures AND all other real/synthetic photographs, regardless of visible texture level) shows lsb_entropy_max >= 0.999. There is no clean natural-photograph sample in this corpus that does NOT max out LSB entropy. The brick/grass/gravel false positives are therefore not distinguishable from the rest of the natural-photograph class by this signal -- they are representative of it, not anomalous within it."
+  }
+}
